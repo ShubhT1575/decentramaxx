@@ -19,7 +19,7 @@ export default function LearnMore() {
                     className="sec-text text-center  pt-2 pb-4 fs-5"
                     style={{ textAlign: "justify" }}
                   >
-                   BITGOLD crowdfunding is transforming the way businesses, creators, and innovators raise capital for their projects. Using the power of blockchain technology and decentralized finance, we make it easier, faster, and more transparent for you to fund your ideas or investments, all while tapping into the global crypto ecosystem.
+                   CORE CROWD crowdfunding is transforming the way businesses, creators, and innovators raise capital for their projects. Using the power of blockchain technology and decentralized finance, we make it easier, faster, and more transparent for you to fund your ideas or investments, all while tapping into the global crypto ecosystem.
 
                   </p>
                 </div>

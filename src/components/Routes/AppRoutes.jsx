@@ -18,7 +18,7 @@ import DashboardMain from "../Dashboard/DashboardMain";
 // import SupportMain from "../Support/SupportMain";
 // import MatrixMain from "../Matrix/MatrixMain";
 import CoreMain from "../CoreIncome/CoreMain";
-// import GlobalMain from "../GlobalIncome/GlobalMain";
+import GlobalMain from "../GlobalIncome/GlobalMain";
 import FortuneMain from "../FortuneIncome/FortuneMain";
 import SignIn from "../SignIn";
 import SignUp from "../SignUp";
@@ -76,7 +76,7 @@ const AppRoutes = () => {
           {/* <Route path="/Stake" element={<StakeMain />} /> */}
           {/* <Route path="/Form" element={<FormMAin />} /> */}
           <Route path="/CoreIncome" element={<CoreMain />} />
-          {/* <Route path="/GlobalIncome" element={<GlobalMain />} /> */}
+          <Route path="/GlobalIncome" element={<GlobalMain />} />
           <Route path="/FortuneIncome" element={<FortuneMain />} />
           {/* <Route path="/Ranking" element={<RankingMain />} /> */}
           {/* <Route path="/Profile" element={<ProfileMain />} /> */}

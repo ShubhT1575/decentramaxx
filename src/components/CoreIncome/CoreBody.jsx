@@ -19,7 +19,7 @@ function CoreBody() {
   );
 
   const showTransaction = async () => {
-    const res = await axios.get(apiUrl + "/levelIncomeByUser", {
+    const res = await axios.get(apiUrl + "/userIncomeByUser", {
       params: {
         receiver: "0xf0c90d0E550AFA5C4d557A7BeBfB89B1ea4d97f8",
         // user: "0x8a62CcdFFb086c190A869E49761E6F9E422214E7",
@@ -54,7 +54,7 @@ function CoreBody() {
         <div className="card custom-card overflow-hidden new-card">
           <div className="card-header justify-content-between color-light">
             <div className="card-title">
-              Level Income Report
+              User Income Report
             </div>
           </div>
 
@@ -71,6 +71,9 @@ function CoreBody() {
                     </th>
                     <th scope="col" style={{ color: "white" }}>
                       Sender
+                    </th>
+                    <th scope="col" style={{ color: "white" }}>
+                      Level
                     </th>
                     <th scope="col" style={{ color: "white" }}>
                       Amount
@@ -105,6 +108,7 @@ function CoreBody() {
                           </a>
                         </td>
                         <td style={{ color: "white" }}>{item?.userId}</td>
+                        <td style={{ color: "white" }}>{item?.level}</td>
                         <td style={{ color: "white" }}>$ {item.amount/1e18}</td>
                         {/* <td>{item.level}</td> */}
                         <td style={{ color: "white" }}>

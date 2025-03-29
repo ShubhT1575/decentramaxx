@@ -22,6 +22,21 @@ import { getBalance } from "viem/actions";
 import Tooltip from "../ToopTip/Tooptip";
 import { IoClipboardSharp } from "react-icons/io5";
 import { FaClipboardCheck } from "react-icons/fa6";
+import bg1 from "../../assets/img/9155702.jpg";
+import bg2 from "../../assets/img/businessman-touching-red-icon-connected.jpg";
+import bg3 from "../../assets/img/SL-0212121-40670-68.jpg";
+import id from "../../assets/img/id.png";
+import sponsor from "../../assets/img/deal.png";
+import rank from "../../assets/img/high-quality.png";
+import DateID from "../../assets/img/3d-calendar.png";
+import Ref from "../../assets/img/bonus.png";
+import rankReward from "../../assets/img/reward.png";
+import Stake from "../../assets/img/saving.png";
+import Login from "../../assets/img/profile-protection.png";
+import FundReward from "../../assets/img/money.png";
+import FundWallet from "../../assets/img/wallet.png";
+import Reward from "../../assets/img/reward (1).png";
+import Future from "../../assets/img/old-age.png";
 
 function DashboardRow2() {
   const [TBusiness, setTeamBusiness] = useState();
@@ -184,8 +199,8 @@ function DashboardRow2() {
   const getDash = async () => {
     const res = await axios.get(apiUrl + "/dashboard", {
       params: {
-        address: "0xf0c90d0E550AFA5C4d557A7BeBfB89B1ea4d97f8",
-        // user: "0x159BfA579450AA8ede17a31c892FBc00f62Cb116"
+        // address: address,
+        address: "0xf0c90d0E550AFA5C4d557A7BeBfB89B1ea4d97f8"
       },
     });
     console.log(res?.data?.user, "respp");
@@ -278,18 +293,18 @@ function DashboardRow2() {
     // const walletBalance = parseFloat(balance.formatted);
     // console.log(walletBalance, amt, "balllllllllllll");
     try {
-          let realAmt;
-          if(id === 1){
-            realAmt = 5*1e18;
-          }
-          if(id === 2){
-            realAmt = 25*1e18
-          }
-          console.log(realAmt,"realAmt")
-      
-          const bal = await getTotalPol(realAmt)
+      let realAmt;
+      if (id === 1) {
+        realAmt = 5 * 1e18;
+      }
+      if (id === 2) {
+        realAmt = 25 * 1e18;
+      }
+      console.log(realAmt, "realAmt");
 
-    let increasedAmt = bal + (bal * BigInt(1)) / BigInt(100);
+      const bal = await getTotalPol(realAmt);
+
+      let increasedAmt = bal + (bal * BigInt(1)) / BigInt(100);
 
       // if (walletBalance < amt) {
       //   // console.log(walletBalance, amt);
@@ -307,7 +322,7 @@ function DashboardRow2() {
       appRes = true;
 
       if (appRes) {
-        const buy = buyMatrix(id,increasedAmt);
+        const buy = buyMatrix(id, increasedAmt);
         await toast.promise(buy, {
           loading: "Buying...",
           success: "Success!",
@@ -466,16 +481,16 @@ function DashboardRow2() {
   }, [address]);
 
   return (
-    <div className="row">
+    <div className="row mb-5">
       {/* Profit */}
 
-      <div className="col-sm-12 col-md-4 col-xxl-4 mb-4">
+      <div className="col-sm-12 col-md-8 col-xxl-8 mb-4">
         <div
-          className="card custom-card overflow-hidden new-card row mb-2 justify-content-between "
-          style={{ height: "max-content", marginLeft: "0" }}
+          className="card custom-card overflow-hidden new-card row mb-2 justify-content-between align-items-center glow-box-blue"
+          style={{ height: "100%", marginLeft: "0" }}
         >
-          <div className="upcoming">
-            <div className="col-sm-6 col-lg-6 mt-3 mb-3" style={{ width: "100%" }}>
+          <div className="upcoming row mt-4">
+            {/* <div className="col-sm-6 col-lg-6 mt-3 mb-3" style={{ width: "100%" }}>
               <div className="">
                 <div className="card custom-card school-card new-card-box mb-0 ">
                   <div className="card-body d-flex gap-2 justify-content-start align-self-start">
@@ -487,39 +502,121 @@ function DashboardRow2() {
                         Id Date:{" "}
                         {new Date(dashData?.createdAt).toLocaleDateString()}
                       </span>
-                      {/* <span className="d-block mb-1">
+                      <span className="d-block mb-1">
                         Earning ($5): {income5}
                       </span>
                       <span className="d-block mb-1">
                         Earning ($25): {income25}
-                      </span> */}
-                      <span className="d-block mb-1">
-                        Total Income: $ {dashData?.levelIncome/1e18 ?? "0"}
                       </span>
-                      {/* <span className="d-block mb-1">
+                      <span className="d-block mb-1">
+                        Total User Income: $ {dashData?.userIncome/1e18 ? dashData?.userIncome/1e18 : "0"}
+                      </span>
+                      <span className="d-block mb-1">
+                        Total Level Income: $ {dashData?.levelIncome/1e18 ? dashData?.levelIncome/1e18 : "0"}
+                      </span>
+                      <span className="d-block mb-1">
                         Total Direct:{" "}
                         {direct.length == null ? 0 : direct.length}
-                      </span> */}
+                      </span>
                       <span className="d-block mb-1">
                         Sponsor Id: {dashData?.referrerId}
                       </span>
-                      {/* <span className="d-block mb-1">Referral: 200</span> */}
-                      <h6 className="mb-0 fw-semibold">
-                        {/* {dashboard && Number(dashboard[3])} */}
-                        {/* {rank || "0"} */}
-                      </h6>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div> */}
+            <div className="col-sm-6 col-lg-6">
+              <div>
+                <div className="card custom-card school-card">
+                  <div className="card-body d-flex gap-2 justify-content-between align-items-center height-120px glow-box-blue">
+                    <div>
+                      <span className="d-block mb-1">User Id</span>
+                      <h6 className="mb-0 fw-semibold">{dashData?.userId}</h6>
                     </div>
                     <div>
-                      <span className="text-primary2">
-                        {/* <img src={rankImg} alt="" style={{ width: "40px" }} /> */}
-                      </span>
+                      <span className="text-primary1"><img src={id} alt="" style={{ width: "40px" }} /></span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="col-sm-6 col-lg-6">
+              <div>
+                <div className="card custom-card school-card">
+                  <div className="card-body d-flex gap-2 justify-content-between align-items-center height-120px glow-box-blue">
+                    <div>
+                      <span className="d-block mb-1">Referral Id</span>
+                      <h6 className="mb-0 fw-semibold">{dashData?.referrerId}</h6>
+                    </div>
+                    <div>
+                      <span className="text-primary1"><img src={sponsor} alt="" style={{ width: "40px" }} /></span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="col-sm-6 col-lg-6">
+              <div>
+                <div className="card custom-card school-card">
+                  <div className="card-body d-flex gap-2 justify-content-between align-items-center height-120px glow-box-blue">
+                    <div>
+                      <span className="d-block mb-1">Total User Income</span>
+                      <h6 className="mb-0 fw-semibold">$ {dashData?.userIncome/1e18 ? dashData?.userIncome/1e18 : "0"}</h6>
+                    </div>
+                    <div>
+                      <span className="text-primary1"><img src={Stake} alt="" style={{ width: "40px" }} /></span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="col-sm-6 col-lg-6">
+              <div>
+                <div className="card custom-card school-card">
+                  <div className="card-body d-flex gap-2 justify-content-between align-items-center height-120px glow-box-blue">
+                    <div>
+                      <span className="d-block mb-1">Total Level Income</span>
+                      <h6 className="mb-0 fw-semibold">$ {dashData?.levelIncome/1e18 ? dashData?.levelIncome/1e18 : "0"}</h6>
+                    </div>
+                    <div>
+                      <span className="text-primary1"><img src={rankReward} alt="" style={{ width: "40px" }} /></span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="col-sm-6 col-lg-6">
+              <div>
+                <div className="card custom-card school-card">
+                  <div className="card-body d-flex gap-2 justify-content-between align-items-center height-120px glow-box-blue">
+                    <div>
+                      <span className="d-block mb-1">Member Income</span>
+                      <h6 className="mb-0 fw-semibold">0</h6>
+                    </div>
+                    <div>
+                      <span className="text-primary1"><img src={FundReward} alt="" style={{ width: "40px" }} /></span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="col-sm-6 col-lg-6">
+              <div>
+                <div className="card custom-card school-card">
+                  <div className="card-body d-flex gap-2 justify-content-between align-items-center height-120px glow-box-blue">
+                    <div>
+                      <span className="d-block mb-1">Id Date</span>
+                      <h6 className="mb-0 fw-semibold">{new Date(dashData?.createdAt).toLocaleDateString()}</h6>
+                    </div>
+                    <div>
+                      <span className="text-primary1"><img src={DateID} alt="" style={{ width: "40px" }} /></span>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-        
         </div>
       </div>
       {/* <div className="col-sm-12  col-md-6 col-xxl-6">
@@ -534,7 +631,7 @@ function DashboardRow2() {
           </div>
         </div>
       </div> */}
-      <div className="col-sm-12  col-md-4 col-xxl-4">
+      {/* <div className="col-sm-12  col-md-4 col-xxl-4">
         <div className="card custom-card new-card" style={{ height: "483px" }}>
           <div className="upcoming">
             <div className="col-sm-6 col-lg-6 mt-4" style={{ width: "80%" }}>
@@ -544,13 +641,10 @@ function DashboardRow2() {
                     <div>
                       <span className="d-block mb-1">Latest Notification</span>
                       <h6 className="mb-0 fw-semibold">
-                        {/* {dashboard && Number(dashboard[3])} */}
-                        {/* {rank || "0"} */}
                       </h6>
                     </div>
                     <div>
                       <span className="text-primary2">
-                        {/* <img src={rankImg} alt="" style={{ width: "40px" }} /> */}
                       </span>
                     </div>
                   </div>
@@ -559,14 +653,14 @@ function DashboardRow2() {
             </div>
           </div>
         </div>
-      </div>
+      </div> */}
 
-      <div className="col-sm-12  col-md-4 col-xxl-4">
-        <div className="card custom-card new-card">
+      <div className="col-sm-12  col-md-4 col-xxl-4 ">
+        <div className="card custom-card glow-box-blue" style={{height: "96%"}}>
           <div className="upcoming">
             <div className="col-sm-6 col-lg-6 mt-4" style={{ width: "80%" }}>
               <div>
-                <div className="card custom-card school-card new-card-box">
+                <div className="card custom-card school-card new-card-box glow-box-blue">
                   <div className="card-body d-flex gap-2 justify-content-between">
                     <div>
                       <span className="d-block mb-1">Latest Transcation</span>
@@ -588,10 +682,10 @@ function DashboardRow2() {
               >
                 <thead>
                   <tr>
-                    <th scope="col" style={{ color: "black" }}>
+                    <th scope="col" style={{ color: "white" }}>
                       Tx Hash
                     </th>
-                    <th scope="col" style={{ color: "black" }}>
+                    <th scope="col" style={{ color: "white" }}>
                       Package
                     </th>
                     {/* <th scope="col">Matrix</th> */}
@@ -611,13 +705,13 @@ function DashboardRow2() {
                           target="_blank"
                           rel="noopener noreferrer"
                           // className="text-warning"
-                          style={{ color: "blue" }}
+                          style={{ color: "white" }}
                         >
                           {rep?.txHash.slice(0, 4)}...
                           {rep?.txHash.slice(-4)}
                         </a>
                       </td>
-                      <td style={{ color: "black" }}>
+                      <td style={{ color: "white" }}>
                         {rep.packageId == 1 ? "$5" : "$25"}
                       </td>
                       {/* <td style={{ color: "rgb(0, 119, 181)" }}>
@@ -634,7 +728,7 @@ function DashboardRow2() {
                 <div className=" w-100">
                   <div
                     className="w-100 text-center p-3 level-dash"
-                    style={{ color: "black" }}
+                    style={{ color: "white" }}
                   >
                     No Data Found.
                   </div>

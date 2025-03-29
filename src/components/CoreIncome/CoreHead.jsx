@@ -12,7 +12,7 @@ function CoreHead() {
           </ol>
         </nav>
         <h1 className="page-title fw-bold fs-18 mb-0 text-light">
-        Level &nbsp;Income &nbsp;Data
+        User &nbsp;Income &nbsp;Data
         </h1>
       </div>
     </div>

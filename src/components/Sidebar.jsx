@@ -309,6 +309,18 @@ function Sidebar() {
                 >
                   <i className="ri-wallet-3-fill side-menu__icon text-light"></i>
                   <span className="side-menu__label text-light">
+                    User Income
+                  </span>
+                </Link>
+              </li>
+              <li className="slide has-sub">
+                <Link
+                  to="/GlobalIncome"
+                  className="side-menu__item"
+                  onClick={closeSidebar}
+                >
+                  <i className="ri-wallet-3-fill side-menu__icon text-light"></i>
+                  <span className="side-menu__label text-light">
                     Level Income
                   </span>
                 </Link>
@@ -429,11 +441,11 @@ function Sidebar() {
                 <Link
                   to="/SignIn"
                   className=" position-absolute logoutbtn"
-                  style={{
-                    paddingLeft: "70px",
-                    paddingTop: "20px",
-                    paddingBottom: "20px",
-                  }}
+                  // style={{
+                  //   paddingLeft: "70px",
+                  //   paddingTop: "20px",
+                  //   paddingBottom: "20px",
+                  // }}
                 >
                   <button
                     type="button"

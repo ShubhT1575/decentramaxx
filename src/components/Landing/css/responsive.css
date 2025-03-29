@@ -241,6 +241,7 @@
         padding: 25px 0;
     }
     .menu-nav {
+        flex-wrap: wrap;
         justify-content: space-between;
     }
     .header-action {
@@ -389,7 +390,7 @@
         height: 200vh !important;
     }
     .coreWorkIs{
-        height: min-content !important;
+        height: 190vh !important;
     }
     .coreChooseIs {
         height: 190vh !important;
@@ -400,7 +401,7 @@
         height: 140vh !important;
     }
     .coreWorkIs{
-        height: min-content !important;
+        height: 180vh !important;
     }
     .coreChooseIs {
         height: 150vh !important;
