@@ -15,12 +15,12 @@ export function formatTime(time) {
 export const getUser = async (address) => {
     console.log(address,"addtrersjhhj")
   try {
-    const response = await axios.get(apiUrl + "/userDetailsbyWallet", {
-      params: { userId: address },
-      headers: {'content-type': 'application/json',
-            "cache-control":"no-cache" ,
-            "Access-Control-Allow-Origin":"*"
-      }
+    const response = await axios.get(apiUrl + "/dashboard", {
+      params: { address: address },
+      // headers: {'content-type': 'application/json',
+      //       "cache-control":"no-cache" ,
+      //       "Access-Control-Allow-Origin":"*"
+      // }
     })
     console.log(response,"redfdsjbfhwegbhfgbh")
     return response;

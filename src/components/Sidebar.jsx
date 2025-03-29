@@ -79,12 +79,12 @@ function Sidebar() {
 
   return (
     <div
-      className={`app-sidebar app-sidebar-ll sticky t header-nav-ll`}
+      className={`app-sidebar app-sidebar-ll sticky t header-nav-ll `}
       id="sidebar"
       style={{ overflowY: "auto", border: "none", background: "none" }}
     >
       <div
-        className="main-sidebar-header"
+        className="main-sidebar-header new-card-box"
         style={{
           background: "black",
           height: "88px",
@@ -100,7 +100,7 @@ function Sidebar() {
         </a>
       </div>
       <div
-        className="main-sidebar"
+        className="main-sidebar new-card-box"
         id="sidebar-scroll"
         style={{
           display: "block",
@@ -437,7 +437,7 @@ function Sidebar() {
                 >
                   <button
                     type="button"
-                    className="btn btn-success-gradient text-light btn-wave logout-btn"
+                    className="btn btn-dark-gradient text-light btn-wave logout-btn"
                   >
                     Logout
                   </button>

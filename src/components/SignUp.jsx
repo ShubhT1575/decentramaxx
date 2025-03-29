@@ -13,6 +13,7 @@ import {
   getOwner,
   getTotalPol,
   getUSDT,
+  JoinPlan,
   tokenApprove,
   UserExist,
   userRegister,
@@ -23,13 +24,13 @@ import { getBalance } from "@wagmi/core";
 import { config } from "../main.jsx";
 // import { TokenAddress } from "./Config.js";
 import { setWalletDetails } from "../Redux/Slice.js";
-import { apiUrl, TokenAddres } from "./Config.js";
+import { apiUrl, ContractAddress, TokenAddres } from "./Config.js";
 import axios from "axios";
 
 function SignUp() {
-  const { tokenData } = useSelector((state) => state.bitgold);
-  const TokenAddress = tokenData?.address;
-  const tokenDecimals = tokenData?.decimals;
+  // const { tokenData } = useSelector((state) => state.bitgold);
+  // const TokenAddress = tokenData?.address;
+  // const tokenDecimals = tokenData?.decimals;
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const chainId = useChainId();
@@ -50,7 +51,7 @@ function SignUp() {
     );
   }, [dispatch, chainId, address, isConnected, isDisconnected]);
 
-  const [packageValue, setPackageValue] = useState("5");
+  const [packageValue, setPackageValue] = useState("50");
   const [inputRef, setInputRef] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [refFromUrl, setRefFromUrl] = useState();
@@ -120,8 +121,9 @@ function SignUp() {
     }
   }
 
-  const appToken = async (amt, TokenAddress, tokenDecimals) => {
+const appToken = async (amt, TokenAddress, tokenDecimals) => {
     try {
+      // console.log(amt, TokenAddress, tokenDecimals, "??????????????????");
       const res = tokenApprove(amt, TokenAddress, tokenDecimals);
       await toast.promise(res, {
         loading: "Wait for Approvel.........",
@@ -137,14 +139,14 @@ function SignUp() {
     }
   };
 
-  const fetchSponsorAdd = async (ref_id)=>{
+  const fetchSponsorAdd = async (ref_id) => {
     const res = await axios.get(apiUrl + "getAddressbyRefrralId", {
       params: {
         ref_id: ref_id,
-      }
-    })
+      },
+    });
     return res?.data;
-  }
+  };
 
   const Register = async (refAddress, amt) => {
     try {
@@ -157,10 +159,10 @@ function SignUp() {
       //   setIsLoading(false);
       //   return toast.error("Please select checkbox !");
       // }
-      if(!refAddress){
-        setIsLoading(false);
-        return toast.error("Sponsor Id Required");
-      }
+      // if(!refAddress){
+      //   setIsLoading(false);
+      //   return toast.error("Sponsor Id Required");
+      // }
       if (!packageValue) {
         setIsLoading(false);
         return toast.error("Enter Package Value");
@@ -194,47 +196,45 @@ function SignUp() {
 
       console.log(refAddressSet, "ref::::");
 
-      const response = await fetchSponsorAdd(refAddressSet);
-      console.log(response,"response")
+      // const response = await fetchSponsorAdd(refAddressSet);
+      // console.log(response,"response")
 
-     if(response)
-     {
-      const isValidRef = await UserExist(response);
+      if (refAddressSet) {
+        const isValidRef = await UserExist(refAddressSet);
 
-      if (!isValidRef) {
+        if (!isValidRef) {
+          setIsLoading(false);
+          toast.error("Invalid Sponsor Id");
+          return;
+        }
+      } else {
         setIsLoading(false);
         toast.error("Invalid Sponsor Id");
         return;
       }
-    }else{
-      setIsLoading(false);
-      toast.error("Invalid Sponsor Id");
-      return;
-    }
 
-    let realAmt;
-    if(amt === 1){
-      realAmt = 5*1e18;
-    }
-    if(amt === 2){
-      realAmt = 25*1e18
-    }
-    console.log(realAmt,"realAmt")
+      // let realAmt;
+      // if(amt === 1){
+      //   realAmt = 5*1e18;
+      // }
+      // if(amt === 2){
+      //   realAmt = 25*1e18
+      // }
+      // console.log(realAmt,"realAmt")
 
-    const bal = await getTotalPol(realAmt)
+      // const bal = await getTotalPol(realAmt)
 
-    let increasedAmt = bal + (bal * BigInt(1)) / BigInt(100);
+      // let increasedAmt = bal + (bal * BigInt(1)) / BigInt(100);
 
-    // console.log(increasedAmt,"incc")
-    
-    // console.log("xxx")
+      // console.log(increasedAmt,"incc")
 
-      
+      // console.log("xxx")
+
       // const Tokaddress = await getUSDT();
       // const Taddress = Tokaddress.address;
       // console.log(Taddress, "::::123");
       // const tokenDecimals = Tokaddress.decimals;
-      
+
       // console.log(Taddress, Tokaddress, "::::123");
 
       // const balance = await getBalance(config, {
@@ -261,15 +261,26 @@ function SignUp() {
 
       // const allowance = await checkAllowance(address, Taddress);
       // console.log("a a4");
-      let appRes;
 
       // if (amt > allowance / Number("1e" + tokenDecimals)) {
       //   appRes = await appToken(amt, Taddress, tokenDecimals);
       // } else {
       // }
-      appRes = true;
+      // const owner = await getOwner();
+      let allowance = await checkAllowance(address, TokenAddres);
+      allowance = allowance / 1e18;
+      console.log("appr", allowance);
+      let appRes;
+
+      if ( 50 > allowance / Number("1e" + 18)) {
+        appRes = await appToken(50, TokenAddres, 18);
+      } else {
+        appRes = true;
+      }
+      // let appRes;
+      // appRes = true;
       if (appRes) {
-        const buy = userRegister(response, amt, increasedAmt);
+        const buy = JoinPlan(refAddressSet);
         await toast.promise(buy, {
           loading: "Buying...",
           success: "Success!",
@@ -283,7 +294,7 @@ function SignUp() {
         }
       }
     } catch (error) {
-      console.log(error);
+      console.log(error.message);
       toast.error("An error occurred during the registration process.");
       setIsLoading(false);
     }
@@ -335,8 +346,8 @@ function SignUp() {
                   {/* <div class="text">Logout</div> */}
                 </button>
                 <div className="authentication-cover-logo">
-              <ConnectWallet />
-            </div>
+                  <ConnectWallet />
+                </div>
               </div>
               <div className="col-xxl-7 col-xl-9 col-lg-6 col-md-6 col-sm-8 col-12">
                 <div className="card custom-card my-5  new-card">
@@ -344,7 +355,9 @@ function SignUp() {
                     <div className="text-center mb-3">
                       <img src="/final logo.png" alt="" width={150} />
                     </div>
-                    <p className="h5 mb-2 text-center color-class">Register Here</p>
+                    <p className="h5 mb-2 text-center color-class">
+                      Register Here
+                    </p>
                     <p className="mb-4 op-7 fw-normal text-center color-class">
                       Welcome! Dashboard by creating your account.
                     </p>
@@ -363,29 +376,34 @@ function SignUp() {
                           placeholder={
                             isConnected ? address : "Connect Your Wallet First"
                           }
-                      style={{ fontSize: "14px", background: "radial-gradient(circle, #d4f059, #6bba00)" , border: ".5px solid green" }}
+                          style={{
+                            fontSize: "14px",
+                            background:
+                              "radial-gradient(circle, #d4f059, #6bba00)",
+                            border: ".5px solid green",
+                          }}
                           readOnly
                         />
                       </div>
                       {/* {showDiv && ( */}
-                        <div className="col-xl-12 " id="sponsor-div">
-                          <label
-                            htmlFor="signup-sponsor-id"
-                            className="form-label text-default color-class"
-                          >
-                            Sponsor Id ?
-                          </label>
-                          <input
-                            type="text"
-                            className="form-control"
-                            id="signup-sponsor-id"
-                            placeholder="Enter sponsor id"
-                            value={refFromUrl ? refFromUrl : inputRef}
-                            onChange={(e) => {
-                              setInputRef(e.target.value);
-                            }}
-                          />
-                        </div>
+                      <div className="col-xl-12 " id="sponsor-div">
+                        <label
+                          htmlFor="signup-sponsor-id"
+                          className="form-label text-default color-class"
+                        >
+                          Sponsor Id ?
+                        </label>
+                        <input
+                          type="text"
+                          className="form-control"
+                          id="signup-sponsor-id"
+                          placeholder="Enter sponsor id"
+                          value={refFromUrl ? refFromUrl : inputRef}
+                          onChange={(e) => {
+                            setInputRef(e.target.value);
+                          }}
+                        />
+                      </div>
                       {/* )} */}
                       <div className="col-xl-12">
                         <label
@@ -505,10 +523,7 @@ function SignUp() {
                           }}
                           className="btn w-100 text-light"
                           onClick={() =>
-                            Register(
-                              refFromUrl ? refFromUrl : inputRef,
-                              1
-                            )
+                            Register(refFromUrl ? refFromUrl : inputRef, 1)
                           }
                         >
                           Register
@@ -518,7 +533,7 @@ function SignUp() {
                           <ConnectWallet className="address-connected-btn" />
                         )
                       )}
-                    </div> 
+                    </div>
 
                     <div className="text-center">
                       <p className=" mt-3 mb-0">

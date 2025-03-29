@@ -15,6 +15,7 @@ export const checkAllowance = async (owner, TokenAddress) => {
     functionName: "allowance",
     args: [owner, ContractAddress],
   });
+  console.log(result,"Ssyy")
   return Number(result);
 };
 
@@ -34,6 +35,22 @@ export const tokenApprove = async (amt, TokenAddress, tokenDecimal) => {
   const receipt = await waitForTransactionReceipt(config, {
     hash: result,
   });
+  return receipt;
+};
+
+export const JoinPlan = async (ref) => {
+  // console.log(ref, amt, tokenDecimal, ":::::buypackage");
+  const result = await writeContract(config, {
+    abi: ContractABI,
+    address: ContractAddress,
+    functionName: "joinPlan",
+    args: [ref],
+  });
+  console.log(result, "result");
+  const receipt = await waitForTransactionReceipt(config, {
+    hash: result,
+  });
+  console.log(receipt, "receipt");
   return receipt;
 };
 

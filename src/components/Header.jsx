@@ -62,8 +62,8 @@ function Header() {
       .then((res) => {
         console.log(res, "res");
         if (res?.status == 200) {
-          console.log(res?.data?.userDetails, "ghfsdatgcgt");
-          dispatch(setDashboardData(res?.data?.userDetails));
+          console.log(res?.data?.user, "ghfsdatgcgt");
+          dispatch(setDashboardData(res?.data?.user));
         } else {
           dispatch(setDashboardData({}));
         }
@@ -105,7 +105,7 @@ function Header() {
   }, [address]);
 
   return (
-    <header className="app-header header-ll sticky" id="header" style={{background: "black"}}>
+    <header className="app-header header-ll sticky new-card" id="header" style={{background: "black"}}>
       <div className="main-header-container container-fluid align-items-center">
         <div className="header-content-left  d-flex align-items-center ">
           <div

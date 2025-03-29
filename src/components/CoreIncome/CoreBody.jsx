@@ -15,45 +15,18 @@ function CoreBody() {
   const itemsPerPage = 10;
   // const totalPages = Math.ceil(transaction.length / itemsPerPage);
   const totalPagesTable1 = Math.ceil(
-    transaction.filter((item) => item.packageId === 1).length / itemsPerPage
+    transaction.length / itemsPerPage
   );
-  const totalPagesTable2 = Math.ceil(
-    transaction.filter((item) => item.packageId === 2).length / itemsPerPage
-  );
-
-  // const getCoreIncome = async () => {
-  //   try {
-  //     const response = await axios.get(apiUrl + "/getFundWalletList", {
-  //       params: {
-  //         address: address,
-  //         page: currentPage,
-  //       },
-  //     });
-
-  //      console.log(response, "]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]");
-  //     if (response?.data?.status === 200) {
-  //       setDirectUser(response?.data?.data);
-  //     } else {
-  //       setDirectUser([]);
-  //     }
-  //   } catch (error) {
-  //     console.error("Error fetching user data:", error.message);
-  //   }
-  // };
-  // console;
-  // useEffect(() => {
-  //   if (address) getCoreIncome();
-  // }, [address, currentPage]);
 
   const showTransaction = async () => {
-    const res = await axios.get(apiUrl + "/Income", {
+    const res = await axios.get(apiUrl + "/levelIncomeByUser", {
       params: {
-        user: address,
+        receiver: "0xf0c90d0E550AFA5C4d557A7BeBfB89B1ea4d97f8",
         // user: "0x8a62CcdFFb086c190A869E49761E6F9E422214E7",
       },
     });
-    console.log(res?.data, "income");
-    setTransaction(res?.data);
+    console.log(res?.data?.user, "income");
+    setTransaction(res?.data?.user);
   };
   useEffect(() => {
     if (address) showTransaction();
@@ -68,27 +41,11 @@ function CoreBody() {
       setCurrentPageTable1(currentPageTable1 + 1);
   };
 
-  const handlePreviousPageTable2 = () => {
-    if (currentPageTable2 > 1) setCurrentPageTable2(currentPageTable2 - 1);
-  };
-
-  const handleNextPageTable2 = () => {
-    if (currentPageTable2 < totalPagesTable2)
-      setCurrentPageTable2(currentPageTable2 + 1);
-  };
 
   const paginatedTable1 = transaction
-    .filter((item) => item.packageId === 1)
     .slice(
       (currentPageTable1 - 1) * itemsPerPage,
       currentPageTable1 * itemsPerPage
-    );
-
-  const paginatedTable2 = transaction
-    .filter((item) => item.packageId === 2)
-    .slice(
-      (currentPageTable2 - 1) * itemsPerPage,
-      currentPageTable2 * itemsPerPage
     );
 
   return (
@@ -97,7 +54,7 @@ function CoreBody() {
         <div className="card custom-card overflow-hidden new-card">
           <div className="card-header justify-content-between color-light">
             <div className="card-title">
-              Earning Report <strong>$5</strong>
+              Level Income Report
             </div>
           </div>
 
@@ -106,6 +63,9 @@ function CoreBody() {
               <table className="table table-bordered text-nowrap mb-0">
                 <thead>
                   <tr>
+                  <th scope="col" style={{ color: "white" }}>
+                      S. No.
+                    </th>
                     <th scope="col" style={{ color: "white" }}>
                       Tx Hash
                     </th>
@@ -129,13 +89,13 @@ function CoreBody() {
                   {paginatedTable1?.map((item, index) => {
                     return (
                       <tr key={item._id}>
-                        {/* <td>{index + 1}</td> */}
+                        <td>{index + 1}.</td>
                         {/* <td className="text-warning">
                           {item?.user.slice(0, 5)}...{item?.user.slice(-5)}
                         </td> */}
                         <td>
                           <a
-                            href={`https://polygonscan.com/tx/${item.txHash}`}
+                            href={`https://opbnb-testnet.bscscan.com/tx/${item.txHash}`}
                             target="_blank"
                             rel="noopener noreferrer"
                             style={{ color: "rgb(0, 119, 181)" }}
@@ -144,10 +104,10 @@ function CoreBody() {
                             {item?.txHash.slice(-6)}
                           </a>
                         </td>
-                        <td style={{ color: "black" }}>{item?.userId}</td>
-                        <td style={{ color: "green" }}>$ {item.amount}</td>
+                        <td style={{ color: "white" }}>{item?.userId}</td>
+                        <td style={{ color: "white" }}>$ {item.amount/1e18}</td>
                         {/* <td>{item.level}</td> */}
-                        <td style={{ color: "black" }}>
+                        <td style={{ color: "white" }}>
                           {new Date(item.createdAt).toLocaleString()}
                         </td>
                         {/* <td>
