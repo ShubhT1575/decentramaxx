@@ -155,7 +155,7 @@ function DashboardRow2() {
   //     setCurrentPage(page);
   //   };
 
-  const itemsPerPage = 10; // Change this to modify items per page
+  const itemsPerPage = 5; // Change this to modify items per page
   const [currentPage, setCurrentPage] = useState(1);
   // const [matrixIncome,setMatrixIncome] = useState([]);
 
@@ -245,9 +245,13 @@ function DashboardRow2() {
 
   const [transaction, setTransaction] = useState([]);
   const showTransaction = async () => {
-    const res = await axios.get(apiUrl + "/recentTransactionGlobal");
+    const res = await axios.get(apiUrl + "/userIncomeByUser",{
+      params:{
+        receiver: "0xf0c90d0E550AFA5C4d557A7BeBfB89B1ea4d97f8"
+      }
+    });
     // console.log(res?.data, "xx");
-    setTransaction(res?.data);
+    setTransaction(res?.data?.user);
   };
 
   useEffect(() => {
@@ -490,42 +494,6 @@ function DashboardRow2() {
           style={{ height: "100%", marginLeft: "0" }}
         >
           <div className="upcoming row mt-4">
-            {/* <div className="col-sm-6 col-lg-6 mt-3 mb-3" style={{ width: "100%" }}>
-              <div className="">
-                <div className="card custom-card school-card new-card-box mb-0 ">
-                  <div className="card-body d-flex gap-2 justify-content-start align-self-start">
-                    <div>
-                      <span className="d-block mb-1">
-                        User Id: {dashData?.userId}
-                      </span>
-                      <span className="d-block mb-1">
-                        Id Date:{" "}
-                        {new Date(dashData?.createdAt).toLocaleDateString()}
-                      </span>
-                      <span className="d-block mb-1">
-                        Earning ($5): {income5}
-                      </span>
-                      <span className="d-block mb-1">
-                        Earning ($25): {income25}
-                      </span>
-                      <span className="d-block mb-1">
-                        Total User Income: $ {dashData?.userIncome/1e18 ? dashData?.userIncome/1e18 : "0"}
-                      </span>
-                      <span className="d-block mb-1">
-                        Total Level Income: $ {dashData?.levelIncome/1e18 ? dashData?.levelIncome/1e18 : "0"}
-                      </span>
-                      <span className="d-block mb-1">
-                        Total Direct:{" "}
-                        {direct.length == null ? 0 : direct.length}
-                      </span>
-                      <span className="d-block mb-1">
-                        Sponsor Id: {dashData?.referrerId}
-                      </span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div> */}
             <div className="col-sm-6 col-lg-6">
               <div>
                 <div className="card custom-card school-card">
@@ -663,7 +631,7 @@ function DashboardRow2() {
                 <div className="card custom-card school-card new-card-box glow-box-blue">
                   <div className="card-body d-flex gap-2 justify-content-between">
                     <div>
-                      <span className="d-block mb-1">Latest Transcation</span>
+                      <span className="d-block mb-1">User Income</span>
                       <h6 className="mb-0 fw-semibold">
                         {/* {dashboard && Number(dashboard[3])} */}
                         {/* {rank || "0"} */}
@@ -684,6 +652,9 @@ function DashboardRow2() {
                   <tr>
                     <th scope="col" style={{ color: "white" }}>
                       Tx Hash
+                    </th>
+                    <th scope="col" style={{ color: "white" }}>
+                      User ID
                     </th>
                     <th scope="col" style={{ color: "white" }}>
                       Package
@@ -712,7 +683,10 @@ function DashboardRow2() {
                         </a>
                       </td>
                       <td style={{ color: "white" }}>
-                        {rep.packageId == 1 ? "$5" : "$25"}
+                       {rep?.userId}
+                      </td>
+                      <td style={{ color: "white" }}>
+                       $ {rep?.amount/1e18}
                       </td>
                       {/* <td style={{ color: "rgb(0, 119, 181)" }}>
                         {rep.matrix}
