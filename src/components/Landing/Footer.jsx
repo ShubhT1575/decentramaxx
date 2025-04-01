@@ -9,7 +9,7 @@ const Footer = () => {
         <div className="footer-column about-column">
           <div className="logo-section">
             {/* <div className="logo-placeholder"><img src="/coopgenix symbol.svg" alt="logo" /></div> */}
-            <h2 className="logo-title" style={{marginTop: "0px"}}><img src="/coopgenix.svg" alt="logo" /></h2>
+            <h2 className="logo-title" style={{marginTop: "0px"}}><img src="/Asset 1.png" alt="logo" style={{height: "20px"}} /></h2>
           </div>
           <p className="about-text">
             Coopgenix is a decentralized financial ecosystem designed to empower
@@ -17,7 +17,7 @@ const Footer = () => {
           </p>
         </div>
 
-        <div className="footer-column testimonial-column">
+        {/* <div className="footer-column testimonial-column">
           <h3 className="column-title">Write Testimonials</h3>
           <input
             type="text"
@@ -31,7 +31,7 @@ const Footer = () => {
           <button className="testimonial-submit btn btn-secondary-gradient">
             Submit
           </button>
-        </div>
+        </div> */}
 
         <div className="footer-column connect-column">
           <h3 className="column-title">Connect with Us</h3>
@@ -54,9 +54,9 @@ const Footer = () => {
             <p><i class="fa-solid fa-phone"></i> +91-123-456-7890</p>
             <p><i class="fa-solid fa-location-dot"></i> Blockchain City, Web3 World</p>
           </div> */}
-          <button className="testimonial-submit btn btn-primary-gradient w-50" style={{alignSelf:"center"}}>
+          {/* <button className="testimonial-submit btn btn-primary-gradient w-50" style={{alignSelf:"center"}}>
           Community Chat <i class="fa-solid fa-paper-plane"></i>
-          </button>
+          </button> */}
         </div>
       </div>
 

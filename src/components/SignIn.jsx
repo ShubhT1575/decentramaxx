@@ -78,11 +78,11 @@ function SignIn() {
               <ConnectWallet />
             </div>
           </div>
-          <div className="col-xxl-7 col-xl-9 col-lg-6 col-md-6 col-sm-8 col-12 ">
-            <div className="card custom-card my-auto  new-card">
-              <div className="card-body p-5 signin-body">
+          <div className="col-xxl-7 col-xl-9 col-lg-6 col-md-6 col-sm-8 col-12">
+            <div className="card custom-card my-5  new-card-box">
+              <div className="card-body p-5 signin-body w-100">
                 <div className="text-center mb-3">
-                  <img src="/final logo.png" alt="" width={150} />
+                  <img src="/Asset 1.png" alt="" style={{height: "20px"}} />
                 </div>
                 <p className="h5 mb-2 text-center color-class">Sign In</p>
                 <div className="d-flex justify-content-center gap-1">
@@ -106,7 +106,7 @@ function SignIn() {
                       className="form-control color-class"
                       id="signup-firstname"
                       value={isConnected ? address : " Please Connect Wallet"}
-                      style={{ fontSize: "14px", background: "radial-gradient(circle, #d4f059, #6bba00)" , border: ".5px solid green" }}
+                      style={{ fontSize: "14px", border: ".5px solid white" }}
                       readOnly
                     />
                   </div>
@@ -115,7 +115,7 @@ function SignIn() {
                   {!isConnected ? (
                     <ConnectWallet className="address-connected-btn" />
                   ) : (
-                    <button className="btn btn-warning-gradient btn-wave" onClick={LogIn}>
+                    <button className="btn btn-dark btn-wave" onClick={LogIn}>
                       Sign In
                     </button>
                   )}

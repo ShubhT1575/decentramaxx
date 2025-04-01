@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import AreaChart from "../Chart/AreaChart";
 import { UserData } from "../web3";
 import lapsLogo from "../../assets/img/loan.png";
@@ -7,15 +7,31 @@ import { cutAfterDecimal } from "../web3";
 import ConnectWallet from "../ConnectWallet";
 import { PiHandDepositBold } from "react-icons/pi";
 import { useAccount } from "wagmi";
+import { baseUrl } from "../Config";
+import toast from "react-hot-toast";
 
 function DashboardRow3() {
   const [isLoading, setIsLoading] = useState(false)
   const { isConnected } = useAccount()
+    const { dashboardData } = useSelector((state) => state.bitgold);
+    console.log(dashboardData,"Cc")
+  const ref = useRef();
+  const copyAddress = () => {
+    const Caddress = document.getElementById("input-text").value;
+    navigator.clipboard
+      .writeText(Caddress)
+      .then(() => {
+        toast.success("Sponsor ID copied to clipboard!");
+      })
+      .catch((err) => {
+        toast.error("Something Went Wrong!");
+      });
+  };
   return (
     <div className="row">
       <div className="col-sm-12  col-md-12 col-xxl-12">
         <div
-          className="card custom-card overflow-hidden glow-box-blue"
+          className="  background-transparent card custom-card overflow-hidden glow-box-blue"
           style={{ height: "95%", flexDirection: "row", flexWrap: "wrap" }}
         >
           <div className="card-body p-0">
@@ -42,12 +58,11 @@ function DashboardRow3() {
               <div className="col-xl-12 p-0">
                 <div className="position-relative d-flex justify-content-center align-item-center">
                   <input
-                    type="number"
+                    type="text"
                     className="form-control w-75"
-                    id="signup-package"
-                    placeholder="Referral Link"
-                    // value={packageValue}
-                    // onChange={handleInputChange}
+                    id="input-text"
+                    aria-describedby="basic-addon3"
+                    value={`${baseUrl}/SignUp?ref=${dashboardData?.userId}`}
                     readOnly
                   />
                 </div>
@@ -67,7 +82,7 @@ function DashboardRow3() {
                     border: "none",
                   }}
                   className="btn btn-secondary-gradient w-100 text-light stakebtn"
-                  // onClick={() => Stake(packageValue)}
+                  onClick={copyAddress}
                   // disabled={accessAddress}
                 >
                   Copy Link

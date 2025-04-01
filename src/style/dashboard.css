@@ -266,3 +266,7 @@
 	font-size: 20px;
 	color: white !important;
   }
+
+  .background-transparent{
+	background: transparent !important;
+  }

@@ -199,8 +199,8 @@ function DashboardRow2() {
   const getDash = async () => {
     const res = await axios.get(apiUrl + "/dashboard", {
       params: {
-        // address: address,
-        address: "0xf0c90d0E550AFA5C4d557A7BeBfB89B1ea4d97f8"
+        address: address,
+        // address: "0xf0c90d0E550AFA5C4d557A7BeBfB89B1ea4d97f8"
       },
     });
     console.log(res?.data?.user, "respp");
@@ -488,10 +488,10 @@ function DashboardRow2() {
     <div className="row mb-5">
       {/* Profit */}
 
-      <div className="col-sm-12 col-md-8 col-xxl-8 mb-4">
+      <div className="col-sm-12 col-md-8 col-xxl-8 mb-4 ">
         <div
-          className="card custom-card overflow-hidden new-card row mb-2 justify-content-between align-items-center glow-box-blue"
-          style={{ height: "100%", marginLeft: "0" }}
+          className="  background-transparent card custom-card overflow-hidden new-card row mb-2 justify-content-between align-items-center glow-box-blue"
+          style={{ height: "100%", marginLeft: "0", background:"transparent" }}
         >
           <div className="upcoming row mt-4">
             <div className="col-sm-6 col-lg-6">
@@ -624,7 +624,7 @@ function DashboardRow2() {
       </div> */}
 
       <div className="col-sm-12  col-md-4 col-xxl-4 ">
-        <div className="card custom-card glow-box-blue" style={{height: "96%"}}>
+        <div className=" background-transparent card custom-card glow-box-blue" style={{height: "96%"}}>
           <div className="upcoming">
             <div className="col-sm-6 col-lg-6 mt-4" style={{ width: "80%" }}>
               <div>
@@ -676,7 +676,7 @@ function DashboardRow2() {
                           target="_blank"
                           rel="noopener noreferrer"
                           // className="text-warning"
-                          style={{ color: "white" }}
+                          // style={{ color: "blue" }}
                         >
                           {rep?.txHash.slice(0, 4)}...
                           {rep?.txHash.slice(-4)}

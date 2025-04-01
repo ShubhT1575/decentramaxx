@@ -22,6 +22,7 @@ import loan from "../../assets/img/loan.png";
 import deal from "../../assets/img/deal (1).png";
 import TestimonialCarousel from "./TestimonialCarousel";
 import Footer from "./Footer";
+import InteractiveVisualization from "../InteractiveVisualization";
 // import economy from "/Home Logo/Asset 1.png"
 
 export default function Home() {

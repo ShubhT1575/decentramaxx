@@ -84,23 +84,23 @@ function Sidebar() {
       style={{ overflowY: "auto", border: "none", background: "none" }}
     >
       <div
-        className="main-sidebar-header new-card-box"
+        className="main-sidebar-header bg-crypto-balance"
         style={{
-          background: "black",
+          background: "transparent",
           height: "88px",
         }}
       >
         <a href="/dashboard" className="header-logo fs-4 fw-bold ">
-          {/* <img
-            src="/final logo.png"
+          <img
+            src="/Asset 1.png"
             alt=""
-            style={{ width: "100%", height: "40px" }}
-          /> */}
-          <h3>DecentraMaxx</h3>
+            style={{ height: "20px" }}
+          />
+          {/* <h3>DecentraMaxx</h3> */}
         </a>
       </div>
       <div
-        className="main-sidebar new-card-box"
+        className="main-sidebar bg-crypto-balance"
         id="sidebar-scroll"
         style={{
           display: "block",
@@ -115,12 +115,12 @@ function Sidebar() {
               className=""
               style={{ marginLeft: "20px", marginBottom: "20px" }}
             >
-              {/* <img
-                src="/final logo.png"
+              <img
+                src="/Asset 1.png"
                 alt=""
-                style={{ height: "40px", width: "196px", display: "none" }}
+                style={{ height: "20px", display: "none" }}
                 className="dash-logo"
-              /> */}
+              />
               {/* <h2>DecentraMax</h2> */}
             </div>
             <li className="slide has-sub mt-4 display-flex justify-content-start">

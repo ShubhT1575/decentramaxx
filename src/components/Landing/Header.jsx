@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import Logo from '/coopgenix.svg'
+import Logo from '/Asset 1.png'
 import { Link } from "react-router-dom";
 export default function Header() {
   const [isSticky, setIsSticky] = useState(false);
@@ -45,7 +45,7 @@ export default function Header() {
                       <a href="#">
                         <img
                           src={Logo}
-                          style={{ height: "50px" }}
+                          style={{ height: "20px" }}
                           alt="Logo"
                         />
                         {/* <h2>CoopGenix</h2> */}
@@ -110,7 +110,7 @@ export default function Header() {
               <a href="index.html">
                 <img
                   src={Logo}
-                  style={{ height: "50px" }}
+                  style={{ height: "18px" }}
                   alt="Logo"
                 />
               </a>

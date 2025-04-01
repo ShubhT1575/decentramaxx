@@ -350,10 +350,10 @@ const appToken = async (amt, TokenAddress, tokenDecimals) => {
                 </div>
               </div>
               <div className="col-xxl-7 col-xl-9 col-lg-6 col-md-6 col-sm-8 col-12">
-                <div className="card custom-card my-5  new-card">
-                  <div className="card-body p-5 signup-body">
+                <div className="card custom-card my-5  new-card-box">
+                  <div className="card-body p-5 signup-body ">
                     <div className="text-center mb-3">
-                      <img src="/final logo.png" alt="" width={150} />
+                      <img src="/Asset 1.png" alt="" style={{height: "20px"}} />
                     </div>
                     <p className="h5 mb-2 text-center color-class">
                       Register Here
@@ -378,9 +378,9 @@ const appToken = async (amt, TokenAddress, tokenDecimals) => {
                           }
                           style={{
                             fontSize: "14px",
-                            background:
-                              "radial-gradient(circle, #d4f059, #6bba00)",
-                            border: ".5px solid green",
+                            // background:
+                            //   "radial-gradient(circle, #d4f059, #6bba00)",
+                            border: ".5px solid white",
                           }}
                           readOnly
                         />
@@ -402,6 +402,7 @@ const appToken = async (amt, TokenAddress, tokenDecimals) => {
                           onChange={(e) => {
                             setInputRef(e.target.value);
                           }}
+                          style={{border: ".5px solid white",}}
                         />
                       </div>
                       {/* )} */}
@@ -420,6 +421,7 @@ const appToken = async (amt, TokenAddress, tokenDecimals) => {
                             placeholder="Enter Your Package"
                             value={packageValue}
                             onChange={handleInputChange}
+                            style={{border: ".5px solid white",}}
                           />
                         </div>
                       </div>
@@ -501,13 +503,13 @@ const appToken = async (amt, TokenAddress, tokenDecimals) => {
                             for="defaultCheck1"
                           ></label>
                           By signing up, you agree to our
-                          <Link to="/Terms" className="text-success">
+                          <Link to="/Terms" className="text-primary">
                             <u>Terms &amp; Conditions</u>
                           </Link>
                         </div>
                       </div>
                     </div>
-                    <div className="cc mt-4 d-grid btn btn-warning-gradient btn-wave address-notconnected-btn d-flex justify-content-center align-content-center text-primary">
+                    <div className="cc mt-4 d-grid btn btn-dark btn-wave address-notconnected-btn d-flex justify-content-center align-content-center text-primary">
                       {isLoading ? (
                         <span
                           className="spinner-border text-light"

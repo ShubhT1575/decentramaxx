@@ -105,23 +105,23 @@ function Header() {
   }, [address]);
 
   return (
-    <header className="app-header header-ll sticky new-card" id="header" style={{background: "black"}}>
+    <header className="app-header header-ll sticky bg-crypto-balance" id="header" style={{background: "transparent"}}>
       <div className="main-header-container container-fluid align-items-center">
         <div className="header-content-left  d-flex align-items-center ">
           <div
-            className="header-element mx-lg-0 mx-2 head-tog text-dark"
+            className="header-element mx-lg-0 mx-2 head-tog text-light"
             onClick={isCollapsed}
             id="ic"
           >
             <a
               aria-label="Hide Sidebar"
-              className="sidemenu-toggle header-link animated-arrow hor-toggle horizontal-navtoggle text-dark"
+              className="sidemenu-toggle header-link animated-arrow hor-toggle horizontal-navtoggle text-light"
               data-bs-toggle="sidebar"
               href="#"
             >
               {/* <span></span> */}
               {/* <i class="fa-solid fa-bars" style={{color: "black"}}></i> */}
-              <GiHamburgerMenu style={{color: '#ecf5c9'}} className="ham-btn"/>
+              <GiHamburgerMenu style={{color: '#000000'}} className="ham-btn"/>
             </a>
           </div>
           {/* <div className=" d-flex align-items-center">

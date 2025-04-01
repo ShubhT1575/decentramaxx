@@ -37,6 +37,7 @@ import RankMain from "../RankReward/RankMain";
 // import MatrixTreeUw from "../MatrixTreeUw/MatrixTreeUw";
 // import MatrixTreeUw4 from "../MatrixTreeUw4/MatrixTreeUw4";
 import MatrixTreeUw5 from "../MatrixTreeUw5/MatrixTreeUw5";
+import InteractiveVisualization from "../InteractiveVisualization";
 // import MatrixTreeAll from "../MatrixTreeAll/MatrixTreeAll";
 // import MAtrixTreeUw6 from "../MatrixTreeUw6/MAtrixTreeUw6"; 
 // import LevelIncome from "../LevelIncome/LevelIncome";
@@ -66,6 +67,7 @@ const AppRoutes = () => {
   return (
     <Router>
       <Layout>
+      <InteractiveVisualization/>
         <Routes>
           <Route path="/" element={<Home />} />
           {/* <Route path="/learnmore" element={<LearnMore />} /> */}
