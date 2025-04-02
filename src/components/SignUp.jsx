@@ -484,7 +484,7 @@ const appToken = async (amt, TokenAddress, tokenDecimals) => {
                         </div>
                       </div> */}
                     </div>
-                    <div className="col-lg-12">
+                    {/* <div className="col-lg-12">
                       <div className="d-flex align-items-center gap-3">
                         <input
                           className="form-check-input"
@@ -508,7 +508,7 @@ const appToken = async (amt, TokenAddress, tokenDecimals) => {
                           </Link>
                         </div>
                       </div>
-                    </div>
+                    </div> */}
                     <div className="cc mt-4 d-grid btn btn-dark btn-wave address-notconnected-btn d-flex justify-content-center align-content-center text-primary">
                       {isLoading ? (
                         <span

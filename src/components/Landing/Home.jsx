@@ -166,7 +166,7 @@ export default function Home() {
           <div className="category-box glow-box">
             <span className="icon"><i className="fa-solid fa-2" style={{fontSize: "35px"}}></i></span>
             <h3>Build Your Network</h3>
-            <p>Refer others and earn through 12 levels</p>
+            <p>Refer others and earn through 5 levels</p>
           </div>
 
           <div className="category-box glow-box">
@@ -379,7 +379,7 @@ export default function Home() {
                     id="withdrawFunds"
                     data-bs-parent="#securityAccordion"
                   >
-                    Earn through 12 levels of referrals with percentage-based rewards at each level.
+                    Earn through 5 levels of referrals with percentage-based rewards at each level.
                   </p>
                 </div>
 
@@ -420,7 +420,7 @@ export default function Home() {
           </div>
           <div className="involved-box glow-box">
             <h3><i className="fa-solid fa-users"  style={{marginRight: "10px"}}></i> Build Your Team</h3>
-            <p>Refer others and earn through 12 levels</p>
+            <p>Refer others and earn through 5 levels</p>
             <Link to="/referral" className="cta">
               Referral Program
             </Link>
