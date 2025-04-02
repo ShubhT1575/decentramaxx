@@ -36,7 +36,7 @@ function DashboardRow3() {
         >
           <div className="card-body p-0">
             <div
-              className="p-4 m-2 rounded-2  text-fixed-white bg-crypto-balance "
+              className="p-4 m-2 rounded-2  text-fixed-white bg-crypto-balance secondary11"
               style={{ height: "91%" }}
             >
               <div className="d-flex align-items-center gap-2 justify-content-between">

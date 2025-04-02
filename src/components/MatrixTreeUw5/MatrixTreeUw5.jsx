@@ -91,7 +91,7 @@ const MatrixTree = () => {
       const response = await axios.get(apiUrl + "/Matrix", {
         params: {
           // user: address,
-          address: childAdd ? childAdd :  "0xf0c90d0E550AFA5C4d557A7BeBfB89B1ea4d97f8",
+          address: childAdd ? childAdd :  address,
           // slot: slot,
         },
       });
@@ -230,14 +230,14 @@ const MatrixTree = () => {
                     </li>
                   </ol>
                 </nav>
-                <h1 className="page-title fw-medium fs-18 mb-0 text-light">
+                <h1 className="page-title fw-medium fs-18 mb-0 text-light" >
                   How Does Usdtocean Uwn5 Matrix Work
                 </h1>
               </div>
             </div>
           </div>
           <div className="verticals twelve">
-            <section className="management-tree card custom-card school-card">
+            <section className="management-tree card custom-card school-card secondary11">
               {/* <div className="d-flex" style={{ marginTop: "10px" , width: "300px",alignSelf:"center"}}>
                                 <div className="input-group mb-3">
                                   <div className="input-group-prepend">
@@ -537,7 +537,7 @@ const MatrixTree = () => {
                           {/* <div className="mgt-item-parent"> */}
                             <div className="person" onClick={()=> handleClick(blocks[0]?.user, blocks[0]?.userId)}>
                               <div className="person-profile"></div>
-                              <p className="name">{lastBlock >= 1 ? blocks[0]?.userId : "N/A"}</p>
+                              <p className="name">{blocks[0]?.userId ? blocks[0]?.userId : "N/A"}</p>
                             </div>
                           {/* </div> */}
 
@@ -550,7 +550,7 @@ const MatrixTree = () => {
                           {/* <div className="mgt-item-parent"> */}
                             <div className="person" onClick={()=> handleClick(blocks[1]?.user, blocks[1]?.userId)}>
                               <div className="person-profile"></div>
-                              <p className="name">{lastBlock >= 2 ? blocks[1]?.userId : "N/A"}</p>
+                              <p className="name">{blocks[1]?.userId ? blocks[1]?.userId : "N/A"}</p>
                             </div>
                           {/* </div> */}
 
@@ -562,7 +562,7 @@ const MatrixTree = () => {
                           {/* <div class="mgt-item-parent"> */}
                             <div class="person" onClick={()=> handleClick(blocks[2]?.user, blocks[2]?.userId)}>
                               <div className="person-profile"></div>
-                              <p class="name">{lastBlock >= 3 ? blocks[2]?.userId : "N/A"}</p>
+                              <p class="name">{blocks[2]?.userId ? blocks[2]?.userId : "N/A"}</p>
                             </div>
                           {/* </div> */}
 
@@ -619,100 +619,7 @@ const MatrixTree = () => {
                 </div>
               </div> */}
             </section>
-            <div className="row">
-              <div className="col-xl-12">
-                <div className="card custom-card overflow-hidden">
-                  <div className="card-header justify-content-between">
-                    <div className="card-title">Matrix Income Data</div>
-                  </div>
-
-                  <div className="card-body active-tab">
-                    <div className="table-responsive">
-                      <table className="table table-bordered text-nowrap mb-0">
-                        <thead>
-                          <tr>
-                            <th scope="col">Referrer</th>
-                            <th scope="col">Matrix</th>
-                            {/* <th scope="col">Sender</th> */}
-                            <th scope="col">Slot</th>
-                            <th scope="col">Amount</th>
-                            {/* <th scope="col">Level</th>
-                    <th scope="col">Total Reward</th>
-                    <th scope="col">Status</th> */}
-                          </tr>
-                        </thead>
-                        <tbody>
-                          {paginatedLevels?.map((item, index) => {
-                    return (
-                      <tr key={index}>
-                        <td className="text-info">{`${item.sender.slice(0, 7)}.......${item.sender.slice(-5)}`}  <span className="text-light"> ({item?.senderId})</span>
-                        </td>
-                        <td className="text-warning">{item?.matrixId}</td>
-                        <td className="text-light">
-                            {item.slotId}
-                        </td>
-                        <td className="text-danger">$ {item.amount/1e18}</td>
-                        {/* <td>{item.level}</td>
-                        <td>{item.totalReward}</td> */}
-                        {/* <td>
-                          <span className="badge bg-success-transparent">
-                            success
-                          </span>
-                        </td> */}
-                      </tr>
-                    );
-                  })}
-                        </tbody>
-                      </table>
-                      {matrixIncome?.length === 0 && (
-                      <div className=" w-100">
-                        <div className="w-100 text-center p-3">
-                          No Data Found.
-                        </div>
-                      </div>
-                       )} 
-                    </div>
-                  </div>
-
-                  <div className="card-footer pagination-body">
-                    <div className="d-flex align-items-center justify-content-between">
-                      <div>
-                        Showing {matrixIncome?.length || 0} Matrix Income
-                        <i className="bi bi-arrow-right ms-2 fw-semibold"></i>
-                      </div>
-                      <div>
-                        <nav
-                          aria-label="Page navigation"
-                          className="pagination-style-4"
-                        >
-                          <ul className="pagination mb-0">
-                            <button
-                              className="btn btn-primary page-item btn-pagination"
-                              style={{ marginRight: "10px" }}
-                              disabled={currentPage === 1}
-                              onClick={handlePreviousPage}
-                            >
-                              Prev
-                            </button>
-
-                            <button
-                              className="btn btn-success page-item btn-pagination"
-                              disabled={currentPage === totalPages}
-                              onClick={handleNextPage}
-                            >
-                              Next
-                            </button>
-                          </ul>
-                        </nav>
-                      </div>
-                      <div>
-                        <span>Page {currentPage} of {totalPages}</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+           
           </div>
         </div>
       </div>

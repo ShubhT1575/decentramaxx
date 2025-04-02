@@ -21,7 +21,8 @@ function CoreBody() {
   const showTransaction = async () => {
     const res = await axios.get(apiUrl + "/userIncomeByUser", {
       params: {
-        receiver: "0xf0c90d0E550AFA5C4d557A7BeBfB89B1ea4d97f8",
+        receiver: address,
+        // receiver: "0xf0c90d0E550AFA5C4d557A7BeBfB89B1ea4d97f8",
         // user: "0x8a62CcdFFb086c190A869E49761E6F9E422214E7",
       },
     });
@@ -51,7 +52,7 @@ function CoreBody() {
   return (
     <div className="row">
       <div className="col-xl-12">
-        <div className="card custom-card overflow-hidden new-card">
+        <div className="card custom-card overflow-hidden new-card secondary11">
           <div className="card-header justify-content-between color-light">
             <div className="card-title">
               User Income Report
@@ -101,7 +102,7 @@ function CoreBody() {
                             href={`https://opbnb-testnet.bscscan.com/tx/${item.txHash}`}
                             target="_blank"
                             rel="noopener noreferrer"
-                            style={{ color: "rgb(0, 119, 181)" }}
+                            style={{ color: "rgb(0, 166, 255)" }}
                           >
                             {item?.txHash.slice(0, 6)}...
                             {item?.txHash.slice(-6)}

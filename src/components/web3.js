@@ -254,6 +254,19 @@ export const StakingTotalReward = async (address) => {
   return data;
 };
 
+export const withdrawWithSignature = async ({amount, v, r, s, deadline}) => {
+  const result = await writeContract(config, {
+    abi: ContractABI,
+    address: ContractAddress,
+    functionName: "withdrawWithSignature",
+    args: [amount, v, r, s, deadline],
+  });
+  const receipt = await waitForTransactionReceipt(config, {
+    hash: result,
+  });
+  return receipt;
+};
+
 export const RankTotalReward = async (address) => {
   let data;
   try {

@@ -8,6 +8,7 @@ import {
   getTotalPol,
   LevelTeamBusiness,
   UserData,
+  withdrawWithSignature,
 } from "../web3";
 import lapsLogo from "../../assets/img/loan.png";
 import { useSelector } from "react-redux";
@@ -245,13 +246,14 @@ function DashboardRow2() {
 
   const [transaction, setTransaction] = useState([]);
   const showTransaction = async () => {
-    const res = await axios.get(apiUrl + "/userIncomeByUser",{
+    const res = await axios.get(apiUrl + "/directReferrer",{
       params:{
-        receiver: "0xf0c90d0E550AFA5C4d557A7BeBfB89B1ea4d97f8"
+        // receiver: "0xf0c90d0E550AFA5C4d557A7BeBfB89B1ea4d97f8"
+        address: address
       }
     });
     // console.log(res?.data, "xx");
-    setTransaction(res?.data?.user);
+    setTransaction(res?.data?.data);
   };
 
   useEffect(() => {
@@ -484,6 +486,45 @@ function DashboardRow2() {
     if (address) getDirect();
   }, [address]);
 
+
+  const getMemberIncome = async()=>{
+    // let walletAddress = address;
+    try {
+      const response = await axios.get(apiUrl + "/withdrawMemberIncome", {
+        params:{
+          address: address,
+        }
+      });
+      console.log(response?.data, "success");
+
+      if (response?.status === 200) {
+        const funResponse = await withdrawWithSignature({
+          amount: response.data.vrsSign.amount,
+          v: Number(response.data.vrsSign.signature.v),
+          r: response.data.vrsSign.signature.r,
+          s: response.data.vrsSign.signature.s,
+          deadline: response.data.deadline,
+        });
+
+        if (funResponse) {
+          // setClaimed(true);
+          toast.success("Claim successful!", {
+            position: "top-right",
+            theme: "dark",
+          });
+
+          await getDash();
+        }
+      }
+    } catch (error) {
+      toast.error(error.message, {
+        position: "top-right",
+        theme: "dark",
+      });
+      console.error("Error during claim:", error.message);
+    }
+  };
+
   return (
     <div className="row mb-5">
       {/* Profit */}
@@ -496,7 +537,7 @@ function DashboardRow2() {
           <div className="upcoming row mt-4">
             <div className="col-sm-6 col-lg-6">
               <div>
-                <div className="card custom-card school-card">
+                <div className="card custom-card school-card secondary11" >
                   <div className="card-body d-flex gap-2 justify-content-between align-items-center height-120px glow-box-blue">
                     <div>
                       <span className="d-block mb-1">User Id</span>
@@ -511,7 +552,7 @@ function DashboardRow2() {
             </div>
             <div className="col-sm-6 col-lg-6">
               <div>
-                <div className="card custom-card school-card">
+                <div className="card custom-card school-card secondary11">
                   <div className="card-body d-flex gap-2 justify-content-between align-items-center height-120px glow-box-blue">
                     <div>
                       <span className="d-block mb-1">Referral Id</span>
@@ -526,7 +567,7 @@ function DashboardRow2() {
             </div>
             <div className="col-sm-6 col-lg-6">
               <div>
-                <div className="card custom-card school-card">
+                <div className="card custom-card school-card secondary11">
                   <div className="card-body d-flex gap-2 justify-content-between align-items-center height-120px glow-box-blue">
                     <div>
                       <span className="d-block mb-1">Total User Income</span>
@@ -541,7 +582,7 @@ function DashboardRow2() {
             </div>
             <div className="col-sm-6 col-lg-6">
               <div>
-                <div className="card custom-card school-card">
+                <div className="card custom-card school-card secondary11">
                   <div className="card-body d-flex gap-2 justify-content-between align-items-center height-120px glow-box-blue">
                     <div>
                       <span className="d-block mb-1">Total Level Income</span>
@@ -556,14 +597,21 @@ function DashboardRow2() {
             </div>
             <div className="col-sm-6 col-lg-6">
               <div>
-                <div className="card custom-card school-card">
+                <div className="card custom-card school-card secondary11">
                   <div className="card-body d-flex gap-2 justify-content-between align-items-center height-120px glow-box-blue">
                     <div>
                       <span className="d-block mb-1">Member Income</span>
-                      <h6 className="mb-0 fw-semibold">0</h6>
+                      <h6 className="mb-0 fw-semibold">$ {dashData?.memberIncome ? dashData?.memberIncome : "0"}</h6>
                     </div>
                     <div>
                       <span className="text-primary1"><img src={FundReward} alt="" style={{ width: "40px" }} /></span>
+                      <span
+                        className="text-info badge bg-primary-transparent secondary11"
+                        style={{ cursor: "pointer", position: "absolute" , bottom: "52px" , right: "70px" }}
+                        onClick={getMemberIncome}
+                      >
+                        Withdraw
+                      </span>
                     </div>
                   </div>
                 </div>
@@ -571,7 +619,7 @@ function DashboardRow2() {
             </div>
             <div className="col-sm-6 col-lg-6">
               <div>
-                <div className="card custom-card school-card">
+                <div className="card custom-card school-card secondary11">
                   <div className="card-body d-flex gap-2 justify-content-between align-items-center height-120px glow-box-blue">
                     <div>
                       <span className="d-block mb-1">Id Date</span>
@@ -628,10 +676,10 @@ function DashboardRow2() {
           <div className="upcoming">
             <div className="col-sm-6 col-lg-6 mt-4" style={{ width: "80%" }}>
               <div>
-                <div className="card custom-card school-card new-card-box glow-box-blue">
+                <div className="card custom-card school-card new-card-box glow-box-blue secondary11">
                   <div className="card-body d-flex gap-2 justify-content-between">
                     <div>
-                      <span className="d-block mb-1">User Income</span>
+                      <span className="d-block mb-1">Direct Referrer</span>
                       <h6 className="mb-0 fw-semibold">
                         {/* {dashboard && Number(dashboard[3])} */}
                         {/* {rank || "0"} */}
@@ -657,7 +705,7 @@ function DashboardRow2() {
                       User ID
                     </th>
                     <th scope="col" style={{ color: "white" }}>
-                      Package
+                      Created At
                     </th>
                     {/* <th scope="col">Matrix</th> */}
                     {/* <th scope="col">Level</th> */}
@@ -686,7 +734,7 @@ function DashboardRow2() {
                        {rep?.userId}
                       </td>
                       <td style={{ color: "white" }}>
-                       $ {rep?.amount/1e18}
+                      {new Date(rep?.createdAt).toLocaleString()}
                       </td>
                       {/* <td style={{ color: "rgb(0, 119, 181)" }}>
                         {rep.matrix}

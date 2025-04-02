@@ -11,6 +11,6 @@ export const baseUrl = window.location.origin;
 // export const apiUrl = "https://usdtocean.io/api";  
 // export const apiUrl = "http://localhost:8001/mirai/api/"
 // export const apiUrl = "https://local.miraidao.com/mirai/api/"
-export const apiUrl = "https://nnwp5hc4-8080.inc1.devtunnels.ms/api"
+export const apiUrl = "https://node.decentramax.io/api/"
 // http://localhost:8001/mirai/api/
 // http://usdtocean.io/api/userDetailsbyWallet?userId=0x71dFd92C06a4d3710C87e1B1e6898D452C9c0542

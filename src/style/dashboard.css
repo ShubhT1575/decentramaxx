@@ -249,8 +249,8 @@
   }
   
   .glow-box-blue {
-	box-shadow: 0px 0px 20px rgba(0, 140, 255, 0.8),
-	  0px 0px 40px rgba(0, 100, 255, 0.6) !important;
+	box-shadow: 0px 0px 10px rgba(0, 120, 255, 0.9),
+	0px 0px 20px rgba(0, 90, 255, 0.7) !important;
 	border-radius: 17px !important;
 	padding: 0;
   }
@@ -269,4 +269,11 @@
 
   .background-transparent{
 	background: transparent !important;
+  }
+  .secondary11{
+	/* background-image: -webkit-linear-gradient(90deg, rgba(193, 101, 221,0.5) 0%, rgba(92, 39, 254,0.5) 100%)!important; */
+	  border-radius: 16px !important;
+	  background: transparent !important;
+	  /* background: transparent !important; */
+	  /* opacity: .9; */
   }

@@ -7,7 +7,6 @@ import "./css/Newbutton.css";
 
 import trans from "../../assets/img/security.png";
 import effe from "../../assets/img/efficacy.png";
-// import creator from "../../assets/img/creator.png";
 import investor from "../../assets/img/crowdfunding.png";
 import dcent from "../../assets/img/blockchain1.png";
 import blockchain from "../../assets/img/blockchain.png";
@@ -23,7 +22,6 @@ import deal from "../../assets/img/deal (1).png";
 import TestimonialCarousel from "./TestimonialCarousel";
 import Footer from "./Footer";
 import InteractiveVisualization from "../InteractiveVisualization";
-// import economy from "/Home Logo/Asset 1.png"
 
 export default function Home() {
   return (
@@ -35,13 +33,6 @@ export default function Home() {
         style={{ height: "100%" }}
       >
         <div className="bg-1 bg-img"></div>
-        {/* <div className="ripple-shape">
-          <span className="ripple-1"></span>
-          <span className="ripple-2"></span>
-          <span className="ripple-3"></span>
-          <span className="ripple-4"></span>
-          <span className="ripple-5"></span>
-        </div> */}
         <div className="container">
           <div className="hero-style1">
             <div className="row flex-row-reverse">
@@ -65,18 +56,15 @@ export default function Home() {
                       className="pt-3 text-light text-center"
                       style={{ textAlign: "justify" }}
                     >
-                      <h1 style={{fontSize: "3.5rem"}}>The World’s Most Powerful Community System</h1>
-                      Empowering Communities, One Contribution at a Time! A
-                      decentralized, trust-driven platform where members
-                      contribute, support, and grow together—ensuring financial
-                      empowerment for all.
+                      <h1 style={{fontSize: "3.5rem"}}>The Future of Decentralized Finance</h1>
+                      A 100% decentralized platform with auto USDT payouts, secure smart contracts, and a revolutionary referral system. No owners, no central control - just pure blockchain-powered financial freedom.
                     </div>
                   </div>
                 </div>
                 <div className="hero-button mt-5">
                   <Link to={"/SignUp"}>
                     <button className="buttons">
-                      <span className="boxx">Start</span>
+                      <span className="boxx">Join Now</span>
                     </button>
                   </Link>
                   <div className="d-lg-none d-flex">
@@ -101,36 +89,32 @@ export default function Home() {
       <div className="about-us hero-1 bg-img" id="about">
         <div className="about-container">
           <div className="about-content">
-            <h2>Key Principles</h2>
+            <h2>Core Features</h2>
             <p>
-              DECENTRAMAX operates on a cooperative funding model where members
-              uplift each other. Funds are distributed transparently, ensuring
-              fairness, security, and community-driven empowerment.
+              DECENTRAMAX revolutionizes decentralized finance with its autonomous smart contract system, 
+              eliminating all central control while ensuring complete transparency and security.
             </p>
           </div>
           <div className="about-principles">
             <div className="principle glow-box">
-              <span className="emoji"><i className="fa-solid fa-magnifying-glass"></i></span>
-              <h3>Transparency</h3>
+              <span className="emoji"><i className="fa-solid fa-link-slash"></i></span>
+              <h3>No Central Control</h3>
               <p>
-                All transactions are open and verifiable, fostering trust within
-                the community.
+                Truly decentralized with no owners or administrators - the smart contract runs autonomously.
               </p>
             </div>
             <div className="principle glow-box">
-              <span className="emoji"><i className="fa-solid fa-arrow-up-right-dots"></i></span>
-              <h3>Community Growth</h3>
+              <span className="emoji"><i className="fa-solid fa-wallet"></i></span>
+              <h3>Auto USDT Payouts</h3>
               <p>
-                Empowering individuals through mutual support, ensuring
-                sustainable development.
+                Direct wallet withdrawals in USDT with no manual processing required.
               </p>
             </div>
             <div className="principle glow-box">
-              <span className="emoji"><i className="fa-solid fa-fingerprint"></i></span>
-              <h3>Secure & Fair Transactions</h3>
+              <span className="emoji"><i className="fa-solid fa-rotate"></i></span>
+              <h3>Auto-Recycle System</h3>
               <p>
-                Decentralized and tamper-proof transactions, ensuring fairness
-                for all members.
+                Automatic rebirth triggered by first income for continuous growth.
               </p>
             </div>
           </div>
@@ -139,112 +123,107 @@ export default function Home() {
 
       {/* Why Choose Us Section */}
       <div className="why-choose-us hero-1 bg-img" id="why-us" style={{paddingTop: "160px",paddingBottom: "150px"}}>
-        <h2 className="section-title text-light">Why Choose Us?</h2>
+        <h2 className="section-title text-light">Why DECENTRAMAX?</h2>
 
         <div className="value-propositions">
           <div className="value-box glow-box-blue border-curve">
-            {/* <span className="icon">💡</span> */}
             <img className="img-img" src={blockchain1} alt="" />
-            <h3>Decentralized & Transparent</h3>
-            <p>No banks, no hidden fees.</p>
+            <h3>100% Decentralized</h3>
+            <p>No central authority - fully community-driven platform</p>
           </div>
 
           <div className="value-box glow-box-blue border-curve">
-            {/* <span className="icon">💡</span> */}
             <img className="img-img" src={security} alt="" />
-            <h3>Secure & Trustworthy</h3>
-            <p>100% smart contract-driven transactions.</p>
+            <h3>Immutable Smart Contract</h3>
+            <p>Tamper-proof code ensures complete security</p>
           </div>
 
           <div className="value-box glow-box-blue border-curve">
-            {/* <span className="icon">💡</span> */}
             <img className="img-img" src={creator} alt="" />
-            <h3>Instant & Global Access</h3>
-            <p>Raise funds from anywhere, anytime.</p>
+            <h3>Referral Income System</h3>
+            <p>Multi-level rewards for network growth</p>
           </div>
 
           <div className="value-box glow-box-blue border-curve">
-            {/* <span className="icon">💡</span> */}
             <img className="img-img" src={crowdfunding} alt="" />
-            <h3>Community-Driven</h3>
-            <p>Support real causes with direct impact.</p>
+            <h3>Low-Cost Transactions</h3>
+            <p>Minimal gas fees with high-speed processing</p>
           </div>
         </div>
-
-        {/* Comparison Table */}
-        {/* <div className="comparison-table">
-          <h3 className="text-light">
-            Traditional vs. Decentralized Crowdfunding
-          </h3>
-          <div className="overflow" style={{ overflow: "auto" }}>
-            <table className="glow-box" style={{ color: "white" }}>
-              <thead>
-                <tr>
-                  <th>Feature</th>
-                  <th>Traditional</th>
-                  <th>Decentralized</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>Middlemen</td>
-                  <td>Required (Banks, Platforms)</td>
-                  <td>No Middlemen (Direct P2P)</td>
-                </tr>
-                <tr>
-                  <td>Fees</td>
-                  <td>High Processing Fees</td>
-                  <td>Minimal to Zero Fees</td>
-                </tr>
-                <tr>
-                  <td>Security</td>
-                  <td>Vulnerable to Fraud</td>
-                  <td>Blockchain-Powered Security</td>
-                </tr>
-                <tr>
-                  <td>Access</td>
-                  <td>Limited to Certain Countries</td>
-                  <td>Global Access, No Restrictions</td>
-                </tr>
-                <tr>
-                  <td>Transparency</td>
-                  <td>Opaque Systems</td>
-                  <td>Fully Transparent & Immutable</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div> */}
       </div>
 
-      {/* Fundraising Categories Section */}
+      {/* How It Works Section */}
       <div className="fundraising-categories hero-1 bg-img" id="categories" style={{paddingTop: "100px" , paddingBottom: "100px"}}>
-        <h2 className="section-title text-light">Who Can Raise Funds?</h2>
+        <h2 className="section-title text-light">How It Works</h2>
 
         <div className="categories-container">
           <div className="category-box glow-box">
-            <span className="icon"><i className="fa-solid fa-truck-medical" style={{fontSize: "35px"}}></i></span>
-            <h3>Medical Emergencies</h3>
+            <span className="icon"><i className="fa-solid fa-1" style={{fontSize: "35px"}}></i></span>
+            <h3>One-Time $50 Investment</h3>
+            <p>Single entry point with no reinvestment needed</p>
           </div>
 
           <div className="category-box glow-box">
-            <span className="icon"><i className="fa-solid fa-graduation-cap"></i></span>
-            <h3>Education & Scholarships</h3>
+            <span className="icon"><i className="fa-solid fa-2" style={{fontSize: "35px"}}></i></span>
+            <h3>Build Your Network</h3>
+            <p>Refer others and earn through 12 levels</p>
           </div>
 
           <div className="category-box glow-box">
-            <span className="icon"><i className="fa-solid fa-lightbulb"></i></span>
-            <h3>Startups & Business Ideas</h3>
+            <span className="icon"><i className="fa-solid fa-3" style={{fontSize: "35px"}}></i></span>
+            <h3>Auto USDT Withdrawals</h3>
+            <p>Direct to your connected wallet</p>
           </div>
 
           <div className="category-box glow-box">
-            <span className="icon"><i className="fa-solid fa-building-ngo"></i></span>
-            <h3>Non-Profits & Charity</h3>
+            <span className="icon"><i className="fa-solid fa-4" style={{fontSize: "35px"}}></i></span>
+            <h3>Automatic Recycling</h3>
+            <p>System reboots after first payout</p>
+          </div>
+        </div>
+      </div>
+
+      {/* Wallet Integration Section */}
+      <div className="security hero-1 bg-img" id="security"  style={{paddingTop: "100px" , paddingBottom: "100px"}}>
+        <h2 className="section-title text-light">
+          <img className="img-img" src={security} alt="" />
+          Seamless Wallet Integration
+        </h2>
+        <p className="section-description">
+          Connect your favorite wallet and start earning in USDT immediately
+        </p>
+
+        <div className="security-container">
+          <div className="security-box glow-box">
+            <div className="icon"><i className="fa-brands fa-ethereum"></i></div>
+            <h3>MetaMask</h3>
+            <p>
+              The most popular Ethereum wallet for browsers and mobile
+            </p>
           </div>
 
-          <div className="category-box glow-box">
-            <span className="icon"><i className="fa-solid fa-people-group"></i></span>
-            <h3>Community Projects</h3>
+          <div className="security-box glow-box">
+            <div className="icon"><i className="fa-solid fa-t"></i></div>
+            <h3>Trust Wallet</h3>
+            <p>
+              Secure mobile wallet with built-in DApp browser
+            </p>
+          </div>
+
+          <div className="security-box glow-box">
+            <div className="icon"><i className="fa-solid fa-s"></i></div>
+            <h3>SafePal</h3>
+            <p>
+              Hardware and software wallet combination for maximum security
+            </p>
+          </div>
+
+          <div className="security-box glow-box">
+            <div className="icon"><i className="fa-solid fa-t"></i></div>
+            <h3>TokenPocket</h3>
+            <p>
+              Multi-chain wallet supporting various blockchain networks
+            </p>
           </div>
         </div>
       </div>
@@ -252,152 +231,48 @@ export default function Home() {
       {/* Success Stories Section */}
       <div className="testimonials hero-1 bg-img" id="success-stories">
         <h2 className="section-title text-light">
-          Success Stories & Testimonials
+          Member Success Stories
         </h2>
-
-        {/* <div className="testimonial-carousel">
-          <button className="carousel-btn prev-btn">‹</button>
-
-          <div className="testimonial-container">
-            <div className="testimonial-box ">
-              <p className="testimonial-text">
-                💬 "Thanks to this platform, I raised ₹5,00,000 for my medical
-                treatment in just 3 days!"
-              </p>
-              <h3 className="testimonial-user">– Real User</h3>
-            </div>
-
-            <div className="testimonial-box active">
-              <p className="testimonial-text">
-                💬 "I got the funds I needed for my startup within a week.
-                Life-changing!"
-              </p>
-              <h3 className="testimonial-user">– Entrepreneur</h3>
-            </div>
-
-            <div className="testimonial-box">
-              <p className="testimonial-text">
-                💬 "Community-driven funding helped us support 50+ students with
-                scholarships!"
-              </p>
-              <h3 className="testimonial-user">– Non-Profit Organization</h3>
-            </div>
-          </div>
-
-          <button className="carousel-btn next-btn">›</button>
-        </div> */}
         <TestimonialCarousel />
       </div>
 
-      {/* Security Section */}
-      <div className="security hero-1 bg-img" id="security"  style={{paddingTop: "100px" , paddingBottom: "100px"}}>
-        <h2 className="section-title text-light">
-          <img className="img-img" src={security} alt="" />
-          Security & Transparency
-        </h2>
-        <p className="section-description">
-          We ensure that every transaction is secure, transparent, and
-          tamper-proof with the power of blockchain technology.
-        </p>
-
-        <div className="security-container">
-          <div className="security-box glow-box">
-            <div className="icon"><i className="fa-solid fa-lock"></i></div>
-            <h3>Smart Contract-Based Transactions</h3>
-            <p>
-              No middlemen, instant & automated fund transfers with full
-              security.
-            </p>
-          </div>
-
-          <div className="security-box glow-box">
-            <div className="icon"><i className="fa-solid fa-file-contract"></i></div>
-            <h3>Full Fund Traceability</h3>
-            <p>
-              Every transaction is recorded on the blockchain, ensuring
-              transparency.
-            </p>
-          </div>
-
-          <div className="security-box glow-box">
-            <div className="icon"><i className="fa-solid fa-wallet"></i></div>
-            <h3>Customizable Wallets</h3>
-            <p>
-              Users can change creator & liquidity wallets anytime for
-              flexibility.
-            </p>
-          </div>
-        </div>
-      </div>
-
-      {/* Community Impact Section */}
+      {/* Comparison Section */}
       <div className="community-impact hero-1 bg-img" id="community"  style={{paddingTop: "100px" , paddingBottom: "100px"}}>
         <h2 className="section-title text-light">
           <img className="img-img" src={crowdfunding} alt="" />
-          Community & Social Impact
+          Traditional vs. DECENTRAMAX
         </h2>
-        <p className="section-description">
-          Be part of a movement that changes lives. Support causes, contribute,
-          or help spread the word.
-        </p>
 
         <div className="impact-container">
           <div className="impact-box glow-box-blue border-curve">
-            <div className="icon"><i className="fa-solid fa-handshake"></i></div>
-            <h3>Join Our Mission</h3>
-            <p>
-              Help people raise funds for meaningful causes and be a part of
-              real change.
-            </p>
+            <div className="icon"><i className="fa-solid fa-building"></i></div>
+            <h3>Centralized Systems</h3>
+            <ul>
+              <li>Controlled by companies</li>
+              <li>Can freeze funds</li>
+              <li>High fees</li>
+            </ul>
           </div>
 
           <div className="impact-box  glow-box-blue border-curve">
-            <div className="icon"><i className="fa-solid fa-circle-dollar-to-slot"></i></div>
-            <h3>Volunteer & Contribute</h3>
+            <div className="icon"><i className="fa-solid fa-arrow-right"></i></div>
+            <h3>The Difference</h3>
             <p>
-              Make an impact by donating, volunteering, or spreading awareness.
+              DECENTRAMAX eliminates all these vulnerabilities
             </p>
           </div>
 
           <div className="impact-box glow-box-blue border-curve">
-            <div className="icon"><i className="fa-solid fa-bell"></i></div>
-            <h3>Follow & Stay Updated</h3>
-            <p>
-              Connect with us on social media and stay inspired by real impact
-              stories.
-            </p>
+            <div className="icon"><i className="fa-solid fa-link-slash"></i></div>
+            <h3>DECENTRAMAX</h3>
+            <ul>
+              <li>No central control</li>
+              <li>Funds cannot be frozen</li>
+              <li>Minimal fees</li>
+            </ul>
           </div>
-        </div>
-
-        <div className="cta-container">
-          <Link to="/signup" className="cta-button">
-            Join the Community
-          </Link>
         </div>
       </div>
-
-      {/* CTA Section */}
-      {/* <div className="full-width hero-1 bg-img">
-        <div className="cta-section">
-          <h2 className="cta-title text-light">
-            <img className="img-img" src={deal} alt="" /> Ready to Make a
-            Difference?
-          </h2>
-          <p className="cta-description">
-            Start Your Fundraiser or Contribute Today!
-          </p>
-
-          <div className="cta-buttons">
-            <Link to="/create-campaign" className="cta-btn primary">
-              Join DECENTRAMAX
-            </Link>
-            <Link to="/campaigns" className="cta-btn secondary">Explore Campaigns</Link>
-          </div>
-        </div>
-      </div> */}
-
-      {/* Fundraising Stats */}
-
 
       {/* FAQ Section */}
       <div className="full-width hero-1 bg-img" id="faq">
@@ -415,7 +290,7 @@ export default function Home() {
                     data-bs-toggle="collapse"
                     data-bs-target="#howItWorks"
                   >
-                    <h3 style={{textAlign: "left"}}>How does DECENTRAMAX work?</h3>
+                    <h3 style={{textAlign: "left"}}>Is DECENTRAMAX really decentralized?</h3>
                     <span className="faq-toggle ms-auto">+</span>
                   </div>
                   <p
@@ -423,10 +298,7 @@ export default function Home() {
                     id="howItWorks"
                     data-bs-parent="#generalQuestionsAccordion"
                   >
-                    DECENTRAMAX is a decentralized crowdfunding platform based on
-                    blockchain technology. It allows users to start fundraisers,
-                    contribute to causes, and withdraw funds seamlessly without
-                    intermediaries.
+                    Yes! There is no owner, admin, or central management. The smart contract runs autonomously on the blockchain.
                   </p>
                 </div>
 
@@ -437,7 +309,7 @@ export default function Home() {
                     data-bs-toggle="collapse"
                     data-bs-target="#hiddenFees"
                   >
-                    <h3 style={{textAlign: "left"}}>Are there any hidden fees?</h3>
+                    <h3 style={{textAlign: "left"}}>What's the investment requirement?</h3>
                     <span className="faq-toggle ms-auto">+</span>
                   </div>
                   <p
@@ -445,8 +317,7 @@ export default function Home() {
                     id="hiddenFees"
                     data-bs-parent="#generalQuestionsAccordion"
                   >
-                    No hidden fees! We operate transparently with minimal smart
-                    contract fees for blockchain transactions.
+                    Just a one-time $50 investment in USDT. No reinvestment is ever required.
                   </p>
                 </div>
 
@@ -457,7 +328,7 @@ export default function Home() {
                     data-bs-toggle="collapse"
                     data-bs-target="#startFundraiser"
                   >
-                    <h3 style={{textAlign: "left"}}>Can anyone start a fundraiser?</h3>
+                    <h3 style={{textAlign: "left"}}>How does the auto-recycle work?</h3>
                     <span className="faq-toggle ms-auto">+</span>
                   </div>
                   <p
@@ -465,15 +336,14 @@ export default function Home() {
                     id="startFundraiser"
                     data-bs-parent="#generalQuestionsAccordion"
                   >
-                    Yes! Anyone with a genuine need or cause can start a
-                    fundraiser and receive community support.
+                    After your first income payment, the system automatically recycles your position to keep you earning.
                   </p>
                 </div>
               </div>
             </div>
 
             <div className="faq-category">
-              <h3>Security & Withdrawals</h3>
+              <h3>Payments & Security</h3>
               <div className="faq-container" id="securityAccordion">
                 <div className="faq-box">
                 <div
@@ -482,7 +352,7 @@ export default function Home() {
                     data-bs-toggle="collapse"
                     data-bs-target="#donationSecure"
                   >
-                    <h3 style={{textAlign: "left"}}>Is my donation secure?</h3>
+                    <h3 style={{textAlign: "left"}}>How are payouts processed?</h3>
                     <span className="faq-toggle ms-auto">+</span>
                   </div>
                   <p
@@ -490,8 +360,7 @@ export default function Home() {
                     id="donationSecure"
                     data-bs-parent="#securityAccordion"
                   >
-                    Yes! Every transaction is secured using blockchain
-                    technology, ensuring transparency and security.
+                    All payouts are automatic USDT transfers directly to your connected wallet.
                   </p>
                 </div>
 
@@ -502,7 +371,7 @@ export default function Home() {
                     data-bs-toggle="collapse"
                     data-bs-target="#withdrawFunds"
                   >
-                    <h3 style={{textAlign: "left"}}>How do I withdraw funds?</h3>
+                    <h3 style={{textAlign: "left"}}>What's the referral structure?</h3>
                     <span className="faq-toggle ms-auto">+</span>
                   </div>
                   <p
@@ -510,9 +379,7 @@ export default function Home() {
                     id="withdrawFunds"
                     data-bs-parent="#securityAccordion"
                   >
-                    Withdrawals are processed through smart contracts. Once your
-                    campaign reaches the desired amount, you can request a
-                    withdrawal instantly.
+                    Earn through 12 levels of referrals with percentage-based rewards at each level.
                   </p>
                 </div>
 
@@ -523,7 +390,7 @@ export default function Home() {
                     data-bs-toggle="collapse"
                     data-bs-target="#trackContributions"
                   >
-                    <h3 style={{textAlign: "left"}}>Can I track my contributions?</h3>
+                    <h3 style={{textAlign: "left"}}>Can the contract be changed?</h3>
                     <span className="faq-toggle ms-auto">+</span>
                   </div>
                   <p
@@ -531,125 +398,66 @@ export default function Home() {
                     id="trackContributions"
                     data-bs-parent="#securityAccordion"
                   >
-                    Absolutely! Every transaction is recorded on the blockchain,
-                    making it fully traceable.
+                    No. The smart contract is immutable once deployed to the blockchain.
                   </p>
                 </div>
               </div>
             </div>
           </div>
-          {/* <FAQ/> */}
         </div>
       </div>
 
-      {/* Get Involved Section */}
+      {/* Get Started Section */}
       <div className="get-involved hero-1 bg-img" id="getInvolved">
-        <h2>Get Involved & Make an Impact</h2>
+        <h2>Ready to Join the Revolution?</h2>
         <div className="involved-boxes">
-          <div className="involved-box  glow-box">
-            <h3><i className="fa-solid fa-handshake-simple" style={{marginRight: "10px"}}></i> Become a Volunteer</h3>
-            <p>Help us spread awareness & support fundraisers.</p>
-            <Link to="/volunteer" className="cta">
-              Join Now
+          <div className="involved-box glow-box">
+            <h3><i className="fa-solid fa-circle-dollar-to-slot" style={{marginRight: "10px"}}></i> Make Your Investment</h3>
+            <p>Start with just $50 USDT and begin building your network</p>
+            <Link to="/signup" className="cta">
+              Invest Now
             </Link>
           </div>
           <div className="involved-box glow-box">
-            <h3><i className="fa-solid fa-building-columns"  style={{marginRight: "10px"}}></i> Partner With Us</h3>
-            <p>Collaborate with us to amplify social impact.</p>
-            <Link to="/partnership" className="cta">
-              Partner Up
+            <h3><i className="fa-solid fa-users"  style={{marginRight: "10px"}}></i> Build Your Team</h3>
+            <p>Refer others and earn through 12 levels</p>
+            <Link to="/referral" className="cta">
+              Referral Program
             </Link>
           </div>
           <div className="involved-box glow-box">
-            <h3><i className="fa-solid fa-sack-dollar" style={{marginRight: "10px"}}></i> Start Your Own Campaign</h3>
-            <p>Launch your fundraiser & receive community support.</p>
-            <Link to="/create-campaign" className="cta">
-              Start Fundraising
+            <h3><i className="fa-solid fa-chart-line" style={{marginRight: "10px"}}></i> Track Your Earnings</h3>
+            <p>Watch your USDT balance grow automatically</p>
+            <Link to="/dashboard" className="cta">
+              View Dashboard
             </Link>
           </div>
         </div>
       </div>
 
-      {/* Why You Can Trust Us */}
+      {/* Trust Features */}
       <div className="get-involved hero-1 bg-img">
-        <h2>Why You Can Trust Us</h2>
+        <h2>Why DECENTRAMAX is Trustless</h2>
         <div className="involved-boxes">
-          <div className="involved-box  glow-box-blue border-curve">
-            <h3><i className="fa-solid fa-shield-halved" style={{marginRight: "10px"}}></i> Blockchain Secured</h3>
-            <p>Every transaction is secured through smart contracts.</p>
-            {/* <Link to="/volunteer" className="cta">Join Now</Link> */}
+          <div className="involved-box glow-box-blue border-curve">
+            <h3><i className="fa-solid fa-code" style={{marginRight: "10px"}}></i> Open Source</h3>
+            <p>Smart contract code is verifiable by anyone</p>
           </div>
-          <div className="involved-box  glow-box-blue border-curve">
-            <h3><i className="fa-solid fa-link"  style={{marginRight: "10px"}}></i> Transparent Transactions</h3>
-            <p>All contributions & withdrawals are recorded on-chain.</p>
-            {/* <Link to="/partnership" className="cta">Partner Up</Link> */}
+          <div className="involved-box glow-box-blue border-curve">
+            <h3><i className="fa-solid fa-lock"  style={{marginRight: "10px"}}></i> No Withdrawal Limits</h3>
+            <p>Withdraw your USDT anytime with no restrictions</p>
           </div>
-          <div className="involved-box  glow-box-blue border-curve">
-            <h3><i className="fa-solid fa-check-double" style={{marginRight: "10px"}}></i> Verified Campaigns</h3>
+          <div className="involved-box glow-box-blue border-curve">
+            <h3><i className="fa-solid fa-server" style={{marginRight: "10px"}}></i> Blockchain-Verified</h3>
             <p>
-              We ensure legitimacy with a strict campaign verification process.
+              All transactions permanently recorded on-chain
             </p>
-            {/* <Link to="/create-campaign" className="cta">Start Fundraising</Link> */}
           </div>
         </div>
       </div>
 
       {/* Footer */}
       <Footer/>
-      {/* <footer className="footer hero-1 bg-img ">
-        <div className="footer-container">
-          <div className="footer-column">
-            <h3>📌 Quick Links</h3>
-            <ul>
-              <li><Link to="/">🏠 Home</Link></li>
-              <li><Link to="/create-campaign">💰 Start a Fundraiser</Link></li>
-              <li><Link to="/campaigns">🔎 Explore Campaigns</Link></li>
-              <li><Link to="/faq">❓ FAQ</Link></li>
-              <li><Link to="/contact">📞 Contact Us</Link></li>
-              <li><Link to="/privacy">🔐 Privacy Policy & Terms</Link></li>
-            </ul>
-          </div>
-
-          <div className="footer-column">
-            <h3>📲 Connect With Us</h3>
-            <ul className="social-links">
-              <li>
-                <a href="#">🌍 Telegram / Discord</a>
-              </li>
-              <li>
-                <a href="#">🐦 Twitter</a>
-              </li>
-              <li>
-                <a href="#">📘 Facebook</a>
-              </li>
-              <li>
-                <a href="#">📸 Instagram</a>
-              </li>
-              <li>
-                <a href="#">🎥 YouTube</a>
-              </li>
-            </ul>
-          </div>
-
-          <div className="footer-column">
-            <h3>📞 Contact & Support</h3>
-            <p>
-              📧{" "}
-              <a href="mailto:support@DECENTRAMAX.com">support@DECENTRAMAX.com</a>
-            </p>
-            <p>📞 +91-123-456-7890</p>
-            <p>🌍 Blockchain City, Web3 World</p>
-          </div>
-        </div>
-
-        <div className="footer-bottom">
-          <p>© 2025 DECENTRAMAX All Rights Reserved.</p>
-          <p>
-            <Link to="/terms">🔗 Terms & Conditions</Link> |{" "}
-            <Link to="/privacy">🔐 Privacy Policy</Link>
-          </p>
-        </div>
-      </footer> */}
     </>
   );
 }
