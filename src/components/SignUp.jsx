@@ -38,18 +38,18 @@ function SignUp() {
   const { connector, isConnected, status, isDisconnected, address } =
     useAccount();
 
-  useEffect(() => {
-    dispatch(
-      setWalletDetails({
-        walletAddress: address,
-        chainId,
-        isConnected,
-        isDisconnected,
-        connector,
-        status,
-      })
-    );
-  }, [dispatch, chainId, address, isConnected, isDisconnected]);
+  // useEffect(() => {
+  //   dispatch(
+  //     setWalletDetails({
+  //       walletAddress: address,
+  //       chainId,
+  //       isConnected,
+  //       isDisconnected,
+  //       connector,
+  //       status,
+  //     })
+  //   );
+  // }, [dispatch, chainId, address, isConnected, isDisconnected]);
 
   const [packageValue, setPackageValue] = useState("50");
   const [inputRef, setInputRef] = useState("");
@@ -180,19 +180,22 @@ const appToken = async (amt, TokenAddress, tokenDecimals) => {
         return;
       }
 
-      // let getRefAddress;
-      // if (refAddress) {
-      //   getRefAddress = await getAddressbyRefrralId(refAddress);
-      //   if (getRefAddress?.data?.status != 200) {
-      //     setIsLoading(false);
-      //     toast.error(getRefAddress?.data?.message);
-      //     return;
-      //   }
-      // }
+      let getRefAddress;
+      if (refAddress) {
+        getRefAddress = await getAddressbyRefrralId(refAddress);
+        // if (getRefAddress?.data?.status != 200) {
+        //   setIsLoading(false);
+        //   toast.error(getRefAddress?.data?.message);
+        //   return;
+        // }
+      }
+
+      console.log(getRefAddress.data,"xxxx")
+      const reffAdd = getRefAddress?.data;
 
       const ownerAddress = await getOwner();
 
-      const refAddressSet = !refAddress ? ownerAddress : refAddress;
+      const refAddressSet = !reffAdd ? ownerAddress : reffAdd;
 
       console.log(refAddressSet, "ref::::");
 
@@ -288,7 +291,7 @@ const appToken = async (amt, TokenAddress, tokenDecimals) => {
         });
         if (buy) {
           setTimeout(() => {
-            navigate("/Dashboard");
+            navigate("/SignIn");
             setIsLoading(false);
           }, 2000);
         }

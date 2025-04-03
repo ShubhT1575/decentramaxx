@@ -16,9 +16,11 @@ const MatrixTree = () => {
   const [slot, setSlot] = useState(1);
   const [reEntry, setReEntry] = useState("");
   const [selectedSlot,setSelectedSlot] = useState(slot)
-  const { address } = useAccount();
+  // const { address } = useAccount();
   const [accessAdress, setAccessAddress] = useState("");
-  const { dashboardData } = useSelector((state) => state.bitgold);
+  const { wallet , dashboardData } = useSelector((state) => state.bitgold);
+  const { walletAddress } = wallet;
+  const address = walletAddress;
   const { userId } = dashboardData;
 
   const [childAdd, setChildAdd] = useState("");
@@ -204,13 +206,13 @@ const MatrixTree = () => {
         const [details, setDetails] = useState("");
         const showDetails = async ()=>{
           showLoading();
-          const res = await axios.get(apiUrl + "/seedetail" , {
+          const res = await axios.get(apiUrl + "/dashboard" , {
             params:{
-              user: childAdd ? childAdd : address
+              address: childAdd ? childAdd : address
             }
           })
           console.log(res.data,"details")
-          setDetails(res?.data);
+          setDetails(res?.data?.user);
         }
 
   return (
@@ -230,9 +232,9 @@ const MatrixTree = () => {
                     </li>
                   </ol>
                 </nav>
-                <h1 className="page-title fw-medium fs-18 mb-0 text-light" >
+                {/* <h1 className="page-title fw-medium fs-18 mb-0 text-light" >
                   How Does Usdtocean Uwn5 Matrix Work
-                </h1>
+                </h1> */}
               </div>
             </div>
           </div>
@@ -636,11 +638,11 @@ const MatrixTree = () => {
 >
   <div className="parent">
     <p>User ID : {details?.userId}</p>
-    <p>User Address : {`${details?.user?.slice(0, 8)}..${details?.user?.slice(-9)}`}</p>
-    <p>Rank : {details?.slot_rank}</p>
-    <p>Created At : {details?.createdAt}</p>
     <p>Referrer Id : {details?.referrerId}</p>
-    <p>Community Size : {details?.community_size}</p>
+    <p>User Address : {`${details?.user?.slice(0, 8)}..${details?.user?.slice(-9)}`}</p>
+    {/* <p>Rank : {details?.slot_rank}</p> */}
+    <p>Created At : {new Date(details?.createdAt).toLocaleString()}</p>
+    {/* <p>Community Size : {details?.community_size}</p> */}
   </div>
 </Modal>
     </>

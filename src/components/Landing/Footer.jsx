@@ -8,11 +8,11 @@ const Footer = () => {
       <div className="footer-container">
         <div className="footer-column about-column">
           <div className="logo-section">
-            {/* <div className="logo-placeholder"><img src="/coopgenix symbol.svg" alt="logo" /></div> */}
+            {/* <div className="logo-placeholder"><img src="/DecentraMax symbol.svg" alt="logo" /></div> */}
             <h2 className="logo-title" style={{marginTop: "0px"}}><img src="/Asset 1.png" alt="logo" style={{height: "20px"}} /></h2>
           </div>
           <p className="about-text">
-            Coopgenix is a decentralized financial ecosystem designed to empower
+            DecentraMax is a decentralized financial ecosystem designed to empower
             users with secure, transparent, and rewarding opportunities.
           </p>
         </div>
@@ -50,7 +50,7 @@ const Footer = () => {
             </a>
           </div>
           {/* <div className="contact-info">
-            <p><i class="fa-solid fa-envelope"></i> support@coopgenix.com</p>
+            <p><i class="fa-solid fa-envelope"></i> support@DecentraMax.com</p>
             <p><i class="fa-solid fa-phone"></i> +91-123-456-7890</p>
             <p><i class="fa-solid fa-location-dot"></i> Blockchain City, Web3 World</p>
           </div> */}
@@ -60,11 +60,11 @@ const Footer = () => {
         </div>
       </div>
 
-      <div className="footer-bottom">
-        <p>© 2025 CoopGenix All Rights Reserved.</p>
+      <div className="footer-bottom text-light">
+        <p className="text-light">© 2025 DecentraMax All Rights Reserved.</p>
         <div className="footer-links">
-          <a href="/terms">Terms & Conditions</a>
-          <a href="/privacy">Privacy Policy</a>
+          <a href="/Terms">Terms & Conditions</a>
+          {/* <a href="/privacy">Privacy Policy</a> */}
         </div>
       </div>
     </footer>

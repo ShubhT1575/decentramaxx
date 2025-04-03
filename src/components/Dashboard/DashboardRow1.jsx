@@ -45,12 +45,14 @@ import { apiUrl } from "../Config";
 function DashboardRow1() {
   // const { tokenData } = useSelector((state) => state.bitgold);
   // const tokenDecimals = tokenData?.decimals;
-  const { dashboardData } = useSelector((state) => state.bitgold);
+  const {wallet, dashboardData } = useSelector((state) => state.bitgold);
   // const { walletAddress } = wallet;
   // const address = walletAddress;
-  const { address } = useAccount();
-  console.log(dashboardData, "dataaa");
+  // const { address } = useAccount();
+  
+  // console.log(wallet, "dataaa");
   const { userId, referrerId, rank, createdAt } = dashboardData;
+  // clg
   // const [dashboard, setDashboard] = useState();
   // const [rewardData, setRewardData] = useState();
   // const [isDivEnabled, setIsDivEnabled] = useState(false);

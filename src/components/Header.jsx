@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import ConnectWallet from "./ConnectWallet";
 import { useAccount, useChainId } from "wagmi";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import {
   setDashboardData,
@@ -16,7 +16,10 @@ function Header() {
   const dispatch = useDispatch();
   const chainId = useChainId();
   // const address = "0x70961132c3C0EAffA3651A578DA4c7b0e958D3cB";
-  const { address } = useAccount();
+  // const { address } = useAccount();
+  const { wallet } = useSelector((state) => state.bitgold);
+  const { walletAddress } = wallet;
+  const address = walletAddress;
   const navigate = useNavigate();
   const [accessAdress, setAccessAddress] = useState("");
   const { connector, isConnected, status, isDisconnected } = useAccount();
@@ -32,18 +35,18 @@ function Header() {
 
   const add = address ? address : accessAdress;
 
-  useEffect(() => {
-    dispatch(
-      setWalletDetails({
-        walletAddress: add,
-        chainId,
-        isConnected,
-        isDisconnected,
-        connector,
-        status,
-      })
-    );
-  }, [dispatch, chainId, add, isConnected, isDisconnected, accessAdress]);
+  // useEffect(() => {
+  //   dispatch(
+  //     setWalletDetails({
+  //       walletAddress: add,
+  //       chainId,
+  //       isConnected,
+  //       isDisconnected,
+  //       connector,
+  //       status,
+  //     })
+  //   );
+  // }, [dispatch, chainId, add, isConnected, isDisconnected, accessAdress]);
 
   // useEffect(() => {
   //   const timeout = setTimeout(() => {

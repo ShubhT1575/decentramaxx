@@ -48,10 +48,12 @@ function DashboardRow2() {
   const { tokenData } = useSelector((state) => state.bitgold);
   const TokenAddress = tokenData?.address;
   const tokenDecimals = tokenData?.decimals;
-  const { dashboardData } = useSelector((state) => state.bitgold);
+  const { wallet, dashboardData } = useSelector((state) => state.bitgold);
+  const { walletAddress } = wallet;
+  const address = walletAddress;
+  console.log(wallet,"dataa")
   const { directUser, directBusiness, teamBusiness, teamUser } = dashboardData;
-  // const { walletAddress } = wallet;
-  const { address } = useAccount();
+  // const { address } = useAccount();
   // const address = "0x8a62CcdFFb086c190A869E49761E6F9E422214E7"
   const [isLoading, setIsLoading] = useState(false);
   // console.log(address,"xxx")
@@ -156,7 +158,7 @@ function DashboardRow2() {
   //     setCurrentPage(page);
   //   };
 
-  const itemsPerPage = 5; // Change this to modify items per page
+  const itemsPerPage = 6; // Change this to modify items per page
   const [currentPage, setCurrentPage] = useState(1);
   // const [matrixIncome,setMatrixIncome] = useState([]);
 
@@ -460,16 +462,16 @@ function DashboardRow2() {
 
   // import { useEffect } from "react";
 
-  useEffect(() => {
-    if (address) {
-      const interval = setInterval(() => {
-        getButButton(address, 1);
-        getButButton2(address, 2);
-      }, 2000); // Runs every 5 seconds (5000ms)
+  // useEffect(() => {
+  //   if (address) {
+  //     const interval = setInterval(() => {
+  //       getButButton(address, 1);
+  //       getButButton2(address, 2);
+  //     }, 2000); // Runs every 5 seconds (5000ms)
 
-      return () => clearInterval(interval); // Cleanup on unmount
-    }
-  }, [address]); // Runs again if `address` changes
+  //     return () => clearInterval(interval); // Cleanup on unmount
+  //   }
+  // }, [address]); // Runs again if `address` changes
 
   const [direct, setDirect] = useState("");
   const getDirect = async () => {
@@ -757,6 +759,19 @@ function DashboardRow2() {
                 </div>
               )}
             </div>
+          </div>
+          <div className="mb-2 d-flex justify-content-center pb-2">
+            <nav aria-label="Page navigation" className="pagination-style-2">
+              <ul className="pagination mb-0 flex-wrap">
+                <li
+                  className={`page-item ${matrixIncome?.length === 0? "disabled":""}`}
+                >
+                  <Link className="page-link text-white bg-transparent" to="#">
+                    Latest Direct Referrer 
+                  </Link>
+                </li>
+              </ul>
+            </nav>
           </div>
         </div>
       </div>

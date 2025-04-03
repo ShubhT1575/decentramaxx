@@ -1,6 +1,13 @@
 import React, { useEffect, useState } from "react";
 import Logo from '/Asset 1.png'
 import { Link } from "react-router-dom";
+import { Button, Flex, Input, Modal, Select } from "antd";
+import { SearchOutlined } from '@ant-design/icons';
+import TextArea from "antd/es/input/TextArea";
+import toast from "react-hot-toast";
+import { getAddressbyRefrralId } from "../../API/Api";
+import axios from "axios";
+import { apiUrl } from "../Config";
 export default function Header() {
   const [isSticky, setIsSticky] = useState(false);
   const [isOpen,setIsOpen] = useState(false);
@@ -31,6 +38,63 @@ export default function Header() {
       setIsOpen(true)
     }
   }
+
+  const [open, setOpen] = useState(false);
+  const [loading, setLoading] = useState(true);
+
+  const showLoading = () => {
+    setOpen(true);
+    setLoading(true);
+
+    // Simple loading mock. You should add cleanup logic in real world.
+    setTimeout(() => {
+      setLoading(false);
+    }, 100);
+  };
+
+  const modalClose = ()=>{
+
+    // setLoading(true);
+    setLoading(false);
+    setOpen(false);
+
+    // Simple loading mock. You should add cleanup logic in real world.
+    // setTimeout(() => {
+    //   toast.success("We will contact you soon !!");
+    // }, 2000);
+  }
+
+  const [countries, setCountries] = useState([]);
+  const [selectedCountry, setSelectedCountry] = useState({});
+
+  useEffect(() => {
+    fetch(
+      "https://valid.layercode.workers.dev/list/countries?format=select&flags=true&value=code"
+    )
+      .then((response) => response.json())
+      .then((data) => {
+        setCountries(data.countries);
+        setSelectedCountry(data.userSelectValue);
+      });
+  }, []);
+
+  const [userInput,setUserInput] = useState("")
+  const [userDetails,setUserDetails] = useState("")
+
+  const getDashboard = async()=>{
+    const userAdd = await getAddressbyRefrralId(userInput)
+    console.log(userAdd, "cccc")
+
+    const response = await axios.get(apiUrl + "/getdetailbyUserId" ,{
+      params: {
+        address :  userAdd ? userAdd?.data : userInput
+      }
+    })
+
+    console.log(response?.data,"xxyy")
+    setUserDetails(response?.data)
+  }
+
   return (
 
     <>
@@ -149,6 +213,37 @@ export default function Header() {
         </div>
         <div className="menu-backdrop" ></div>
       </header>
+      <Modal
+        title={<p className="text-light">See Current User Details</p>}
+        footer={
+          <Button type="primary" onClick={modalClose}>
+            Close
+          </Button>
+        }
+        loading={loading}
+        open={open}
+        onCancel={() => setOpen(false)}
+      >
+        <Flex style={{width: "100%" , marginBottom: "10px"}} justify={"center"} align={"center"}>
+        <Input type="text" placeholder="Name" value={userInput} onChange={(e)=>setUserInput(e.target.value)} style={{marginBottom: "0px"}}/>
+        <Button shape="circle" icon={<SearchOutlined />} onClick={getDashboard}/>
+        </Flex>
+        {/* <Input type="email" placeholder="Email" style={{marginBottom: "10px"}}/>
+        <Input type="tel" placeholder="Mobile No." style={{marginBottom: "10px"}}/>
+        <Select
+        className="w-100 mb-2"
+      options={countries}
+      value={selectedCountry}
+      onChange={(selectedOption) => setSelectedCountry(selectedOption)}
+    />
+        <TextArea rows={4} placeholder="Message" maxLength={6} style={{marginBottom: "10px"}}/> */}
+        <p>User : {userDetails?.userId}</p>
+        <p>Refferer : {userDetails?.referrerId}</p>
+        <p>User Address : {userDetails?.user ? `${userDetails.user.slice(0, 8)}.......${userDetails.user.slice(-6)}` : ""}
+        </p>
+        <p>Referrer Address : {userDetails?.referrer ? `${userDetails.referrer.slice(0, 8)}.......${userDetails.referrer.slice(-6)}` : ""}</p>
+        {/* <p>Income : <strong>100</strong></p>  */}
+      </Modal>
     </>
   );
 }

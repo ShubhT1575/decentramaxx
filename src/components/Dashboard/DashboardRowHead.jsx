@@ -51,18 +51,18 @@ const DashboardRowHead = () => {
   const { connector, isConnected, status, isDisconnected, address } =
     useAccount();
 
-  useEffect(() => {
-    dispatch(
-      setWalletDetails({
-        walletAddress: address,
-        chainId,
-        isConnected,
-        isDisconnected,
-        connector,
-        status,
-      })
-    );
-  }, [dispatch, chainId, address, isConnected, isDisconnected]);
+  // useEffect(() => {
+  //   dispatch(
+  //     setWalletDetails({
+  //       walletAddress: address,
+  //       chainId,
+  //       isConnected,
+  //       isDisconnected,
+  //       connector,
+  //       status,
+  //     })
+  //   );
+  // }, [dispatch, chainId, address, isConnected, isDisconnected]);
 
   const [purchasedSlots, setPurchasedSlots] = useState([]);
   const [isLoading, setIsLoading] = useState(false);

@@ -59,12 +59,16 @@ export const getUser = async (address) => {
 
 export const getAddressbyRefrralId = async (referralId) => {
   try {
-    const response = await axios.get(apiUrl + "/getAddressbyRefrralId", {
+    const response = await axios.get(apiUrl + "/getAddressbyRefrralIdd", {
       params: {
-        referralId: referralId,
+        userId: referralId,
       },
     });
-    return response;
+    if(response){
+      return response;
+    }else{
+      return null;
+    }
   } catch (error) {
     console.error("Error fetching Referral ID:", error.message);
   }

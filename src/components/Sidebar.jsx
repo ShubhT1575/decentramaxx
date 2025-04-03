@@ -77,6 +77,11 @@ function Sidebar() {
     }
   }
 
+  const handleLogout = ()=>{
+    localStorage.removeItem("wallet")
+    navigate("/SignIn")
+  }
+
   return (
     <div
       className={`app-sidebar app-sidebar-ll sticky t header-nav-ll `}
@@ -297,7 +302,7 @@ function Sidebar() {
               >
                 <i className="ri-wallet-3-fill side-menu__icon text-light"></i>
                 <span className="side-menu__label text-light">
-                  Matrix
+                  Single Leg
                 </span>
               </Link>
             </li>
@@ -309,7 +314,7 @@ function Sidebar() {
                 >
                   <i className="ri-wallet-3-fill side-menu__icon text-light"></i>
                   <span className="side-menu__label text-light">
-                    User Income
+                    Income Per User
                   </span>
                 </Link>
               </li>
@@ -450,6 +455,7 @@ function Sidebar() {
                   <button
                     type="button"
                     className="btn btn-dark-gradient text-light btn-wave logout-btn"
+                    onClick={handleLogout}
                   >
                     Logout
                   </button>

@@ -50,6 +50,7 @@ const Layout = ({ children }) => {
     "/",
     "/SignIn", 
     "/Terms",
+    "/terms",
     "/SignUp",
   ].includes(location.pathname);
 
@@ -97,7 +98,7 @@ const AppRoutes = () => {
           {/* <Route path="/AutoGlobal" element={<AutoMain />} /> */}
           <Route path="/RankReward" element={<RankMain />} />
           {/* <Route path="/Withdraw" element={<WithdrawMain />} /> */}
-          {/* <Route path="/Terms" element={<Terms />} /> */}
+          <Route path="/Terms" element={<Terms />} />
           <Route path="/SignIn" element={<SignIn />} />
           <Route path="*" element={<Navigate to="/" />} />
         </Routes>

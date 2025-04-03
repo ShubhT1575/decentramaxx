@@ -94,3 +94,8 @@
 .color-class{
   color: rgb(255, 255, 255) !important;
 }
+
+.imputxx::placeholder{
+  color: white;
+  opacity: 0.8;
+}
