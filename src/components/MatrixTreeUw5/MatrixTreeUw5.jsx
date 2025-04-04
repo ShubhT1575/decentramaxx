@@ -228,7 +228,7 @@ const MatrixTree = () => {
                       <a href="#"> Page </a>
                     </li>
                     <li className="breadcrumb-item active" aria-current="page">
-                      Matrix
+                      Single Leg
                     </li>
                   </ol>
                 </nav>

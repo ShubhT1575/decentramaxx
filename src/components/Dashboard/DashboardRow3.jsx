@@ -62,7 +62,7 @@ function DashboardRow3() {
                     className="form-control w-75"
                     id="input-text"
                     aria-describedby="basic-addon3"
-                    value={`${baseUrl}/SignUp?ref=${dashboardData?.userId}`}
+                    value={`${baseUrl}/SignUp?ref=${dashboardData?.user}`}
                     readOnly
                   />
                 </div>

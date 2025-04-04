@@ -314,7 +314,7 @@ function Sidebar() {
                 >
                   <i className="ri-wallet-3-fill side-menu__icon text-light"></i>
                   <span className="side-menu__label text-light">
-                    Income Per User
+                  Weekly Salary
                   </span>
                 </Link>
               </li>
@@ -327,6 +327,18 @@ function Sidebar() {
                   <i className="ri-wallet-3-fill side-menu__icon text-light"></i>
                   <span className="side-menu__label text-light">
                     Level Income
+                  </span>
+                </Link>
+              </li>
+              <li className="slide has-sub">
+                <Link
+                  to="/Profile"
+                  className="side-menu__item"
+                  onClick={closeSidebar}
+                >
+                  <i className="ri-wallet-3-fill side-menu__icon text-light"></i>
+                  <span className="side-menu__label text-light">
+                    Profile 
                   </span>
                 </Link>
               </li>

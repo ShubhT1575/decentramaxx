@@ -17,7 +17,7 @@ function ProfileHead() {
   };
   return (
     <div className="d-flex align-items-center justify-content-between page-header-breadcrumb flex-wrap gap-2">
-      <div>
+      {/* <div>
         <nav>
           <ol className="breadcrumb mb-1">
             <li className="breadcrumb-item">
@@ -29,8 +29,8 @@ function ProfileHead() {
           </ol>
         </nav>
         <h1 className="page-title fw-medium fs-18 mb-0">Profile</h1>
-      </div>
-      <div className="btn-list d-flex">
+      </div> */}
+      {/* <div className="btn-list d-flex">
         <input
           type="text"
           className="form-control copy-address-input"
@@ -45,7 +45,7 @@ function ProfileHead() {
         >
           <i className="ri-file-copy-fill"></i>
         </button>
-      </div>
+      </div> */}
     </div>
   );
 }

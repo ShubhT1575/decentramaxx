@@ -180,22 +180,22 @@ const appToken = async (amt, TokenAddress, tokenDecimals) => {
         return;
       }
 
-      let getRefAddress;
-      if (refAddress) {
-        getRefAddress = await getAddressbyRefrralId(refAddress);
-        // if (getRefAddress?.data?.status != 200) {
-        //   setIsLoading(false);
-        //   toast.error(getRefAddress?.data?.message);
-        //   return;
-        // }
-      }
+      // let getRefAddress;
+      // if (refAddress) {
+      //   getRefAddress = await getAddressbyRefrralId(refAddress);
+      //   // if (getRefAddress?.data?.status != 200) {
+      //   //   setIsLoading(false);
+      //   //   toast.error(getRefAddress?.data?.message);
+      //   //   return;
+      //   // }
+      // }
 
-      console.log(getRefAddress.data,"xxxx")
-      const reffAdd = getRefAddress?.data;
+      // console.log(getRefAddress.data,"xxxx")
+      // const reffAdd = getRefAddress?.data;
 
       const ownerAddress = await getOwner();
 
-      const refAddressSet = !reffAdd ? ownerAddress : reffAdd;
+      const refAddressSet = !refAddress ? ownerAddress : refAddress;
 
       console.log(refAddressSet, "ref::::");
 

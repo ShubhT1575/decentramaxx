@@ -14,7 +14,7 @@ import DashboardMain from "../Dashboard/DashboardMain";
 // import IncomeMain from "../IncomeGraph/IncomeMain";
 // import WithdrawMain from "../Withdrawal/WithdrawMain";
 // import FormMAin from "../Form/FormMAin";
-// import ProfileMain from "../Profile/ProfileMain";
+import ProfileMain from "../Profile/ProfileMain";
 // import SupportMain from "../Support/SupportMain";
 // import MatrixMain from "../Matrix/MatrixMain";
 import CoreMain from "../CoreIncome/CoreMain";
@@ -82,7 +82,7 @@ const AppRoutes = () => {
           <Route path="/GlobalIncome" element={<GlobalMain />} />
           <Route path="/FortuneIncome" element={<FortuneMain />} />
           {/* <Route path="/Ranking" element={<RankingMain />} /> */}
-          {/* <Route path="/Profile" element={<ProfileMain />} /> */}
+          <Route path="/Profile" element={<ProfileMain />} />
           {/* <Route path="/Support" element={<Support />} /> */}
           {/* <Route path="/Matrix" element={<MatrixMain />} /> */}
           {/* <Route path="/LevelIncome" element={<LevelIncome />} /> */}

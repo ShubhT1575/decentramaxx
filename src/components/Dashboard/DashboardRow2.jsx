@@ -543,7 +543,8 @@ function DashboardRow2() {
                   <div className="card-body d-flex gap-2 justify-content-between align-items-center height-120px glow-box-blue">
                     <div>
                       <span className="d-block mb-1">User Id</span>
-                      <h6 className="mb-0 fw-semibold">{dashData?.userId}</h6>
+                      <h6 className="mb-0 fw-semibold">{dashData.user ? `${dashData.user.slice(0, 6)}...${dashData.user.slice(-6)}` : ""}
+                      </h6>
                     </div>
                     <div>
                       <span className="text-primary1"><img src={id} alt="" style={{ width: "40px" }} /></span>
@@ -558,7 +559,7 @@ function DashboardRow2() {
                   <div className="card-body d-flex gap-2 justify-content-between align-items-center height-120px glow-box-blue">
                     <div>
                       <span className="d-block mb-1">Referral Id</span>
-                      <h6 className="mb-0 fw-semibold">{dashData?.referrerId}</h6>
+                      <h6 className="mb-0 fw-semibold">{dashData.referrer ? `${dashData.referrer.slice(0, 6)}...${dashData.referrer.slice(-6)}` : ""}</h6>
                     </div>
                     <div>
                       <span className="text-primary1"><img src={sponsor} alt="" style={{ width: "40px" }} /></span>
@@ -572,7 +573,7 @@ function DashboardRow2() {
                 <div className="card custom-card school-card secondary11">
                   <div className="card-body d-flex gap-2 justify-content-between align-items-center height-120px glow-box-blue">
                     <div>
-                      <span className="d-block mb-1">Total User Income</span>
+                      <span className="d-block mb-1">Weekly Salary</span>
                       <h6 className="mb-0 fw-semibold">$ {dashData?.userIncome/1e18 ? dashData?.userIncome/1e18 : "0"}</h6>
                     </div>
                     <div>
@@ -733,7 +734,7 @@ function DashboardRow2() {
                         </a>
                       </td>
                       <td style={{ color: "white" }}>
-                       {rep?.userId}
+                      {rep.user ? `${rep.user.slice(0, 6)}...${rep.user.slice(-6)}` : ""}
                       </td>
                       <td style={{ color: "white" }}>
                       {new Date(rep?.createdAt).toLocaleString()}
