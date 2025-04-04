@@ -1,4 +1,5 @@
 import { Button, Flex, Input, Modal } from "antd";
+import axios from "axios";
 import React, { useState } from "react";
 
 function ProfileRow() {
@@ -45,17 +46,41 @@ function ProfileRow() {
       profile:""
     })
 
+    const [profileUrl,setProfileUrl] = useState("")
+    const [inputValue,setInputValue] = useState("")
+
     const handleFileChange = async (e) => {
-      let resume = e.target.files[0]
-      let resumeFile = new FormData()
-      console.log(resumeFile,"resume")
-       resumeFile.append('file', resume)
-       resumeFile.append('upload_preset', 'decentramax')
-        let res = await axios.post('https://api.cloudinary.com/v1_1/dpkk76hbw/upload', resumeFile)
-           let url = res.data.secure_url
-            console.log(url,"xxyxx")
-           setFormData({...formData, resume:url})
+      try {
+        let resume = e.target.files[0];
+        let resumeFile = new FormData();
+    
+        resumeFile.append('file', resume);
+        resumeFile.append('upload_preset', 'decentramax');
+    
+        console.log(resumeFile, "resume");
+    
+        let res = await axios.post(
+          'https://api.cloudinary.com/v1_1/dqyws18nz/image/upload',
+          resumeFile,
+          {
+            headers: {
+              'Content-Type': 'multipart/form-data',
+            },
+          }
+        );
+    
+        let url = res.data.secure_url;
+        console.log(url, "xxyxx");
+        setProfileUrl(url);
+
+      } catch (error) {
+        console.error("Error uploading file:", error);
+      }
     };
+    // console.log(profileUrl,inputValue, "profileUrl");
+    const handleUploadProfile = async ()=>{
+
+    }
   return (
     <div className="container-fluid">
       <div className="row">
@@ -89,7 +114,7 @@ function ProfileRow() {
                       <div className="text-center">
                         <span className="avatar avatar-xxl avatar-rounded online mb-3">
                           <img
-                            src="https://laravelui.spruko.com/xintra/build/assets/images/faces/11.jpg"
+                            src={profileUrl}
                             alt="Profile"
                           />
                         </span>
@@ -120,7 +145,7 @@ function ProfileRow() {
                         <li className="list-group-item pt-2 border-0">
                           <div>
                             <span className="fw-medium me-2">User Id :</span>
-                            <span className="text-muted">Spencer Robin</span>
+                            <span className="text-muted">{inputValue}</span>
                           </div>
                         </li>
                         <li className="list-group-item pt-2 border-0">
@@ -186,8 +211,8 @@ function ProfileRow() {
       <Modal
         title={<p className="text-light">Edit Profile</p>}
         footer={
-          <Button type="primary" onClick={modalClose}>
-            Close
+          <Button type="primary" onClick={handleUploadProfile}>
+            Upload
           </Button>
         }
         loading={loading}
@@ -195,8 +220,8 @@ function ProfileRow() {
         onCancel={() => setOpen(false)}
       >
         <Flex style={{width: "100%" , marginBottom: "10px" , flexDirection:"column",gap: "20px"}} justify={"center"} align={"center"}>
-        <Input type="file" placeholder="Name" accept=".png,.jpeg,.jpg" value={userInput} onChange={handleFileChange} style={{marginBottom: "0px"}}/>
-        <Input type="text" placeholder="Name"  style={{marginBottom: "0px"}}/>
+        <Input type="file" placeholder="Name" accept=".png,.jpeg,.jpg" onChange={handleFileChange} style={{marginBottom: "0px"}}/>
+        <Input type="text" placeholder="Name" value={inputValue} onChange={(e)=>setInputValue(e.target.value)}  style={{marginBottom: "0px"}}/>
         {/* <Button shape="circle" icon={<SearchOutlined />} onClick={getDashboard}/> */}
         </Flex>
         {/* <Input type="email" placeholder="Email" style={{marginBottom: "10px"}}/>
