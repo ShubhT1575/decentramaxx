@@ -11,17 +11,13 @@ function StakeRow() {
 
   const getUser = async () => {
     try {
-      const response = await axios.get(apiUrl + "/getTeamList", {
+      const response = await axios.get(apiUrl + "/getTeam", {
         params: {
           address: address,
         },
       });
-      if (response?.status === 200) {
         // console.log(response,'=============================')
-        setDirectUser(response?.data?.data);
-      } else {
-        setDirectUser([]);
-      }
+        setDirectUser(response?.data);
     } catch (error) {
       console.error("Error fetching user data:", error.message);
     }
@@ -48,8 +44,7 @@ function StakeRow() {
                   <tr>
                     <th scope="col">S.NO</th>
                     <th scope="col">User</th>
-                    <th scope="col">Transaction Hash</th>
-                    <th scope="col">User Id</th>
+                    <th scope="col">Referrer</th>
                     <th scope="col">Created At</th>
                   </tr>
                 </thead>
@@ -65,22 +60,13 @@ function StakeRow() {
                               )}`
                             : "N/A"}
                         </td>
-                        <td>
-                          {item?.txHash ? (
-                            <a
-                              href={`https://polygonscan.com/tx/${item.txHash}`}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              style={{ color: "rgb(0, 166, 255)" }}
-                            >
-                              {item.txHash.slice(0, 6)}...
-                              {item.txHash.slice(-6)}
-                            </a>
-                          ) : (
-                            "N/A"
-                          )}
+                        <td className="">
+                          {item?.user
+                            ? `${item.referrer.slice(0, 6)}...${item.referrer.slice(
+                                -6
+                              )}`
+                            : "N/A"}
                         </td>
-                        <td>{item?.userId}</td>
                         <td>
                           {item.timestamp
                             ? new Date(item.timestamp).toLocaleString()

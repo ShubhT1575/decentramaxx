@@ -728,6 +728,7 @@ function DashboardRow2() {
                       <span className="d-block mb-1">Total Withdrawl</span>
                       <h6 className="mb-0 fw-semibold">
                         {/* {new Date(dashData?.createdAt).toLocaleDateString()} */}
+                        {"0"}
                       </h6>
                     </div>
                     <div>
