@@ -1,4 +1,5 @@
 import { Button, Flex, Input, Modal } from "antd";
+import axios from "axios";
 import React, { useState } from "react";
 
 function ProfileRow() {
@@ -45,21 +46,43 @@ function ProfileRow() {
       profile:""
     })
 
+    const [profileUrl,setProfileUrl] = useState("")
+
     const handleFileChange = async (e) => {
-      let resume = e.target.files[0]
-      let resumeFile = new FormData()
-      console.log(resumeFile,"resume")
-       resumeFile.append('file', resume)
-       resumeFile.append('upload_preset', 'decentramax')
-        let res = await axios.post('https://api.cloudinary.com/v1_1/dpkk76hbw/upload', resumeFile)
-           let url = res.data.secure_url
-            console.log(url,"xxyxx")
-           setFormData({...formData, resume:url})
+      try {
+        let resume = e.target.files[0];
+        let resumeFile = new FormData();
+    
+        resumeFile.append('file', resume);
+        resumeFile.append('upload_preset', 'decentramax');
+    
+        console.log(resumeFile, "resume");
+    
+        let res = await axios.post(
+          'https://api.cloudinary.com/v1_1/dqyws18nz/image/upload',
+          resumeFile,
+          {
+            headers: {
+              'Content-Type': 'multipart/form-data',
+            },
+          }
+        );
+    
+        let url = res.data.secure_url;
+        console.log(url, "xxyxx");
+        setProfileUrl(url);
+
+      } catch (error) {
+        console.error("Error uploading file:", error);
+      }
     };
+    console.log({profileUrl})
   return (
     <div className="container-fluid">
       <div className="row">
         <div className="col-xl-12">
+          
+          
           <div className="card custom-card profile-card secondary11">
             
             {/* <div className="profile-banner-img">
