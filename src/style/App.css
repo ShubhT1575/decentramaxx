@@ -6688,7 +6688,7 @@
 .accordion-button:not(.collapsed):after {
   background-image: none;
 }
-.accordion-button:after {
+{
   content: "";
   font-family: remixicon !important;
   font-size: 1rem;
@@ -6730,7 +6730,7 @@
   background-color: var(--primary01);
   color: var(--primary-color);
 }
-.accordion.accordion-primary .accordion-button:after {
+.accordion.accordion-primary {
   background-color: var(--primary-color);
   color: #fff;
 }
@@ -6746,7 +6746,7 @@
   background-color: rgba(var(--secondary-rgb), 0.1);
   color: rgb(var(--secondary-rgb));
 }
-.accordion.accordion-secondary .accordion-button:after {
+.accordion.accordion-secondary {
   background-color: rgb(var(--secondary-rgb));
   color: #fff;
 }
@@ -6762,7 +6762,7 @@
   background-color: rgba(var(--success-rgb), 0.1);
   color: rgb(var(--success-rgb));
 }
-.accordion.accordion-success .accordion-button:after {
+.accordion.accordion-success {
   background-color: rgb(var(--success-rgb));
   color: #fff;
 }
@@ -6778,7 +6778,7 @@
   background-color: rgba(var(--danger-rgb), 0.1);
   color: rgb(var(--danger-rgb));
 }
-.accordion.accordion-danger .accordion-button:after {
+.accordion.accordion-danger {
   background-color: rgb(var(--danger-rgb));
   color: #fff;
 }
@@ -6794,7 +6794,7 @@
   background-color: rgba(var(--warning-rgb), 0.1);
   color: rgb(var(--warning-rgb));
 }
-.accordion.accordion-warning .accordion-button:after {
+.accordion.accordion-warning {
   background-color: rgb(var(--warning-rgb));
   color: #fff;
 }
@@ -6810,7 +6810,7 @@
   background-color: rgba(var(--info-rgb), 0.1);
   color: rgb(var(--info-rgb));
 }
-.accordion.accordion-info .accordion-button:after {
+.accordion.accordion-info {
   background-color: rgb(var(--info-rgb));
   color: #fff;
 }
@@ -6826,7 +6826,7 @@
   background-color: var(--primary-color);
   color: #fff;
 }
-.accordion.accordion-solid-primary .accordion-button:after {
+.accordion.accordion-solid-primary {
   background-color: var(--custom-white);
   color: var(--primary-color);
 }
@@ -6842,7 +6842,7 @@
   background-color: rgb(var(--secondary-rgb));
   color: #fff;
 }
-.accordion.accordion-solid-secondary .accordion-button:after {
+.accordion.accordion-solid-secondary {
   background-color: var(--custom-white);
   color: rgb(var(--secondary-rgb));
 }
@@ -6858,7 +6858,7 @@
   background-color: rgb(var(--success-rgb));
   color: #fff;
 }
-.accordion.accordion-solid-success .accordion-button:after {
+.accordion.accordion-solid-success {
   background-color: var(--custom-white);
   color: rgb(var(--success-rgb));
 }
@@ -6874,7 +6874,7 @@
   background-color: rgb(var(--danger-rgb));
   color: #fff;
 }
-.accordion.accordion-solid-danger .accordion-button:after {
+.accordion.accordion-solid-danger {
   background-color: var(--custom-white);
   color: rgb(var(--danger-rgb));
 }
@@ -6890,7 +6890,7 @@
   background-color: rgb(var(--warning-rgb));
   color: #fff;
 }
-.accordion.accordion-solid-warning .accordion-button:after {
+.accordion.accordion-solid-warning {
   background-color: var(--custom-white);
   color: rgb(var(--warning-rgb));
 }
@@ -6906,7 +6906,7 @@
   background-color: rgb(var(--info-rgb));
   color: #fff;
 }
-.accordion.accordion-solid-info .accordion-button:after {
+.accordion.accordion-solid-info {
   background-color: var(--custom-white);
   color: rgb(var(--info-rgb));
 }
@@ -6926,7 +6926,7 @@
   color: var(--primary-color);
   border-block-end: 0px;
 }
-.accordion.accordion-border-primary .accordion-button:after {
+.accordion.accordion-border-primary {
   background-color: var(--custom-white);
   color: var(--primary-color);
   border: 1px solid var(--primary-color);
@@ -6942,7 +6942,7 @@
   color: var(--primary-tint1-color);
   border-block-end: 0px;
 }
-.accordion.accordion-border-primary1 .accordion-button:after {
+.accordion.accordion-border-primary1 {
   background-color: var(--custom-white);
   color: var(--primary-tint1-color);
   border: 1px solid var(--primary-tint1-color);
@@ -6958,7 +6958,7 @@
   color: var(--primary-tint2-color);
   border-block-end: 0px;
 }
-.accordion.accordion-border-primary2 .accordion-button:after {
+.accordion.accordion-border-primary2 {
   background-color: var(--custom-white);
   color: var(--primary-tint2-color);
   border: 1px solid var(--primary-tint2-color);
@@ -6974,7 +6974,7 @@
   color: var(--primary-tint3-color);
   border-block-end: 0px;
 }
-.accordion.accordion-border-primary3 .accordion-button:after {
+.accordion.accordion-border-primary3 {
   background-color: var(--custom-white);
   color: var(--primary-tint3-color);
   border: 1px solid var(--primary-tint3-color);
@@ -6990,7 +6990,7 @@
   color: rgb(var(--secondary-rgb));
   border-block-end: 0px;
 }
-.accordion.accordion-border-secondary .accordion-button:after {
+.accordion.accordion-border-secondary {
   background-color: var(--custom-white);
   color: rgb(var(--secondary-rgb));
   border: 1px solid rgb(var(--secondary-rgb));
@@ -7006,7 +7006,7 @@
   color: rgb(var(--success-rgb));
   border-block-end: 0px;
 }
-.accordion.accordion-border-success .accordion-button:after {
+.accordion.accordion-border-success {
   background-color: var(--custom-white);
   color: rgb(var(--success-rgb));
   border: 1px solid rgb(var(--success-rgb));
@@ -7022,7 +7022,7 @@
   color: rgb(var(--danger-rgb));
   border-block-end: 0px;
 }
-.accordion.accordion-border-danger .accordion-button:after {
+.accordion.accordion-border-danger {
   background-color: var(--custom-white);
   color: rgb(var(--danger-rgb));
   border: 1px solid rgb(var(--danger-rgb));
@@ -7038,7 +7038,7 @@
   color: rgb(var(--warning-rgb));
   border-block-end: 0px;
 }
-.accordion.accordion-border-warning .accordion-button:after {
+.accordion.accordion-border-warning {
   background-color: var(--custom-white);
   color: rgb(var(--warning-rgb));
   border: 1px solid rgb(var(--warning-rgb));
@@ -7054,7 +7054,7 @@
   color: rgb(var(--info-rgb));
   border-block-end: 0px;
 }
-.accordion.accordion-border-info .accordion-button:after {
+.accordion.accordion-border-info {
   background-color: var(--custom-white);
   color: rgb(var(--info-rgb));
   border: 1px solid rgb(var(--info-rgb));
@@ -7062,17 +7062,17 @@
 .accordion.accordion-border-info .accordion-button:not(.collapsed) {
   border-block-end: 1px solid rgb(var(--info-rgb));
 }
-.accordion.accordionicon-none .accordion-button:after {
+.accordion.accordionicon-none {
   display: none;
 }
 .accordion.accordionicon-left .accordion-button {
   padding-inline-start: 2.5rem;
 }
-.accordion.accordionicon-left .accordion-button:after {
+.accordion.accordionicon-left {
   position: absolute;
   inset-inline-start: 0.625rem;
 }
-.accordion.accordion-customicon1 .accordion-button:after {
+.accordion.accordion-customicon1 {
   content: "";
   font-family: remixicon !important;
 }
@@ -7088,7 +7088,7 @@
 }
 .customized-accordion
   .accordion-item.custom-accordion-primary
-  .accordion-button:after {
+  {
   background-color: var(--primary06);
   color: #fff;
 }
@@ -7105,7 +7105,7 @@
 }
 .customized-accordion
   .accordion-item.custom-accordion-secondary
-  .accordion-button:after {
+  {
   background-color: rgba(var(--secondary-rgb), 0.6);
   color: #fff;
 }
@@ -7124,7 +7124,7 @@
 }
 .customized-accordion
   .accordion-item.custom-accordion-warning
-  .accordion-button:after {
+  {
   background-color: rgba(var(--warning-rgb), 0.6);
   color: #fff;
 }
@@ -7139,7 +7139,7 @@
 }
 .customized-accordion
   .accordion-item.custom-accordion-info
-  .accordion-button:after {
+  {
   background-color: rgba(var(--info-rgb), 0.6);
   color: #fff;
 }
@@ -7156,7 +7156,7 @@
 }
 .customized-accordion
   .accordion-item.custom-accordion-success
-  .accordion-button:after {
+  {
   background-color: rgba(var(--success-rgb), 0.6);
   color: #fff;
 }
@@ -7173,7 +7173,7 @@
 }
 .customized-accordion
   .accordion-item.custom-accordion-danger
-  .accordion-button:after {
+  {
   background-color: rgba(var(--danger-rgb), 0.6);
   color: #fff;
 }
