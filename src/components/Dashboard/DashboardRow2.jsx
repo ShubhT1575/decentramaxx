@@ -51,7 +51,7 @@ function DashboardRow2() {
   const { wallet, dashboardData } = useSelector((state) => state.bitgold);
   const { walletAddress } = wallet;
   const address = walletAddress;
-  console.log(wallet,"dataa")
+  console.log(wallet, "dataa");
   const { directUser, directBusiness, teamBusiness, teamUser } = dashboardData;
   // const { address } = useAccount();
   // const address = "0x8a62CcdFFb086c190A869E49761E6F9E422214E7"
@@ -248,11 +248,11 @@ function DashboardRow2() {
 
   const [transaction, setTransaction] = useState([]);
   const showTransaction = async () => {
-    const res = await axios.get(apiUrl + "/directReferrer",{
-      params:{
+    const res = await axios.get(apiUrl + "/directReferrer", {
+      params: {
         // receiver: "0xf0c90d0E550AFA5C4d557A7BeBfB89B1ea4d97f8"
-        address: address
-      }
+        address: address,
+      },
     });
     // console.log(res?.data, "xx");
     setTransaction(res?.data?.data);
@@ -488,14 +488,13 @@ function DashboardRow2() {
     if (address) getDirect();
   }, [address]);
 
-
-  const getMemberIncome = async()=>{
+  const getMemberIncome = async () => {
     // let walletAddress = address;
     try {
       const response = await axios.get(apiUrl + "/withdrawMemberIncome", {
-        params:{
+        params: {
           address: address,
-        }
+        },
       });
       console.log(response?.data, "success");
 
@@ -534,20 +533,66 @@ function DashboardRow2() {
       <div className="col-sm-12 col-md-8 col-xxl-8 mb-4 ">
         <div
           className="  background-transparent card custom-card overflow-hidden new-card row mb-2 justify-content-between align-items-center glow-box-blue"
-          style={{ height: "100%", marginLeft: "0", background:"transparent" }}
+          style={{ height: "100%", marginLeft: "0", background: "transparent" }}
         >
           <div className="upcoming row mt-4">
             <div className="col-sm-6 col-lg-6">
               <div>
-                <div className="card custom-card school-card secondary11" >
+                <div className="card custom-card school-card secondary11">
                   <div className="card-body d-flex gap-2 justify-content-between align-items-center height-120px glow-box-blue">
-                    <div>
+                    <div
+                      onClick={() => {
+                        if (dashData?.user) {
+                          navigator.clipboard.writeText(dashData?.user);
+                        }
+                        toast.success("Copied User Address to clipboard");
+                      }}
+                    >
                       <span className="d-block mb-1">User Id</span>
-                      <h6 className="mb-0 fw-semibold">{dashData.user ? `${dashData.user.slice(0, 6)}...${dashData.user.slice(-6)}` : ""}
+                      <h6 className="mb-0 fw-semibold">
+                        {dashData.user
+                          ? `${dashData.user.slice(
+                              0,
+                              6
+                            )}...${dashData.user.slice(-6)}`
+                          : ""}
                       </h6>
                     </div>
                     <div>
-                      <span className="text-primary1"><img src={id} alt="" style={{ width: "40px" }} /></span>
+                      <span className="text-primary1">
+                        <img src={id} alt="" style={{ width: "40px" }} />
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="col-sm-6 col-lg-6">
+              <div>
+                <div className="card custom-card school-card secondary11">
+                  <div className="card-body d-flex gap-2 justify-content-between align-items-center height-120px glow-box-blue">
+                    <div
+                    onClick={() => {
+                      if (dashData?.referrer) {
+                        navigator.clipboard.writeText(dashData?.referrer);
+                      }
+                      toast.success("Copied Referrer Address to clipboard");
+                    }}
+                    >
+                      <span className="d-block mb-1">Referral Id</span>
+                      <h6 className="mb-0 fw-semibold">
+                        {dashData.referrer
+                          ? `${dashData.referrer.slice(
+                              0,
+                              6
+                            )}...${dashData.referrer.slice(-6)}`
+                          : ""}
+                      </h6>
+                    </div>
+                    <div>
+                      <span className="text-primary1">
+                        <img src={sponsor} alt="" style={{ width: "40px" }} />
+                      </span>
                     </div>
                   </div>
                 </div>
@@ -558,11 +603,34 @@ function DashboardRow2() {
                 <div className="card custom-card school-card secondary11">
                   <div className="card-body d-flex gap-2 justify-content-between align-items-center height-120px glow-box-blue">
                     <div>
-                      <span className="d-block mb-1">Referral Id</span>
-                      <h6 className="mb-0 fw-semibold">{dashData.referrer ? `${dashData.referrer.slice(0, 6)}...${dashData.referrer.slice(-6)}` : ""}</h6>
+                      <span className="d-block mb-1">Id Number</span>
+                      <h6 className="mb-0 fw-semibold">
+                        {dashData.uId}
+                      </h6>
                     </div>
                     <div>
-                      <span className="text-primary1"><img src={sponsor} alt="" style={{ width: "40px" }} /></span>
+                      <span className="text-primary1">
+                        <img src={rank} alt="" style={{ width: "40px" }} />
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="col-sm-6 col-lg-6">
+              <div>
+                <div className="card custom-card school-card secondary11">
+                  <div className="card-body d-flex gap-2 justify-content-between align-items-center height-120px glow-box-blue">
+                    <div>
+                      <span className="d-block mb-1">Direct Referrer Count</span>
+                      <h6 className="mb-0 fw-semibold">
+                        {dashData.directRefferer}
+                      </h6>
+                    </div>
+                    <div>
+                      <span className="text-primary1">
+                        <img src={Ref} alt="" style={{ width: "40px" }} />
+                      </span>
                     </div>
                   </div>
                 </div>
@@ -574,10 +642,17 @@ function DashboardRow2() {
                   <div className="card-body d-flex gap-2 justify-content-between align-items-center height-120px glow-box-blue">
                     <div>
                       <span className="d-block mb-1">Single Leg</span>
-                      <h6 className="mb-0 fw-semibold">$ {dashData?.userIncome/1e18 ? dashData?.userIncome/1e18 : "0"}</h6>
+                      <h6 className="mb-0 fw-semibold">
+                        ${" "}
+                        {dashData?.userIncome / 1e18
+                          ? dashData?.userIncome / 1e18
+                          : "0"}
+                      </h6>
                     </div>
                     <div>
-                      <span className="text-primary1"><img src={Stake} alt="" style={{ width: "40px" }} /></span>
+                      <span className="text-primary1">
+                        <img src={Stake} alt="" style={{ width: "40px" }} />
+                      </span>
                     </div>
                   </div>
                 </div>
@@ -589,10 +664,21 @@ function DashboardRow2() {
                   <div className="card-body d-flex gap-2 justify-content-between align-items-center height-120px glow-box-blue">
                     <div>
                       <span className="d-block mb-1">Level Income</span>
-                      <h6 className="mb-0 fw-semibold">$ {dashData?.levelIncome/1e18 ? dashData?.levelIncome/1e18 : "0"}</h6>
+                      <h6 className="mb-0 fw-semibold">
+                        ${" "}
+                        {dashData?.levelIncome / 1e18
+                          ? dashData?.levelIncome / 1e18
+                          : "0"}
+                      </h6>
                     </div>
                     <div>
-                      <span className="text-primary1"><img src={rankReward} alt="" style={{ width: "40px" }} /></span>
+                      <span className="text-primary1">
+                        <img
+                          src={rankReward}
+                          alt=""
+                          style={{ width: "40px" }}
+                        />
+                      </span>
                     </div>
                   </div>
                 </div>
@@ -603,14 +689,28 @@ function DashboardRow2() {
                 <div className="card custom-card school-card secondary11">
                   <div className="card-body d-flex gap-2 justify-content-between align-items-center height-120px glow-box-blue">
                     <div>
-                      <span className="d-block mb-1">Weekly Income</span>
-                      <h6 className="mb-0 fw-semibold">$ {dashData?.memberIncome ? dashData?.memberIncome : "0"}</h6>
+                      <span className="d-block mb-1">Weekly Salary</span>
+                      <h6 className="mb-0 fw-semibold">
+                        ${" "}
+                        {dashData?.memberIncome ? dashData?.memberIncome : "0"}
+                      </h6>
                     </div>
                     <div>
-                      <span className="text-primary1"><img src={FundReward} alt="" style={{ width: "40px" }} /></span>
+                      <span className="text-primary1">
+                        <img
+                          src={FundReward}
+                          alt=""
+                          style={{ width: "40px" }}
+                        />
+                      </span>
                       <span
-                        className="text-info badge bg-primary-transparent secondary11"
-                        style={{ cursor: "pointer", position: "absolute" , bottom: "52px" , right: "70px" }}
+                        className="text-info badge btn btn-primary bg-primary secondary11"
+                        style={{
+                          cursor: "pointer",
+                          position: "absolute",
+                          bottom: "5px",
+                          right: "5px",
+                        }}
                         onClick={getMemberIncome}
                       >
                         Withdraw
@@ -625,11 +725,54 @@ function DashboardRow2() {
                 <div className="card custom-card school-card secondary11">
                   <div className="card-body d-flex gap-2 justify-content-between align-items-center height-120px glow-box-blue">
                     <div>
-                      <span className="d-block mb-1">Id Date</span>
-                      <h6 className="mb-0 fw-semibold">{new Date(dashData?.createdAt).toLocaleDateString()}</h6>
+                      <span className="d-block mb-1">Total Withdrawl</span>
+                      <h6 className="mb-0 fw-semibold">
+                        {/* {new Date(dashData?.createdAt).toLocaleDateString()} */}
+                      </h6>
                     </div>
                     <div>
-                      <span className="text-primary1"><img src={DateID} alt="" style={{ width: "40px" }} /></span>
+                      <span className="text-primary1">
+                        <img src={Future} alt="" style={{ width: "40px" }} />
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="col-sm-6 col-lg-6">
+              <div>
+                <div className="card custom-card school-card secondary11">
+                  <div className="card-body d-flex gap-2 justify-content-between align-items-center height-120px glow-box-blue">
+                    <div>
+                      <span className="d-block mb-1">Total Income</span>
+                      <h6 className="mb-0 fw-semibold">
+                        {/* {new Date(dashData?.createdAt).toLocaleDateString()} */}
+                        {Number(dashData?.levelIncome / 1e18 + dashData?.userIncome / 1e18) ?? "0"}
+                      </h6>
+                    </div>
+                    <div>
+                      <span className="text-primary1">
+                        <img src={Login} alt="" style={{ width: "40px" }} />
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="col-sm-6 col-lg-6">
+              <div>
+                <div className="card custom-card school-card secondary11">
+                  <div className="card-body d-flex gap-2 justify-content-between align-items-center height-120px glow-box-blue">
+                    <div>
+                      <span className="d-block mb-1">Id Date</span>
+                      <h6 className="mb-0 fw-semibold">
+                        {new Date(dashData?.createdAt).toLocaleDateString()}
+                      </h6>
+                    </div>
+                    <div>
+                      <span className="text-primary1">
+                        <img src={DateID} alt="" style={{ width: "40px" }} />
+                      </span>
                     </div>
                   </div>
                 </div>
@@ -675,7 +818,10 @@ function DashboardRow2() {
       </div> */}
 
       <div className="col-sm-12  col-md-4 col-xxl-4 ">
-        <div className=" background-transparent card custom-card glow-box-blue" style={{height: "96%"}}>
+        <div
+          className=" background-transparent card custom-card glow-box-blue"
+          style={{ height: "97%" }}
+        >
           <div className="upcoming">
             <div className="col-sm-6 col-lg-6 mt-4" style={{ width: "80%" }}>
               <div>
@@ -705,7 +851,7 @@ function DashboardRow2() {
                       Tx Hash
                     </th>
                     <th scope="col" style={{ color: "white" }}>
-                      User ID
+                      User
                     </th>
                     <th scope="col" style={{ color: "white" }}>
                       Created At
@@ -734,10 +880,12 @@ function DashboardRow2() {
                         </a>
                       </td>
                       <td style={{ color: "white" }}>
-                      {rep.user ? `${rep.user.slice(0, 6)}...${rep.user.slice(-6)}` : ""}
+                        {rep.user
+                          ? `${rep.user.slice(0, 6)}...${rep.user.slice(-6)}`
+                          : ""}
                       </td>
                       <td style={{ color: "white" }}>
-                      {new Date(rep?.createdAt).toLocaleString()}
+                        {new Date(rep?.createdAt).toLocaleString()}
                       </td>
                       {/* <td style={{ color: "rgb(0, 119, 181)" }}>
                         {rep.matrix}
@@ -765,10 +913,12 @@ function DashboardRow2() {
             <nav aria-label="Page navigation" className="pagination-style-2">
               <ul className="pagination mb-0 flex-wrap">
                 <li
-                  className={`page-item ${matrixIncome?.length === 0? "disabled":""}`}
+                  className={`page-item ${
+                    matrixIncome?.length === 0 ? "disabled" : ""
+                  }`}
                 >
                   <Link className="page-link text-white bg-transparent" to="#">
-                    Latest Direct Referrer 
+                    Latest Direct Referrer
                   </Link>
                 </li>
               </ul>

@@ -36,53 +36,58 @@ function StakeRow() {
   return (
     <div className="row">
       <div className="col-xl-12">
-        <div className="card custom-card overflow-hidden">
+        <div className="card custom-card overflow-hidden secondary11">
           <div className="card-header justify-content-between">
-            <div className="card-title">Team Data</div>
+            <div className="card-title">Team Direct</div>
           </div>
 
           <div className="card-body active-tab">
             <div className="table-responsive">
               <table className="table table-bordered text-nowrap mb-0">
-                <thead>
+              <thead>
                   <tr>
                     <th scope="col">S.NO</th>
-                    <th scope="col">User ID</th>
                     <th scope="col">User</th>
-                    <th scope="col">Level</th>
-                    {/* <th scope="col">User's Level</th> */}
-                    <th scope="col">Time Stamp</th>
-                    <th scope="col">Status</th>
+                    <th scope="col">Transaction Hash</th>
+                    <th scope="col">User Id</th>
+                    <th scope="col">Created At</th>
                   </tr>
                 </thead>
                 <tbody>
-                  {directUser?.map((item, index) => {
-                    return (
-                      <tr key={item._id}>
+                  {directUser?.length > 0 &&
+                    directUser.map((item, index) => (
+                      <tr key={item?._id || index}>
                         <td>{index + 1}</td>
-                        <td>{item.userId}</td>
-                        <td>
-                          <div className="d-flex">
-                            <div className="flex-1 ms-2">
-                              <p className="mb-0 fs-14"></p>
-                              <a href="#">
-                                {item.user?.slice(0, 6)}...
-                                {item.user?.slice(-6)}
-                              </a>
-                            </div>
-                          </div>
+                        <td className="">
+                          {item?.user
+                            ? `${item.user.slice(0, 6)}...${item.user.slice(
+                                -6
+                              )}`
+                            : "N/A"}
                         </td>
-                        <td>{item.level}</td>
-                        {/* <td>{item.nowLevel}</td> */}
-                        <td>{new Date(item.timestamp).toLocaleString()}</td>
                         <td>
-                          <span className="badge bg-success-transparent">
-                            success
-                          </span>
+                          {item?.txHash ? (
+                            <a
+                              href={`https://polygonscan.com/tx/${item.txHash}`}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              style={{ color: "rgb(0, 166, 255)" }}
+                            >
+                              {item.txHash.slice(0, 6)}...
+                              {item.txHash.slice(-6)}
+                            </a>
+                          ) : (
+                            "N/A"
+                          )}
+                        </td>
+                        <td>{item?.userId}</td>
+                        <td>
+                          {item.timestamp
+                            ? new Date(item.timestamp).toLocaleString()
+                            : "N/A"}
                         </td>
                       </tr>
-                    );
-                  })}
+                    ))}
                 </tbody>
               </table>
             </div>
@@ -91,7 +96,7 @@ function StakeRow() {
           <div className="card-footer">
             <div className="d-flex align-items-center">
               <div>
-                Showing {directUser?.length || 0} Team Data
+                Showing {directUser?.length || 0} Team Direct
                 <i className="bi bi-arrow-right ms-2 fw-semibold"></i>
               </div>
               {/* <div className="ms-auto">

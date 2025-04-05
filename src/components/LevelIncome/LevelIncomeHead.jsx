@@ -7,18 +7,18 @@ function LevelIncomeHead() {
       style={{ marginTop: "90px" }}
     >
       <div>
-        <nav>
+        {/* <nav>
           <ol className="breadcrumb mb-1">
             <li className="breadcrumb-item">
               <a href="#"> Page </a>
             </li>
             <li className="breadcrumb-item active" aria-current="page">
-              Matrix Income
+              Re-entry Report
             </li>
           </ol>
-        </nav>
+        </nav> */}
         <h1 className="page-title fw-medium fs-18 mb-0 text-light">
-          Matrix Income
+        Re-entry Report
         </h1>
       </div>
     </div>

@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import {
   setDashboardData,
+  setProfileUrll,
   setTokenData,
   setWalletDetails,
 } from "../Redux/Slice";
@@ -14,13 +15,16 @@ import { GiHamburgerMenu } from "react-icons/gi";
 import { Avatar } from "antd";
 import { AntDesignOutlined } from "@ant-design/icons";
 import logo from "/favi icon (1).png"
+import axios from "axios";
+import { apiUrl } from "./Config";
 
 function Header() {
   const dispatch = useDispatch();
   const chainId = useChainId();
   // const address = "0x70961132c3C0EAffA3651A578DA4c7b0e958D3cB";
   // const { address } = useAccount();
-  const { wallet } = useSelector((state) => state.bitgold);
+  const { wallet, profileUrll , stateChange } = useSelector((state) => state.bitgold);
+  // console.log(profileUrll, "profileUrl");
   const { walletAddress } = wallet;
   const address = walletAddress;
   const navigate = useNavigate();
@@ -106,6 +110,23 @@ function Header() {
       });
   }, [address]);
 
+  // const [profileData,setProfileData] = useState({})
+
+  const getProfileData = async ()=>{
+    const res = await axios.get(apiUrl + "getUserProfile",{
+      params:{
+        address: address
+      }
+    })
+    console.log(res?.data?.data, "rescc");
+    // setProfileData(res?.data?.data)
+    dispatch(setProfileUrll(res?.data?.data))
+  }
+
+  useEffect(()=>{
+    getProfileData()
+  },[address,stateChange])
+
   return (
     <header
       className="app-header header-ll sticky bg-crypto-balance"
@@ -136,7 +157,7 @@ function Header() {
           </div>
           <Avatar
             size={{ xs: 40, sm: 40, md: 50, lg: 50, xl: 60, xxl: 70 }}
-            src={logo}
+            src={profileUrll?.profile?.profileUrl}
           />
           {/* <div className=" d-flex align-items-center">
             <span className="fw-bold head-welcome" style={{ fontSize: "22px" }}>

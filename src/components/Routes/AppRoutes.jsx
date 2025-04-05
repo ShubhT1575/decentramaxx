@@ -10,7 +10,7 @@ import Header from "../Header";
 // import Footer from "../Footer";
 import Sidebar from "../Sidebar";
 import DashboardMain from "../Dashboard/DashboardMain";
-// import StakeMain from "../Stake/StakeMain";
+import StakeMain from "../Stake/StakeMain";
 // import IncomeMain from "../IncomeGraph/IncomeMain";
 // import WithdrawMain from "../Withdrawal/WithdrawMain";
 // import FormMAin from "../Form/FormMAin";
@@ -23,12 +23,12 @@ import FortuneMain from "../FortuneIncome/FortuneMain";
 import SignIn from "../SignIn";
 import SignUp from "../SignUp";
 // import RankingMain from "../GlobalRanking/RankingMain";
-// import LapseMain from "../Dashboard/LapseWallet/LapseMain";
+import LapseMain from "../Dashboard/LapseWallet/LapseMain";
 // import Support from "../SupportSystem/Support";
 import Home from "../Landing/Home";
 // import LearnMore from "../Landing/LearnMore";
 import Terms from "../Terms";
-// import AutoMain from "../AutoGlobal/AutoMain";
+import AutoMain from "../AutoGlobal/AutoMain";
 import RankMain from "../RankReward/RankMain";
 // import WithdrawMain from "../Withdrawal /WithdrawMain";
 // import MatrixTree from "../MatrixTree/MatrixTree";
@@ -38,9 +38,11 @@ import RankMain from "../RankReward/RankMain";
 // import MatrixTreeUw4 from "../MatrixTreeUw4/MatrixTreeUw4";
 import MatrixTreeUw5 from "../MatrixTreeUw5/MatrixTreeUw5";
 import InteractiveVisualization from "../InteractiveVisualization";
+// import LevelIncome from "../LevelIncome/LevelIncome";
 // import MatrixTreeAll from "../MatrixTreeAll/MatrixTreeAll";
 // import MAtrixTreeUw6 from "../MatrixTreeUw6/MAtrixTreeUw6"; 
-// import LevelIncome from "../LevelIncome/LevelIncome";
+import LevelIncome from "../LevelIncome/LevelIncome";
+import WithdrawReport from "../WithdrawReport/AutoMain";
 
 
 const Layout = ({ children }) => {
@@ -74,7 +76,8 @@ const AppRoutes = () => {
           {/* <Route path="/learnmore" element={<LearnMore />} /> */}
           <Route path="/SignUp" element={<SignUp />} />
           <Route path="/Dashboard" element={<DashboardMain />} />
-          {/* <Route path="/Level" element={<StakeMain />} /> */}
+          <Route path="/Level" element={<StakeMain />} />
+          <Route path="/WithdrawReport" element={<WithdrawReport />} />
           {/* <Route path="/IncomeGraph" element={<IncomeMain />} />  */}
           {/* <Route path="/Stake" element={<StakeMain />} /> */}
           {/* <Route path="/Form" element={<FormMAin />} /> */}
@@ -85,7 +88,7 @@ const AppRoutes = () => {
           <Route path="/Profile" element={<ProfileMain />} />
           {/* <Route path="/Support" element={<Support />} /> */}
           {/* <Route path="/Matrix" element={<MatrixMain />} /> */}
-          {/* <Route path="/LevelIncome" element={<LevelIncome />} /> */}
+          <Route path="/LevelIncome" element={<LevelIncome />} />
           <Route path="/MatrixTreeUw5" element={<MatrixTreeUw5 />} />
           {/* <Route path="/MatrixTreeUw6" element={<MAtrixTreeUw6 />} />
           <Route path="/MatrixTreeUw4" element={<MatrixTreeUw4 />} />
@@ -95,7 +98,7 @@ const AppRoutes = () => {
           <Route path="/MatrixTreeUw" element={<MatrixTreeUw />} /> */}
           {/* <Route path="/MatrixTreeAll" element={<MatrixTreeAll />} /> */}
           {/* <Route path="/LapseWallet" element={<LapseMain />} /> */}
-          {/* <Route path="/AutoGlobal" element={<AutoMain />} /> */}
+          <Route path="/AutoGlobal" element={<AutoMain />} />
           <Route path="/RankReward" element={<RankMain />} />
           {/* <Route path="/Withdraw" element={<WithdrawMain />} /> */}
           <Route path="/Terms" element={<Terms />} />

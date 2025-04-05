@@ -82,9 +82,9 @@ const paginatedTable2 = transaction
   return (
     <div className="row">
       <div className="col-xl-12">
-        <div className="card custom-card overflow-hidden new-card">
+        <div className="card custom-card overflow-hidden new-card secondary11">
           <div className="card-header justify-content-between color-light">
-            <div className="card-title">Package History<strong>$5</strong></div>
+            <div className="card-title">Weekly Salary Report</div>
           </div>
 
           <div className="card-body active-tab">
@@ -145,7 +145,7 @@ const paginatedTable2 = transaction
           <div className="card-footer pagination-body">
             <div className="d-flex align-items-center justify-content-between color-light">
               <div>
-                Showing {paginatedTable1?.length || 0} Package History
+                Showing {paginatedTable1?.length || 0} Weekly Salary Report
                 <i className="bi bi-arrow-right ms-2 fw-semibold"></i>
               </div>
               <div>

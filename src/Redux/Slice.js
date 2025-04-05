@@ -16,9 +16,10 @@ const initialState = {
     tokenData:{
 
     },
-    profileUrl:{
+    profileUrll: {
 
-    }
+    },
+    stateChange:""
 }
 
 // console.log(initialState,"0x23db7970e88518e93fbfd36Df9784fC7f518a287")
@@ -39,10 +40,15 @@ export const counterSlice = createSlice({
       setTokenData: (state, action) => {
         state.tokenData = action.payload;
       },
-      // set
+      setProfileUrll: (state,action) => {
+        state.profileUrll = action.payload;
+      },
+      setStateChange: (state, action) => {
+        state.stateChange = action.payload;
+      }
   },
 })
 
-export const {  setWalletDetails,setDashboardData, setTokenData } = counterSlice.actions
+export const {  setWalletDetails,setDashboardData, setTokenData ,setProfileUrll,setStateChange } = counterSlice.actions
 
 export default counterSlice.reducer

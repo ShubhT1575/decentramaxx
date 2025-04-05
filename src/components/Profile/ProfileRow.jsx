@@ -1,13 +1,18 @@
 import { Button, Flex, Input, Modal } from "antd";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { apiUrl } from "../Config";
 import toast from "react-hot-toast";
+import {
+  setProfileUrll,
+  setStateChange
+} from "../../Redux/Slice";
 
 function ProfileRow() {
-  const {dashboardData } = useSelector((state) => state.bitgold);
-  // const dispatch = useDispatch();
+  const {profileUrll,dashboardData } = useSelector((state) => state.bitgold);
+  console.log(profileUrll, "profileUrlllll");
+  const dispatch = useDispatch();
   const {user} = dashboardData;
   // console.log(user, "user");
     const [isOpen,setIsOpen] = useState(false);
@@ -97,28 +102,29 @@ function ProfileRow() {
         }
         console.log(response, "response");
         ress = response?.data?.data;
+        dispatch(setStateChange(ress))
 
       }catch (error) {
         toast.error("Error while updating profile")
       }
     }
 
-    const [profileData,setProfileData] = useState({})
+    // const [profileData,setProfileData] = useState({})
 
-    const getProfileData = async ()=>{
-      const res = await axios.get(apiUrl + "getUserProfile",{
-        params:{
-          address: user
-        }
-      })
-      console.log(res?.data?.data, "rescc");
-      setProfileData(res?.data?.data)
+    // const getProfileData = async ()=>{
+    //   const res = await axios.get(apiUrl + "getUserProfile",{
+    //     params:{
+    //       address: user
+    //     }
+    //   })
+    //   console.log(res?.data?.data, "rescc");
+    //   setProfileData(res?.data?.data)
+    //   dispatch(setProfileUrll(res?.data?.data?.profileUrl))
+    // }
 
-    }
-
-    useEffect(()=>{
-      getProfileData()
-    },[user])
+    // useEffect(()=>{
+    //   getProfileData()
+    // },[user])
   return (
     <div className="container-fluid">
       <div className="row">
@@ -145,11 +151,11 @@ function ProfileRow() {
                       <div className="text-center">
                         <span className="avatar avatar-xxl avatar-rounded online mb-3">
                           <img
-                            src={profileData?.profileUrl}
+                            src={profileUrll?.profile?.profileUrl}
                             alt="Profile"
                           />
                         </span>
-                        <h5 className="fw-semibold mb-1">{profileData?.name ?? ""}</h5>
+                        <h5 className="fw-semibold mb-1">{profileUrll?.profile?.name ?? ""}</h5>
                         {/* <span className="d-block fw-medium text-muted mb-2">
                           Software Development Manager
                         </span>
@@ -193,7 +199,7 @@ function ProfileRow() {
                           <div>
                             <span className="fw-medium me-2">Today Income :</span>
                             <span className="text-muted">
-                              spencer.robin22@example.com
+                              $ {profileUrll?.todayIncome/1e18}
                             </span>
                           </div>
                         </li>
@@ -201,7 +207,7 @@ function ProfileRow() {
                           <div>
                             <span className="fw-medium me-2">Weekly Income :</span>
                             <span className="text-muted">
-                              +1 (222) 111 - 57840
+                            $ {profileUrll?.weeklyIncome/1e18}
                             </span>
                           </div>
                         </li>
@@ -209,7 +215,7 @@ function ProfileRow() {
                           <div>
                             <span className="fw-medium me-2">Total Income :</span>
                             <span className="text-muted">
-                              +1 (222) 111 - 57840
+                             $ {"0"}
                             </span>
                           </div>
                         </li>

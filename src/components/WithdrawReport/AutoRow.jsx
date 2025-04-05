@@ -24,7 +24,7 @@ function CoreBody() {
 
   const getCoreIncome = async () => {
     try {
-      const response = await axios.get(apiUrl + "/directReferrer", {
+      const response = await axios.get(apiUrl + "/directReferrr", {
         params: {
           address: address,
         },
@@ -44,7 +44,7 @@ function CoreBody() {
       <div className="col-xl-12">
         <div className="card custom-card overflow-hidden secondary11">
           <div className="card-header justify-content-between">
-            <div className="card-title">My Direct</div>
+            <div className="card-title">Withdraw Report</div>
           </div>
 
           <div className="card-body active-tab">
@@ -106,7 +106,7 @@ function CoreBody() {
 
           <div className="card-footer pagination-body">
             <div className="d-flex align-items-center justify-content-between">
-              <div>Showing {directUser?.length || 0} Direct </div>
+              <div>Showing {directUser?.length || 0} Withdraw Report </div>
               <div>
                 <nav
                   aria-label="Page navigation"

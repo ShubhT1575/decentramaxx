@@ -2,10 +2,10 @@ import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { UserExist } from "./web3";
 import { GiProfit } from "react-icons/gi";
-import { TbBinaryTree } from "react-icons/tb";
+import { TbBinaryTree, TbBinaryTree2 } from "react-icons/tb";
 import { MdKeyboardArrowDown } from "react-icons/md";
 import { RxCross1, RxCross2 } from "react-icons/rx";
-import { RiGlobalFill } from "react-icons/ri";
+import { RiGlobalFill, RiTeamFill } from "react-icons/ri";
 import { GiReceiveMoney } from "react-icons/gi";
 import LOGO from "../assets/logo/Bitgold yellow.png";
 import { useSelector } from "react-redux";
@@ -13,11 +13,12 @@ import { getOwner } from "./web3";
 import { MdOutlineSupportAgent } from "react-icons/md";
 import { useAccount } from "wagmi";
 import economy from "../../src/assets/img/economy.png";
-import { FaSackDollar } from "react-icons/fa6";
+import { FaPeopleRoof, FaSackDollar } from "react-icons/fa6";
 import { RiFundsBoxLine } from "react-icons/ri";
 import { RiWallet3Line } from "react-icons/ri";
 import { LuPackageCheck } from "react-icons/lu";
 import "../../src/style/sidebar.css";
+import { BiMoneyWithdraw } from "react-icons/bi";
 
 function Sidebar() {
   const { wallet } = useSelector((state) => state.bitgold);
@@ -300,7 +301,7 @@ function Sidebar() {
                 className="side-menu__item"
                 onClick={closeSidebar}
               >
-                <i className="ri-wallet-3-fill side-menu__icon text-light"></i>
+                <TbBinaryTree2 className="side-menu__icon text-light"/>
                 <span className="side-menu__label text-light">
                   Single Leg
                 </span>
@@ -312,9 +313,21 @@ function Sidebar() {
                   className="side-menu__item"
                   onClick={closeSidebar}
                 >
-                  <i className="ri-wallet-3-fill side-menu__icon text-light"></i>
+                  <i className="fa-solid fa-coins side-menu__icon text-light"></i>
                   <span className="side-menu__label text-light">
                   Single Leg Report
+                  </span>
+                </Link>
+              </li>
+              <li className="slide has-sub">
+                <Link
+                  to="/LevelIncome"
+                  className="side-menu__item"
+                  onClick={closeSidebar}
+                >
+                  <i className="fa-solid fa-arrows-spin side-menu__icon text-light"></i>
+                  <span className="side-menu__label text-light">
+                    Re-Entry Report
                   </span>
                 </Link>
               </li>
@@ -324,7 +337,7 @@ function Sidebar() {
                   className="side-menu__item"
                   onClick={closeSidebar}
                 >
-                  <i className="ri-wallet-3-fill side-menu__icon text-light"></i>
+                  <i className="fa-solid fa-money-bill-trend-up side-menu__icon text-light"></i>
                   <span className="side-menu__label text-light">
                     Level Income
                   </span>
@@ -332,11 +345,60 @@ function Sidebar() {
               </li>
               <li className="slide has-sub">
                 <Link
+                  to="/FortuneIncome"
+                  className="side-menu__item"
+                  onClick={closeSidebar}
+                >
+                  <GiReceiveMoney className="side-menu__icon text-light" />
+                  <span className="side-menu__label text-light">
+                    Weekly Salary
+                  </span>
+                </Link>
+              </li>
+              <li className="slide has-sub">
+                <Link
+                  to="/AutoGlobal"
+                  className="side-menu__item"
+                  onClick={closeSidebar}
+                >
+                  <RiTeamFill className="side-menu__icon text-light" />
+                  <span className="side-menu__label text-light">
+                    My Direct
+                  </span>
+                </Link>
+              </li>
+              <li className="slide has-sub">
+                <Link
+                  to="/Level"
+                  className="side-menu__item"
+                  onClick={closeSidebar}
+                >
+                  <FaPeopleRoof  className="side-menu__icon text-light" />
+                  <span className="side-menu__label text-light">
+                    Team Direct
+                  </span>
+                </Link>
+              </li>
+              <li className="slide has-sub">
+                <Link
+                  to="/WithdrawReport"
+                  className="side-menu__item"
+                  onClick={closeSidebar}
+                >
+                  <BiMoneyWithdraw className="side-menu__icon text-light" />
+                  <span className="side-menu__label text-light">
+                    Withdraw Report
+                  </span>
+                </Link>
+              </li>
+             
+              <li className="slide has-sub">
+                <Link
                   to="/Profile"
                   className="side-menu__item"
                   onClick={closeSidebar}
                 >
-                  <i className="ri-wallet-3-fill side-menu__icon text-light"></i>
+                  <i className="fa-solid fa-user-tie side-menu__icon text-light"></i>
                   <span className="side-menu__label text-light">
                     Profile 
                   </span>

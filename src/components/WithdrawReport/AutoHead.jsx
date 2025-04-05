@@ -8,7 +8,7 @@ function FortuneHead() {
     >
       <div>
         <h1 className="page-title fw-medium fs-18 mb-0 text-light">
-          My Direct
+          Withdraw Report
         </h1>
       </div>
     </div>

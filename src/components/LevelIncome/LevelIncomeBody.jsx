@@ -7,7 +7,11 @@ import { useSelector } from "react-redux";
 function LevelIncomeBody() {
 
   const [directUser, setDirectUser] = useState([]);
-  const { address } = useAccount();
+  const { wallet } = useSelector((state) => state.bitgold);
+  const { walletAddress, isConnected } = wallet;
+  const address = walletAddress;
+
+  // console.log(address,"Dsawfwe")
   // console.log(address, 'saadnhufhuh')
   const itemsPerPage = 8; // Change this to modify items per page
   const [currentPage, setCurrentPage] = useState(1);
@@ -33,21 +37,20 @@ function LevelIncomeBody() {
 
   const getMatrixIncome = async () => {
     try {
-      const response = await axios.get(apiUrl + "/matrixincome", {
+      const response = await axios.get(apiUrl + "/reEntryReport", {
         params: {
-          userId: address,
-          matrix: 1,
+          address: address,
         },
       });
-      if (response?.status === 200) {
-      console.log(response.data.user_income, "repp")
+      // if (response?.status === 200) {
+      // console.log(response.data.user_income, "repp")
 
-        setMatrixIncome(response?.data?.user_income || [])
+        setMatrixIncome(response?.data?.ReEntryData || [])
         console.log(matrixIncome,"Matrix")
         // setTotalPages(response?.data?.totalPages);
-      } else {
-        setDirectUser([]);
-      }
+      // } else {
+      //   setDirectUser([]);
+      // }
     } catch (error) {
       console.error("Error fetching user data:", error.message);
     }
@@ -59,9 +62,9 @@ function LevelIncomeBody() {
   return (
     <div className="row">
       <div className="col-xl-12">
-        <div className="card custom-card overflow-hidden">
+        <div className="card custom-card overflow-hidden secondary11">
           <div className="card-header justify-content-between">
-            <div className="card-title">Matrix Income Data</div>
+            <div className="card-title">Re-entry Report</div>
           </div>
 
           <div className="card-body active-tab">
@@ -69,11 +72,11 @@ function LevelIncomeBody() {
               <table className="table table-bordered text-nowrap mb-0">
                 <thead>
                   <tr>
-                    <th scope="col">Referrer</th>
+                    <th scope="col">User</th>
                     <th scope="col">Matrix</th>
                     {/* <th scope="col">Sender</th> */}
-                    <th scope="col">Slot Id</th>
-                    <th scope="col">Amount</th>
+                    {/* <th scope="col">Slot Id</th> */}
+                    <th scope="col">level</th>
                     {/* <th scope="col">Level</th>
                     <th scope="col">Total Reward</th>
                     <th scope="col">Status</th> */}
@@ -83,13 +86,13 @@ function LevelIncomeBody() {
                   {paginatedLevels?.map((item, index) => {
                     return (
                       <tr key={index}>
-                        <td className="text-info">{`${item.user.slice(0, 7)}.......${item.user.slice(-5)}`}
+                        <td className="text-info">{`${item?.user.slice(0, 7)}.......${item?.user.slice(-5)}`}
                         </td>
-                        <td className="text-warning">{item?.matrix}</td>
+                        {/* <td className="text-warning">{item?.matrix}</td>
                         <td className="text-light">
                             {item.slotId}
-                        </td>
-                        <td className="text-danger">$ {item.amount/1e18}</td>
+                        </td> */}
+                        <td className="text-danger">$ {item?.level}</td>
                         {/* <td>{item.level}</td> */}
                         {/* <td>{item.totalReward}</td> */}
                         {/* <td>
@@ -113,7 +116,7 @@ function LevelIncomeBody() {
           <div className="card-footer pagination-body">
             <div className="d-flex align-items-center justify-content-between">
               <div>
-                Showing {matrixIncome?.length || 0} Matrix Income
+                Showing {matrixIncome?.length || 0} Re-Entry Report
                 <i className="bi bi-arrow-right ms-2 fw-semibold"></i>
               </div>
               <div>
