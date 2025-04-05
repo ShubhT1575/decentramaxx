@@ -243,6 +243,7 @@
     .menu-nav {
         flex-wrap: wrap;
         justify-content: space-between;
+        padding: 0 0 !important;
     }
     .header-action {
         margin-right: 40px;
@@ -320,9 +321,7 @@
     .faq-wrap .accordion-body {
         padding: 0px 30px 60px;
     }
-    .faq-wrap .accordion-button::after {
-        right: 30px;
-    }
+   
     .download-content {
         text-align: center;
     }
@@ -498,9 +497,7 @@
     .faq-wrap .accordion-button {
         font-size: 22px;
     }
-    .faq-wrap .accordion-button::after {
-        top: 35px;
-    }
+   
     .download-img img:nth-child(2) {
         right: 3%;
     }

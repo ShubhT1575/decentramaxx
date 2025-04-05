@@ -6,150 +6,147 @@ import { apiUrl } from "../Config";
 import toast from "react-hot-toast";
 
 function ProfileRow() {
-  const {dashboardData } = useSelector((state) => state.bitgold);
+  const { dashboardData } = useSelector((state) => state.bitgold);
   // const dispatch = useDispatch();
-  const {user} = dashboardData;
+  const { user } = dashboardData;
   // console.log(user, "user");
-    const [isOpen,setIsOpen] = useState(false);
-      const [userInput,setUserInput] = useState("")
-      const [userDetails,setUserDetails] = useState("")
+  const [isOpen, setIsOpen] = useState(false);
+  const [userInput, setUserInput] = useState("");
+  const [userDetails, setUserDetails] = useState("");
 
-   const handleClick = () =>{
-      if(isOpen){
-        setIsOpen(false)
-      }else{
-        setIsOpen(true)
-      }
+  const handleClick = () => {
+    if (isOpen) {
+      setIsOpen(false);
+    } else {
+      setIsOpen(true);
     }
-  
-    const [open, setOpen] = useState(false);
-    const [loading, setLoading] = useState(true);
-  
-    const showLoading = () => {
-      setOpen(true);
-      setLoading(true);
-  
-      // Simple loading mock. You should add cleanup logic in real world.
-      setTimeout(() => {
-        setLoading(false);
-      }, 100);
-    };
-  
-    const modalClose = ()=>{
-  
-      // setLoading(true);
+  };
+
+  const [open, setOpen] = useState(false);
+  const [loading, setLoading] = useState(true);
+
+  const showLoading = () => {
+    setOpen(true);
+    setLoading(true);
+
+    // Simple loading mock. You should add cleanup logic in real world.
+    setTimeout(() => {
       setLoading(false);
-      setOpen(false);
-  
-      // Simple loading mock. You should add cleanup logic in real world.
-      // setTimeout(() => {
-      //   toast.success("We will contact you soon !!");
-      // }, 2000);
-    }
+    }, 100);
+  };
 
-    const [formData, setFormData] = useState({
-      name:"",
-      profile:""
-    })
+  const modalClose = () => {
+    // setLoading(true);
+    setLoading(false);
+    setOpen(false);
 
-    const [profileUrl,setProfileUrl] = useState("")
-    const [inputValue,setInputValue] = useState("")
+    // Simple loading mock. You should add cleanup logic in real world.
+    // setTimeout(() => {
+    //   toast.success("We will contact you soon !!");
+    // }, 2000);
+  };
 
-    const handleFileChange = async (e) => {
-      try {
-        let resume = e.target.files[0];
-        let resumeFile = new FormData();
-    
-        resumeFile.append('file', resume);
-        resumeFile.append('upload_preset', 'decentramax');
-    
-        console.log(resumeFile, "resume");
-    
-        let res = await axios.post(
-          'https://api.cloudinary.com/v1_1/dqyws18nz/image/upload',
-          resumeFile,
-          {
-            headers: {
-              'Content-Type': 'multipart/form-data',
-            },
-          }
-        );
-    
-        let url = res.data.secure_url;
-        console.log(url, "xxyxx");
-        setProfileUrl(url);
-        
-      } catch (error) {
-        console.error("Error uploading file:", error);
-      }
-    };
-    // console.log(profileUrl,inputValue, "profileUrl");
-    let ress;
-    const handleUploadProfile = async ()=>{
-      try {
-        const response = await axios.put(apiUrl + "updateUserProfile", {
-          address: user,
-          profileUrl: profileUrl,
-          name: inputValue
-        })
-        if(response){
-          modalClose();
+  const [formData, setFormData] = useState({
+    name: "",
+    profile: "",
+  });
+
+  const [profileUrl, setProfileUrl] = useState("");
+  const [inputValue, setInputValue] = useState("");
+
+  const handleFileChange = async (e) => {
+    try {
+      let resume = e.target.files[0];
+      let resumeFile = new FormData();
+
+      resumeFile.append("file", resume);
+      resumeFile.append("upload_preset", "decentramax");
+
+      console.log(resumeFile, "resume");
+
+      let res = await axios.post(
+        "https://api.cloudinary.com/v1_1/dqyws18nz/image/upload",
+        resumeFile,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
         }
-        console.log(response, "response");
-        ress = response?.data?.data;
+      );
 
-      }catch (error) {
-        toast.error("Error while updating profile")
+      let url = res.data.secure_url;
+      console.log(url, "xxyxx");
+      setProfileUrl(url);
+    } catch (error) {
+      console.error("Error uploading file:", error);
+    }
+  };
+  // console.log(profileUrl,inputValue, "profileUrl");
+  let ress;
+  const handleUploadProfile = async () => {
+    try {
+      const response = await axios.put(apiUrl + "updateUserProfile", {
+        address: user,
+        profileUrl: profileUrl,
+        name: inputValue,
+      });
+      if (response) {
+        modalClose();
       }
+      console.log(response, "response");
+      ress = response?.data?.data;
+    } catch (error) {
+      toast.error("Error while updating profile");
     }
+  };
 
-    const [profileData,setProfileData] = useState({})
+  const [profileData, setProfileData] = useState({});
 
-    const getProfileData = async ()=>{
-      const res = await axios.get(apiUrl + "getUserProfile",{
-        params:{
-          address: user
-        }
-      })
-      console.log(res?.data?.data, "rescc");
-      setProfileData(res?.data?.data)
+  const getProfileData = async () => {
+    const res = await axios.get(apiUrl + "getUserProfile", {
+      params: {
+        address: user,
+      },
+    });
+    console.log(res?.data?.data, "rescc");
+    setProfileData(res?.data?.data);
+  };
 
-    }
-
-    useEffect(()=>{
-      getProfileData()
-    },[user])
+  useEffect(() => {
+    getProfileData();
+  }, [user]);
   return (
     <div className="container-fluid">
       <div className="row">
         <div className="col-xl-12">
           <div className="card custom-card profile-card secondary11">
-            
             <div className="card-body pb-0 position-relative">
-                <div className="btn-group align-self-start mb-3" style={{position: "absolute",right: "0px"}}>
-                      <button
-                        type="button"
-                        className="btn btn-success-ghost btn-wave"
-                        onClick={showLoading}
-                      >
-                        Edit Profile
-                      </button>
-                    </div>
+              <div
+                className="btn-group align-self-start mb-3"
+                style={{ position: "absolute", right: "0px" }}
+              >
+                <button
+                  type="button"
+                  className="btn btn-success-ghost btn-wave"
+                  onClick={showLoading}
+                >
+                  Edit Profile
+                </button>
+              </div>
               <div className="row profile-content d-flex justify-content-center align-items-center">
                 <div className="col-xl-3">
                   <div
                     className="card custom-card overflow-hidden border"
-                    style={{ height: "100%" , marginTop: "105px"}}
+                    style={{ height: "100%", marginTop: "105px" }}
                   >
                     <div className="card-body border-bottom border-block-end-dashed">
                       <div className="text-center">
                         <span className="avatar avatar-xxl avatar-rounded online mb-3">
-                          <img
-                            src={profileData?.profileUrl}
-                            alt="Profile"
-                          />
+                          <img src={profileData?.profileUrl} alt="Profile" />
                         </span>
-                        <h5 className="fw-semibold mb-1">{profileData?.name ?? ""}</h5>
+                        <h5 className="fw-semibold mb-1">
+                          {profileData?.name ?? ""}
+                        </h5>
                         {/* <span className="d-block fw-medium text-muted mb-2">
                           Software Development Manager
                         </span>
@@ -191,7 +188,9 @@ function ProfileRow() {
                         </li> */}
                         <li className="list-group-item pt-2 border-0">
                           <div>
-                            <span className="fw-medium me-2">Today Income :</span>
+                            <span className="fw-medium me-2">
+                              Today Income :
+                            </span>
                             <span className="text-muted">
                               spencer.robin22@example.com
                             </span>
@@ -199,7 +198,9 @@ function ProfileRow() {
                         </li>
                         <li className="list-group-item pt-2 border-0">
                           <div>
-                            <span className="fw-medium me-2">Weekly Income :</span>
+                            <span className="fw-medium me-2">
+                              Weekly Income :
+                            </span>
                             <span className="text-muted">
                               +1 (222) 111 - 57840
                             </span>
@@ -207,7 +208,9 @@ function ProfileRow() {
                         </li>
                         <li className="list-group-item pt-2 border-0">
                           <div>
-                            <span className="fw-medium me-2">Total Income :</span>
+                            <span className="fw-medium me-2">
+                              Total Income :
+                            </span>
                             <span className="text-muted">
                               +1 (222) 111 - 57840
                             </span>
@@ -217,7 +220,6 @@ function ProfileRow() {
                     </div>
                   </div>
                 </div>
-              
               </div>
             </div>
           </div>
@@ -234,10 +236,31 @@ function ProfileRow() {
         open={open}
         onCancel={() => setOpen(false)}
       >
-        <Flex style={{width: "100%" , marginBottom: "10px" , flexDirection:"column",gap: "20px"}} justify={"center"} align={"center"}>
-        <Input type="file" placeholder="Name" accept=".png,.jpeg,.jpg" onChange={handleFileChange} style={{marginBottom: "0px"}}/>
-        <Input type="text" placeholder="Name" value={inputValue} onChange={(e)=>setInputValue(e.target.value)}  style={{marginBottom: "0px"}}/>
-        {/* <Button shape="circle" icon={<SearchOutlined />} onClick={getDashboard}/> */}
+        <Flex
+          style={{
+            width: "100%",
+            marginBottom: "10px",
+            flexDirection: "column",
+            gap: "20px",
+          }}
+          justify={"center"}
+          align={"center"}
+        >
+          <Input
+            type="file"
+            placeholder="Name"
+            accept=".png,.jpeg,.jpg"
+            onChange={handleFileChange}
+            style={{ marginBottom: "0px" }}
+          />
+          <Input
+            type="text"
+            placeholder="Name"
+            value={inputValue}
+            onChange={(e) => setInputValue(e.target.value)}
+            style={{ marginBottom: "0px" }}
+          />
+          {/* <Button shape="circle" icon={<SearchOutlined />} onClick={getDashboard}/> */}
         </Flex>
         {/* <Input type="email" placeholder="Email" style={{marginBottom: "10px"}}/>
         <Input type="tel" placeholder="Mobile No." style={{marginBottom: "10px"}}/>

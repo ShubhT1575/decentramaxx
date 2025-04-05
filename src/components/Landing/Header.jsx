@@ -105,11 +105,11 @@ export default function Header() {
               <div className="col-12">
                 <div className="menu-wrap">
                   <nav className="menu-nav">
-                    <div className="logo">
+                    <div className="logo w-50">
                       <a href="#">
                         <img
                           src={Logo}
-                          style={{ height: "20px" }}
+                          style={{ height: "30px" }}
                           alt="Logo"
                         />
                         {/* <h2>CoopGenix</h2> */}

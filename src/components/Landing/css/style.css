@@ -130,7 +130,7 @@ a:hover,
 .footer -menu li a:hover {
   /* color: var(--tg-primary-color); */
   /* background: linear-gradient(135deg, #ff00ff, #f8f8f8); */
-  color: #ff00ff !important;
+  /* color: #ff00ff !important; */
   background-size: 400% 400%;
   -webkit-background-clip: text;
   color: transparent;
@@ -447,9 +447,42 @@ label {
     rgba(0, 0, 0, 0) 80%
   );
 }
+/* Floating Animation */
+/* Floating Animation */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-15px); }
+}
 
-.scroll-top:hover {
-  background: var(--tg-secondary-color);
+.floating-animation {
+  animation: float 4s ease-in-out infinite;
+}
+
+/* Letter Animation */
+.word {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: letterDrop 0.8s forwards;
+}
+
+@keyframes letterDrop {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+} 
+
+/* Create staggered animation */
+.word:nth-child(1) { animation-delay: 0.1s; }
+.word:nth-child(2) { animation-delay: 0.2s; }
+/* ... continue for all letters ... */
+
+@media (max-width: 992px) {
+  .floating-animation {
+    max-height: 60vh !important;
+    animation: float 5s ease-in-out infinite;
+  }
 }
 
 /*=============================
@@ -483,6 +516,7 @@ label {
   align-items: center;
   flex-wrap: wrap;
   justify-content: space-between;
+  /* padding: 0 150px !important; */
 }
 
 .navbar-wrap {
@@ -513,7 +547,7 @@ label {
 }
 
 .navbar-wrap ul li a {
-  /* color: var(--tg-heading-font-color); */
+  color: var(--tg-heading-font-color);
   padding: 24px 0;
   display: block;
   line-height: 1;
@@ -984,7 +1018,7 @@ label {
   height: 50px;
   align-items: center;
   justify-content: center;
-  background: var(--tg-primary-color);
+  background: linear-gradient(135deg, #00b4db 0%, #003d4d 50%, #00d2ff 100%);
   font-size: 16px;
   border-radius: 50%;
   color: var(--tg-white);
@@ -2162,22 +2196,6 @@ label {
   letter-spacing: -0.48px;
   font-family: var(--tg-heading-font-family);
   position: relative;
-}
-
-.faq-wrap .accordion-button::after {
-  flex-shrink: 0;
-  width: auto;
-  height: auto;
-  content: "\f062";
-  background-image: none;
-  font-size: 25px;
-  font-family: "Font Awesome 5 Free";
-  font-weight: 700;
-  position: absolute;
-  right: 45px;
-  top: 38px;
-  color: var(--tg-white);
-  opacity: 0.3;
 }
 
 .faq-wrap .accordion-button:not(.collapsed)::after {
@@ -4273,7 +4291,7 @@ label {
 .hero-style1 {
   position: relative;
   z-index: 6;
-  padding: 280px 0 30px;
+  /* padding: 280px 0 30px; */
 }
 
 .hero-style1 .btn-wrap {
@@ -4331,34 +4349,76 @@ label {
 }
 .word {
   opacity: 0;
-  background: linear-gradient(135deg, #ff00ff, #f8f8f8);
-  background-size: 400% 400%;
-  animation: appear 1s forwards, text-gradient 3s ease infinite;
+  background: 
+    linear-gradient(90deg, 
+      #00f2fe, 
+      #00b4db, 
+      #0083b0, 
+      #00d2ff, 
+      #3a7bd5);
+  background-size: 300% 300%;
+  animation: 
+    electric-entry 0.8s cubic-bezier(0.7, 0, 0.3, 1.5) forwards,
+    electric-pulse 6s ease infinite,
+    electric-distortion 8s linear infinite;
   -webkit-background-clip: text;
+  background-clip: text;
   color: transparent;
+  position: relative;
+  filter: drop-shadow(0 0 8px rgba(0, 210, 255, 0.5));
 }
 
-/* Delay for each word */
-.word:nth-child(1) { animation-delay: 0s; }
-.word:nth-child(2) { animation-delay: .5s; }
-.word:nth-child(3) { animation-delay: 1s; }
-.word:nth-child(4) { animation-delay: 1.5s; }
-.word:nth-child(5) { animation-delay: 2s; }
-.word:nth-child(6) { animation-delay: 2.5s; }
-.word:nth-child(7) { animation-delay: 3s; }
-.word:nth-child(8) { animation-delay: 3.5s; }
-.word:nth-child(9) { animation-delay: 4s; }
-.word:nth-child(10) { animation-delay: 4.5s; }
-.word:nth-child(11) { animation-delay: 5s; }
-@keyframes appear {
-  0% { opacity: 0; transform: translateY(-50px); }
-  100% { opacity: 1; transform: translateY(0); }
+/* Staggered Entry with Randomness */
+.word:nth-child(1) { animation-delay: 0s, 0.1s, 0s; }
+.word:nth-child(2) { animation-delay: 0.2s, 0.3s, 0.2s; }
+.word:nth-child(3) { animation-delay: 0.4s, 0.5s, 0.4s; }
+/* ...and so on */
+
+@keyframes electric-entry {
+  0% { 
+    opacity: 0;
+    transform: scale(0.7) translateY(15px);
+    filter: blur(3px) brightness(2);
+  }
+  100% { 
+    opacity: 1;
+    transform: scale(1) translateY(0);
+    filter: blur(0) brightness(1);
+  }
 }
 
-@keyframes text-gradient {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
+@keyframes electric-pulse {
+  0%, 100% { 
+    background-position: 0% 50%;
+    text-shadow: 
+      0 0 5px rgba(0, 178, 255, 0.5),
+      0 0 10px rgba(0, 238, 255, 0.3);
+  }
+  50% { 
+    background-position: 100% 50%;
+    text-shadow: 
+      0 0 10px rgba(0, 238, 255, 0.8),
+      0 0 20px rgba(100, 255, 255, 0.5),
+      0 0 30px rgba(0, 118, 255, 0.2);
+  }
+}
+
+@keyframes electric-distortion {
+  0%, 100% { transform: skewX(0deg); }
+  20% { transform: skewX(-1deg) scaleY(1.02); }
+  40% { transform: skewX(1deg) scaleY(0.98); }
+  60% { transform: skewX(0.5deg) scaleX(1.01); }
+  80% { transform: skewX(-0.5deg) scaleX(0.99); }
+}
+@media (prefers-reduced-motion) {
+  .word { animation: none; opacity: 1; }
+}
+.word:active {
+  animation: electric-zap 0.3s;
+}
+@keyframes electric-zap {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(0.95) rotate(0.5deg); }
 }
 .coreWhatoverlay {
 
@@ -5736,7 +5796,7 @@ label {
   transition: 0.4s;
 }
 
-.accordion-card .accordion-button:after {
+.accordion-card {
   content: "\f067";
   width: auto;
   background: transparent;
@@ -7386,7 +7446,7 @@ label {
   color: var(--tg-secondary-color);
 }
 
-.accordion-card.style2 .accordion-button:after {
+.accordion-card.style2 {
   content: "\f107";
   top: 56px;
   right: 36px;
@@ -7449,7 +7509,7 @@ label {
   .accordion-card.style2 .accordion-button {
     padding: 31px 40px 29px 40px;
   }
-  .accordion-card.style2 .accordion-button:after {
+  .accordion-card.style2 {
     top: 19px;
     width: 50px;
     height: 50px;
@@ -7465,7 +7525,7 @@ label {
     padding: 31px 70px 29px 30px;
     font-size: 17px;
   }
-  .accordion-card.style2 .accordion-button:after {
+  .accordion-card.style2 {
     right: 15px;
   }
   .accordion-card.style2 .accordion-body p {
@@ -7610,4 +7670,10 @@ label {
   line-height: 52px;
 }
 
-
+.titleText {
+  background: linear-gradient(135deg, #00b4db, #ffffff) !important;
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+  color: transparent !important;
+  display: inline-block !important ;
+}
