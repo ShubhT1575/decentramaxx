@@ -12,7 +12,7 @@ function CoreHead() {
           </ol>
         </nav>
         <h1 className="page-title fw-bold fs-18 mb-0 text-light">
-        Weekly &nbsp;Salary &nbsp;Data
+        Single &nbsp;Leg &nbsp;Report
         </h1>
       </div>
     </div>

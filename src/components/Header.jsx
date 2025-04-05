@@ -11,6 +11,9 @@ import {
 import { getUser } from "../API/Api";
 import { getUSDT } from "./web3";
 import { GiHamburgerMenu } from "react-icons/gi";
+import { Avatar } from "antd";
+import { AntDesignOutlined } from "@ant-design/icons";
+import logo from "/favi icon (1).png"
 
 function Header() {
   const dispatch = useDispatch();
@@ -54,13 +57,11 @@ function Header() {
   //       navigate("/SignIn");
   //     }
   //   }, 2000);
-  
-  //   return () => clearTimeout(timeout); 
+
+  //   return () => clearTimeout(timeout);
   // }, [add, navigate]);
-  
 
   useEffect(() => {
-
     getUser(add)
       .then((res) => {
         console.log(res, "res");
@@ -75,8 +76,6 @@ function Header() {
         console.log(error, "ERROR:::");
       });
   }, [add]);
-
-  
 
   function isCollapsed() {
     const side = document.getElementById("sidebar");
@@ -108,9 +107,14 @@ function Header() {
   }, [address]);
 
   return (
-    <header className="app-header header-ll sticky bg-crypto-balance" id="header" style={{background: "transparent"}}>
+    <header
+      className="app-header header-ll sticky bg-crypto-balance"
+      id="header"
+      style={{ background: "transparent" }}
+    >
       <div className="main-header-container container-fluid align-items-center">
         <div className="header-content-left  d-flex align-items-center ">
+          
           <div
             className="header-element mx-lg-0 mx-2 head-tog text-light"
             onClick={isCollapsed}
@@ -124,9 +128,16 @@ function Header() {
             >
               {/* <span></span> */}
               {/* <i class="fa-solid fa-bars" style={{color: "black"}}></i> */}
-              <GiHamburgerMenu style={{color: '#000000'}} className="ham-btn"/>
+              <GiHamburgerMenu
+                style={{ color: "#000000" }}
+                className="ham-btn"
+              />
             </a>
           </div>
+          <Avatar
+            size={{ xs: 40, sm: 40, md: 50, lg: 50, xl: 60, xxl: 70 }}
+            src={logo}
+          />
           {/* <div className=" d-flex align-items-center">
             <span className="fw-bold head-welcome" style={{ fontSize: "22px" }}>
               Welcome Back...

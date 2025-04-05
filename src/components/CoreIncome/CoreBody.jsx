@@ -55,7 +55,7 @@ function CoreBody() {
         <div className="card custom-card overflow-hidden new-card secondary11">
           <div className="card-header justify-content-between color-light">
             <div className="card-title">
-              Weekly Salary Report
+              Single Leg Report
             </div>
           </div>
 
@@ -138,7 +138,7 @@ function CoreBody() {
           <div className="card-footer pagination-body">
             <div className="d-flex align-items-center justify-content-between color-white">
               <div>
-                Showing {paginatedTable1?.length || 0} Salary Report
+                Showing {paginatedTable1?.length || 0} Single Leg Report
                 <i className="bi bi-arrow-right ms-2 fw-semibold"></i>
               </div>
               <div>

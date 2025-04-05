@@ -1,9 +1,15 @@
 import { Button, Flex, Input, Modal } from "antd";
 import axios from "axios";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
+import { apiUrl } from "../Config";
+import toast from "react-hot-toast";
 
 function ProfileRow() {
-
+  const {dashboardData } = useSelector((state) => state.bitgold);
+  // const dispatch = useDispatch();
+  const {user} = dashboardData;
+  // console.log(user, "user");
     const [isOpen,setIsOpen] = useState(false);
       const [userInput,setUserInput] = useState("")
       const [userDetails,setUserDetails] = useState("")
@@ -47,6 +53,7 @@ function ProfileRow() {
     })
 
     const [profileUrl,setProfileUrl] = useState("")
+    const [inputValue,setInputValue] = useState("")
 
     const handleFileChange = async (e) => {
       try {
@@ -71,27 +78,53 @@ function ProfileRow() {
         let url = res.data.secure_url;
         console.log(url, "xxyxx");
         setProfileUrl(url);
-
+        
       } catch (error) {
         console.error("Error uploading file:", error);
       }
     };
-    console.log({profileUrl})
+    // console.log(profileUrl,inputValue, "profileUrl");
+    let ress;
+    const handleUploadProfile = async ()=>{
+      try {
+        const response = await axios.put(apiUrl + "updateUserProfile", {
+          address: user,
+          profileUrl: profileUrl,
+          name: inputValue
+        })
+        if(response){
+          modalClose();
+        }
+        console.log(response, "response");
+        ress = response?.data?.data;
+
+      }catch (error) {
+        toast.error("Error while updating profile")
+      }
+    }
+
+    const [profileData,setProfileData] = useState({})
+
+    const getProfileData = async ()=>{
+      const res = await axios.get(apiUrl + "getUserProfile",{
+        params:{
+          address: user
+        }
+      })
+      console.log(res?.data?.data, "rescc");
+      setProfileData(res?.data?.data)
+
+    }
+
+    useEffect(()=>{
+      getProfileData()
+    },[user])
   return (
     <div className="container-fluid">
       <div className="row">
         <div className="col-xl-12">
-          
-          
           <div className="card custom-card profile-card secondary11">
             
-            {/* <div className="profile-banner-img">
-              <img
-              src="https://laravelui.spruko.com/xintra/build/assets/images/media/media-3.jpg"
-              className="card-img-top"
-              alt="..."
-              />
-              </div> */}
             <div className="card-body pb-0 position-relative">
                 <div className="btn-group align-self-start mb-3" style={{position: "absolute",right: "0px"}}>
                       <button
@@ -112,11 +145,11 @@ function ProfileRow() {
                       <div className="text-center">
                         <span className="avatar avatar-xxl avatar-rounded online mb-3">
                           <img
-                            src="https://laravelui.spruko.com/xintra/build/assets/images/faces/11.jpg"
+                            src={profileData?.profileUrl}
                             alt="Profile"
                           />
                         </span>
-                        <h5 className="fw-semibold mb-1">Spencer Robin</h5>
+                        <h5 className="fw-semibold mb-1">{profileData?.name ?? ""}</h5>
                         {/* <span className="d-block fw-medium text-muted mb-2">
                           Software Development Manager
                         </span>
@@ -143,19 +176,19 @@ function ProfileRow() {
                         <li className="list-group-item pt-2 border-0">
                           <div>
                             <span className="fw-medium me-2">User Id :</span>
-                            <span className="text-muted">Spencer Robin</span>
+                            <span className="text-muted">DCNTRA58566</span>
                           </div>
                         </li>
-                        <li className="list-group-item pt-2 border-0">
+                        {/* <li className="list-group-item pt-2 border-0">
                           <div>
                             <span className="fw-medium me-2">
-                              Signle Leg :
+                              Single Leg :
                             </span>
                             <span className="text-muted">
                               Software Development Manager
                             </span>
                           </div>
-                        </li>
+                        </li> */}
                         <li className="list-group-item pt-2 border-0">
                           <div>
                             <span className="fw-medium me-2">Today Income :</span>
@@ -174,23 +207,7 @@ function ProfileRow() {
                         </li>
                         <li className="list-group-item pt-2 border-0">
                           <div>
-                            <span className="fw-medium me-2">Total Level Income :</span>
-                            <span className="text-muted">
-                              +1 (222) 111 - 57840
-                            </span>
-                          </div>
-                        </li>
-                        <li className="list-group-item pt-2 border-0">
-                          <div>
-                            <span className="fw-medium me-2">Total User Income :</span>
-                            <span className="text-muted">
-                              +1 (222) 111 - 57840
-                            </span>
-                          </div>
-                        </li>
-                        <li className="list-group-item pt-2 border-0">
-                          <div>
-                            <span className="fw-medium me-2">Member Income :</span>
+                            <span className="fw-medium me-2">Total Income :</span>
                             <span className="text-muted">
                               +1 (222) 111 - 57840
                             </span>
@@ -209,8 +226,8 @@ function ProfileRow() {
       <Modal
         title={<p className="text-light">Edit Profile</p>}
         footer={
-          <Button type="primary" onClick={modalClose}>
-            Close
+          <Button type="primary" onClick={handleUploadProfile}>
+            Upload
           </Button>
         }
         loading={loading}
@@ -218,8 +235,8 @@ function ProfileRow() {
         onCancel={() => setOpen(false)}
       >
         <Flex style={{width: "100%" , marginBottom: "10px" , flexDirection:"column",gap: "20px"}} justify={"center"} align={"center"}>
-        <Input type="file" placeholder="Name" accept=".png,.jpeg,.jpg" value={userInput} onChange={handleFileChange} style={{marginBottom: "0px"}}/>
-        <Input type="text" placeholder="Name"  style={{marginBottom: "0px"}}/>
+        <Input type="file" placeholder="Name" accept=".png,.jpeg,.jpg" onChange={handleFileChange} style={{marginBottom: "0px"}}/>
+        <Input type="text" placeholder="Name" value={inputValue} onChange={(e)=>setInputValue(e.target.value)}  style={{marginBottom: "0px"}}/>
         {/* <Button shape="circle" icon={<SearchOutlined />} onClick={getDashboard}/> */}
         </Flex>
         {/* <Input type="email" placeholder="Email" style={{marginBottom: "10px"}}/>

@@ -314,7 +314,7 @@ function Sidebar() {
                 >
                   <i className="ri-wallet-3-fill side-menu__icon text-light"></i>
                   <span className="side-menu__label text-light">
-                  Weekly Salary
+                  Single Leg Report
                   </span>
                 </Link>
               </li>
