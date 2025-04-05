@@ -573,7 +573,7 @@ function DashboardRow2() {
                 <div className="card custom-card school-card secondary11">
                   <div className="card-body d-flex gap-2 justify-content-between align-items-center height-120px glow-box-blue">
                     <div>
-                      <span className="d-block mb-1">Weekly Salary</span>
+                      <span className="d-block mb-1">Single Leg</span>
                       <h6 className="mb-0 fw-semibold">$ {dashData?.userIncome/1e18 ? dashData?.userIncome/1e18 : "0"}</h6>
                     </div>
                     <div>
@@ -588,7 +588,7 @@ function DashboardRow2() {
                 <div className="card custom-card school-card secondary11">
                   <div className="card-body d-flex gap-2 justify-content-between align-items-center height-120px glow-box-blue">
                     <div>
-                      <span className="d-block mb-1">Total Level Income</span>
+                      <span className="d-block mb-1">Level Income</span>
                       <h6 className="mb-0 fw-semibold">$ {dashData?.levelIncome/1e18 ? dashData?.levelIncome/1e18 : "0"}</h6>
                     </div>
                     <div>
@@ -603,7 +603,7 @@ function DashboardRow2() {
                 <div className="card custom-card school-card secondary11">
                   <div className="card-body d-flex gap-2 justify-content-between align-items-center height-120px glow-box-blue">
                     <div>
-                      <span className="d-block mb-1">Member Income</span>
+                      <span className="d-block mb-1">Weekly Income</span>
                       <h6 className="mb-0 fw-semibold">$ {dashData?.memberIncome ? dashData?.memberIncome : "0"}</h6>
                     </div>
                     <div>

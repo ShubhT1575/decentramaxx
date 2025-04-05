@@ -15,6 +15,9 @@ const initialState = {
     },
     tokenData:{
 
+    },
+    profileUrl:{
+
     }
 }
 
@@ -36,6 +39,7 @@ export const counterSlice = createSlice({
       setTokenData: (state, action) => {
         state.tokenData = action.payload;
       },
+      // set
   },
 })
 
